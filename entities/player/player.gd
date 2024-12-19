@@ -8,7 +8,7 @@ const ROTATION_SPEED = 2
 @onready var camera = $Camera2D
 
 func _physics_process(delta: float) -> void:
-	move_and_slide()
+	move_and_collide(velocity * delta)
 
 
 func _on_timer_timeout() -> void:
