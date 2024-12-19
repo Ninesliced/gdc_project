@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qml0v"]
 size = Vector2(22, 59)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_lh0fv")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

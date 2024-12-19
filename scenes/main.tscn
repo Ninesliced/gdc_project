@@ -1,13 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd8w5pst3howw"]
+[gd_scene load_steps=4 format=3 uid="uid://dd8w5pst3howw"]
 
 [ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_uhlg2"]
 [ext_resource type="Texture2D" uid="uid://da5no17h7cchy" path="res://assets/space_breaker_asset/Ships/Big/body_01.png" id="2_irioc"]
+[ext_resource type="PackedScene" uid="uid://g2o8ee42dabs" path="res://entities/enemies/enemies.tscn" id="3_pgnfy"]
 
 [node name="main" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_uhlg2")]
 position = Vector2(271, 351)
+collision_mask = 0
 
 [node name="Body01" type="Sprite2D" parent="."]
 position = Vector2(521, 298)
 texture = ExtResource("2_irioc")
+
+[node name="Enemies" parent="." instance=ExtResource("3_pgnfy")]
+position = Vector2(343, 378)
