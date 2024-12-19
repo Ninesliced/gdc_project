@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var direction: float = 0.0:
+@export var direction: Vector2 = Vector2(1, 0):
 	set(value):
 		direction = value
 		update_velocity()
@@ -12,8 +12,8 @@ extends CharacterBody2D
 		update_velocity()
 
 func update_velocity() -> void:
-	velocity.x = cos(direction) * speed
-	velocity.y = sin(direction) * speed
+	velocity.x = direction.x * speed
+	velocity.y = direction.y * speed
 
 func _ready() -> void:
 	update_velocity()
