@@ -15,6 +15,7 @@ class_name Bullet
 @export var damage := 5.0
 
 var target_enemy := true
+var target: Node2D = null
 
 func update_velocity() -> void:
 	velocity.x = direction.x * speed
@@ -24,6 +25,9 @@ func _ready() -> void:
 	update_velocity()
 
 func _physics_process(_delta: float) -> void:
+	if target != null:
+		direction = (target.global_position - global_position).normalized()
+		global_rotation = direction.angle()
 	move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
