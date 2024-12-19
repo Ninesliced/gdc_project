@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqjktt4nfqau2"]
+
+[ext_resource type="PackedScene" uid="uid://b0cu8ml0ttn5j" path="res://entities/player/player.tscn" id="1_tqdsv"]
+
+[sub_resource type="GDScript" id="GDScript_rj1js"]
+script/source = "extends CharacterBody2D
+
+func _ready() -> void:
+	pass
+
+var speed = 20000
+var speed_left = 12000
+var speed_right = 12000
+var speed_down = 12000
+var speed_up = 20000
+
+func _physics_process(delta: float) -> void:
+	var direction = Vector2.ZERO
+	if Input.is_action_pressed(\"down\"):
+		direction.y = 1
+	if Input.is_action_pressed(\"up\"):
+		direction.y = -1
+	if Input.is_action_pressed(\"right\"):
+		direction.x = 1
+	if Input.is_action_pressed(\"left\"):
+		direction.x = -1
+	
+	if direction.x > 0:
+		velocity.x = direction.x * speed_right * delta
+	if direction.x < 0:
+		velocity.x = direction.x * speed_left * delta
+	if direction.y > 0:
+		velocity.y = direction.y * speed_down * delta
+	if direction.y < 0:
+		velocity.y = direction.y * speed_up * delta
+	if direction.x == 0:
+		velocity.x = velocity.move_toward(Vector2.ZERO, delta * 400).x
+	if direction.y == 0:
+		velocity.y = velocity.move_toward(Vector2.ZERO, delta * 400).y
+	move_and_slide()
+"
+
+[node name="CharacterBody2D" instance=ExtResource("1_tqdsv")]
+script = SubResource("GDScript_rj1js")

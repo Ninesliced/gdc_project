@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b6jh8b7n8rf7c"]
+
+[node name="MovementComponent" type="Node2D"]

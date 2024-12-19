@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy30yy5axn8vr"]
+
+[ext_resource type="PackedScene" uid="uid://b0cu8ml0ttn5j" path="res://entities/player/player.tscn" id="1_0dfpd"]
+[ext_resource type="Texture2D" uid="uid://cr65f13xwt747" path="res://assets/space_breaker_asset/Ships/Medium/body_02.png" id="2_x0wte"]
+[ext_resource type="PackedScene" uid="uid://b6jh8b7n8rf7c" path="res://entities/player/components/movement_component.tscn" id="3_2nx3a"]
+[ext_resource type="Script" path="res://entities/player/components/movement_component.gd" id="4_5m1kd"]
+
+[node name="CharacterBody2D" instance=ExtResource("1_0dfpd")]
+
+[node name="CPUParticles2D" parent="." index="0"]
+emission_rect_extents = Vector2(1300, 1300)
+
+[node name="Icon" parent="." index="1"]
+texture = ExtResource("2_x0wte")
+
+[node name="Camera2D" parent="." index="2"]
+ignore_rotation = false
+position_smoothing_speed = 30.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 3.0
+
+[node name="MovementComponent" parent="." index="4" instance=ExtResource("3_2nx3a")]
+script = ExtResource("4_5m1kd")
