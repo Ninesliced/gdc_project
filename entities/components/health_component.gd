@@ -6,9 +6,9 @@ class_name HealthComponent
 @export var invincible := false
 var hp = 0
 
-signal on_damage
+signal on_damage(damage: int)
 signal on_death
-signal on_heal
+signal on_heal(heal: int)
 
 func _ready():
 	hp = initial_hp
@@ -17,6 +17,7 @@ func damage(n):
 	if invincible:
 		return
 	hp -= n
+	emit_signal("on_damage", n)
 	if hp <= 0:
 		hp = 0
 		emit_signal("on_death")

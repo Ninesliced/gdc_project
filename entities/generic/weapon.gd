@@ -8,14 +8,17 @@ extends Node2D
 @export var attack_range := 500
 
 @export var target_enemy := true
+@export var aimbot := true
+@export var shoot_interval := 0.2:
+	set(value):
+		$Timer.wait_time = value
+
 var target: Node2D = null
 
 func select_target() -> Node2D:
 	var enemies: Array[Node]             = get_tree().get_nodes_in_group("Enemy" if target_enemy else "Player")
 	var enemies_in_range: Array[Variant] = []
 	for enemy in enemies:
-		if not enemy is Enemy:
-			continue
 		var distance: float = global_position.distance_to(enemy.global_position)
 		if distance < attack_range:
 			enemies_in_range.append(enemy)
@@ -43,6 +46,7 @@ func _on_timer_timeout() -> void:
 	instance.rotation = rotation
 	instance.direction = direction
 	instance.target_enemy = target_enemy
-	instance.target = target
+	if aimbot:
+		instance.target = target
 	instance.damage = damage
 	get_tree().current_scene.add_child(instance)

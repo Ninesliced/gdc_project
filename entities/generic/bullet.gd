@@ -38,7 +38,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	if body is Player and not target_enemy:
 		var player: Player = body as Player
-		# player.health_component.damage(damage)
+		player.health_component.damage(damage)
 		queue_free()
 
 func _on_timer_timeout() -> void:
