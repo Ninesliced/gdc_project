@@ -15,4 +15,19 @@ position = Vector2(521, 298)
 texture = ExtResource("2_irioc")
 
 [node name="Enemies" parent="." instance=ExtResource("3_pgnfy")]
-position = Vector2(343, 378)
+position = Vector2(404, 481)
+
+[node name="Enemies3" parent="." instance=ExtResource("3_pgnfy")]
+position = Vector2(474, 535)
+
+[node name="Enemies4" parent="." instance=ExtResource("3_pgnfy")]
+position = Vector2(546, 511)
+
+[node name="Enemies5" parent="." instance=ExtResource("3_pgnfy")]
+position = Vector2(619, 492)
+
+[node name="Enemies6" parent="." instance=ExtResource("3_pgnfy")]
+position = Vector2(689, 416)
+
+[node name="Enemies2" parent="." instance=ExtResource("3_pgnfy")]
+position = Vector2(507, 459)
