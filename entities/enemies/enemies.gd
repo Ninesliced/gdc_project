@@ -4,7 +4,7 @@ class_name Enemy
 @onready var health_component : HealthComponent = $HealthComponent
 
 func _physics_process(delta: float) -> void:
-	move_and_slide()
+	move_and_collide(velocity * delta)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

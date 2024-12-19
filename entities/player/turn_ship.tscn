@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy30yy5axn8vr"]
+[gd_scene load_steps=9 format=3 uid="uid://dy30yy5axn8vr"]
 
 [ext_resource type="PackedScene" uid="uid://b0cu8ml0ttn5j" path="res://entities/player/player.tscn" id="1_0dfpd"]
 [ext_resource type="Texture2D" uid="uid://cr65f13xwt747" path="res://assets/space_breaker_asset/Ships/Medium/body_02.png" id="2_x0wte"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://b51s7gt8mn0ih" path="res://entities/components/health_component.tscn" id="5_7pfo1"]
 [ext_resource type="PackedScene" uid="uid://bxvp8fluu1lsf" path="res://entities/player/components/slot_manager.tscn" id="6_jbqv1"]
 [ext_resource type="Script" path="res://entities/player/components/slot_manager.gd" id="7_h8khn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bg8xi"]
+radius = 7.19923
+height = 26.5074
 
 [node name="CharacterBody2D" instance=ExtResource("1_0dfpd")]
 
@@ -22,8 +26,15 @@ position_smoothing_speed = 30.0
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 1.0
 
+[node name="CollisionShape2D" parent="." index="3"]
+scale = Vector2(1.66685, 2.22579)
+shape = SubResource("CapsuleShape2D_bg8xi")
+
 [node name="MovementComponent" parent="." index="4" instance=ExtResource("3_2nx3a")]
+scale = Vector2(0.905638, 1)
 script = ExtResource("4_5m1kd")
+acceleration = 800
+decceleration = 300
 
 [node name="HealthComponent" parent="." index="5" instance=ExtResource("5_7pfo1")]
 

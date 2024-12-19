@@ -3,7 +3,7 @@ extends Node2D
 @export var speed = 300.0
 @export var acceleration = 300
 @export var decceleration = 200
-@export var rotation_speed = 2
+@export var rotation_speed := 2.5
 @onready var parent = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
