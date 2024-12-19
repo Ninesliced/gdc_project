@@ -3,7 +3,7 @@ extends Node2D
 @export var speed = 300.0
 @export var acceleration = 300
 @export var decceleration = 200
-@export var rotation_speed := 2.5
+@export var rotation_speed = 2.5
 @onready var parent = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +24,8 @@ func _process(delta: float) -> void:
 		parent.rotate(-delta * rotation_speed)
 	if Input.is_action_pressed("right"):	
 		parent.rotate(delta * rotation_speed)
+	
+	PlayerData.player_rotation = parent.rotation
 	
 	direction = direction.rotated(parent.rotation)
 	velocity = handle_acceleration(direction,velocity, delta)

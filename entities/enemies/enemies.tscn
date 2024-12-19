@@ -22,6 +22,8 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_ru3q2")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_7gbns")]
+max_hp = 5
+initial_hp = 5
 
 [node name="EnemyMoveComponent" type="Node2D" parent="."]
 script = ExtResource("4_krqto")
