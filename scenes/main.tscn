@@ -1,60 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd8w5pst3howw"]
+[gd_scene load_steps=3 format=3 uid="uid://dd8w5pst3howw"]
 
-[ext_resource type="Texture2D" uid="uid://bqtdpn5sf17x4" path="res://assets/space_breaker_asset/Ships/Medium/body_01.png" id="1_vrxnk"]
-[ext_resource type="Texture2D" uid="uid://dha0p021o1ru6" path="res://assets/space_breaker_asset/Weapons/Small/Plasma/turret_04_mk1.png" id="2_vyjns"]
-[ext_resource type="Texture2D" uid="uid://dhc0olkyg4cvx" path="res://assets/space_breaker_asset/Weapons/Medium/Laser/turret_02_mk2.png" id="2_wg8bg"]
-[ext_resource type="Texture2D" uid="uid://brnwunjep1air" path="res://icon.svg" id="4_gyg3d"]
-[ext_resource type="Texture2D" uid="uid://dcsnqa0suok36" path="res://assets/space_breaker_asset/Weapons/Small/Laser/turret_02_beam_01_anim.png" id="4_psoaf"]
+[ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_uhlg2"]
+[ext_resource type="Texture2D" uid="uid://da5no17h7cchy" path="res://assets/space_breaker_asset/Ships/Big/body_01.png" id="2_irioc"]
 
 [node name="main" type="Node2D"]
 
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_uhlg2")]
+position = Vector2(271, 351)
+
 [node name="Body01" type="Sprite2D" parent="."]
-position = Vector2(183, 214)
-rotation = 0.999398
-texture = ExtResource("1_vrxnk")
-
-[node name="Turret02Mk2" type="Sprite2D" parent="Body01"]
-rotation = 1.26269
-texture = ExtResource("2_wg8bg")
-
-[node name="Turret02Beam01Anim" type="Sprite2D" parent="."]
-position = Vector2(270, 295)
-rotation = -1.23742
-texture = ExtResource("4_psoaf")
-hframes = 5
-frame = 3
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(427, 240)
-rotation = -0.00823841
-scale = Vector2(0.785611, 0.785611)
-texture = ExtResource("4_gyg3d")
-
-[node name="Turret04Mk1" type="Sprite2D" parent="Icon"]
-position = Vector2(-5.83595, 90.3305)
-rotation = 0.105142
-scale = Vector2(1.27289, 1.27289)
-texture = ExtResource("2_vyjns")
-
-[node name="Turret04Mk2" type="Sprite2D" parent="Icon"]
-position = Vector2(-6.945, -84.0711)
-rotation = 0.044363
-scale = Vector2(1.27289, 1.27289)
-texture = ExtResource("2_vyjns")
-
-[node name="Turret04Mk3" type="Sprite2D" parent="Icon"]
-position = Vector2(-105.647, -0.870401)
-rotation = -0.0821626
-scale = Vector2(1.27289, 1.27289)
-texture = ExtResource("2_vyjns")
-
-[node name="Turret04Mk4" type="Sprite2D" parent="Icon"]
-position = Vector2(82.7248, 1.95446)
-rotation = 0.101227
-scale = Vector2(1.27289, 1.27289)
-texture = ExtResource("2_vyjns")
-
-[node name="Turret02Mk2" type="Sprite2D" parent="Icon"]
-position = Vector2(-1.30435, 3.80807)
-rotation = 1.26269
-texture = ExtResource("2_wg8bg")
+position = Vector2(521, 298)
+texture = ExtResource("2_irioc")

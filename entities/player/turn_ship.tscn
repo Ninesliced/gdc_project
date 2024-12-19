@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy30yy5axn8vr"]
+[gd_scene load_steps=6 format=3 uid="uid://dy30yy5axn8vr"]
 
 [ext_resource type="PackedScene" uid="uid://b0cu8ml0ttn5j" path="res://entities/player/player.tscn" id="1_0dfpd"]
 [ext_resource type="Texture2D" uid="uid://cr65f13xwt747" path="res://assets/space_breaker_asset/Ships/Medium/body_02.png" id="2_x0wte"]
 [ext_resource type="PackedScene" uid="uid://b6jh8b7n8rf7c" path="res://entities/player/components/movement_component.tscn" id="3_2nx3a"]
 [ext_resource type="Script" path="res://entities/player/components/movement_component.gd" id="4_5m1kd"]
+[ext_resource type="PackedScene" uid="uid://b51s7gt8mn0ih" path="res://entities/components/health_component.tscn" id="5_7pfo1"]
 
 [node name="CharacterBody2D" instance=ExtResource("1_0dfpd")]
 
@@ -21,3 +22,5 @@ rotation_smoothing_speed = 1.0
 
 [node name="MovementComponent" parent="." index="4" instance=ExtResource("3_2nx3a")]
 script = ExtResource("4_5m1kd")
+
+[node name="HealthComponent" parent="." index="5" instance=ExtResource("5_7pfo1")]

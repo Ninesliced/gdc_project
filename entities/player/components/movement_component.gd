@@ -2,7 +2,7 @@ extends Node2D
 
 @export var speed = 300.0
 @export var acceleration = 200
-@export var decceleration = 100
+@export var decceleration = 170
 @export var rotation_speed = 2
 @onready var parent = null
 # Called when the node enters the scene tree for the first time.
