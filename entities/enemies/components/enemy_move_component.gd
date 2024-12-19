@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 	if players.size() == 0:
 		return
 	var player = players[0]
+	if player == null:
+		return
 	
 	var direction : Vector2 = (player.global_position - parent.global_position).normalized()
 	var direction_angle = direction.angle()

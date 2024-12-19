@@ -17,6 +17,7 @@ func damage(n):
 	if invincible:
 		return
 	hp -= n
+	print("damaged")
 	emit_signal("on_damage", n)
 	if hp <= 0:
 		hp = 0
