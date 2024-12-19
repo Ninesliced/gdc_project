@@ -1,16 +1,28 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpyx7hf8384hb"]
 
-[ext_resource type="Texture2D" uid="uid://brnwunjep1air" path="res://icon.svg" id="1_7o7fl"]
 [ext_resource type="Script" path="res://entities/generic/bullet.gd" id="1_xvlya"]
+[ext_resource type="Texture2D" uid="uid://dofhmagtkdahc" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_bullet_01.png" id="2_2pdi6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqpgu"]
+size = Vector2(1.5, 2)
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_xvlya")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.195312, 0.179688)
-texture = ExtResource("1_7o7fl")
+texture = ExtResource("2_2pdi6")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Area2D"]
+rotation = -0.000177632
 shape = SubResource("RectangleShape2D_pqpgu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

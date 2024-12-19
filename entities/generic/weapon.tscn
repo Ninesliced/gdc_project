@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgo7t0jmq53j0"]
+
+[ext_resource type="Script" path="res://entities/generic/weapon.gd" id="1_lgbee"]
+[ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="1_tsxf7"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_lgbee")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_tsxf7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
