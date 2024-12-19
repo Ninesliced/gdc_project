@@ -6,10 +6,16 @@ class_name Enemy
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
-func _kill() -> void:
-	queue_free()
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-		
+	if body is Player:
+		var player : Player = body
+	
+	pass # Replace with function body.
+
+
+func _on_health_component_on_death() -> void:
+	
+	queue_free()
+	
 	pass # Replace with function body.

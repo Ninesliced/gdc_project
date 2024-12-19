@@ -17,9 +17,11 @@ func damage(n):
 	if invincible:
 		return
 	hp -= n
+	print("kill1")
 	if hp <= 0:
 		hp = 0
 		emit_signal("on_damage")
+		print("kill")
 	pass 
 
 func heal(n):
