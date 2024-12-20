@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnxeifd466luv"]
+
+[ext_resource type="PackedScene" uid="uid://r5slvbs5dk1e" path="res://ui/ui_button.tscn" id="1_abhxk"]
+[ext_resource type="Texture2D" uid="uid://2p5xlj0knnee" path="res://assets/ui/button.png" id="1_h2mu5"]
+[ext_resource type="PackedScene" uid="uid://7b5nmq4mjbu8" path="res://ui/Shops/box.tscn" id="1_u0m0s"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_top = 2.0
+offset_right = 640.0
+offset_bottom = 362.0
+
+[node name="Items" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Items"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+alignment = 1
+
+[node name="Box2" parent="HBoxContainer/Items/HBoxContainer" instance=ExtResource("1_u0m0s")]
+layout_mode = 2
+
+[node name="Box4" parent="HBoxContainer/Items/HBoxContainer" instance=ExtResource("1_u0m0s")]
+layout_mode = 2
+
+[node name="Box3" parent="HBoxContainer/Items/HBoxContainer" instance=ExtResource("1_u0m0s")]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Items"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+texture = ExtResource("1_h2mu5")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 7
+patch_margin_bottom = 12
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="icon" type="ColorRect" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+color = Color(0.381871, 0.628266, 0.777587, 1)
+
+[node name="buttons" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="ui_button" parent="HBoxContainer/VBoxContainer2/buttons" instance=ExtResource("1_abhxk")]
+layout_mode = 2
+text = "BUY"
+
+[node name="ui_button2" parent="HBoxContainer/VBoxContainer2/buttons" instance=ExtResource("1_abhxk")]
+layout_mode = 2
+text = "SELL"
+
+[node name="ui_button3" parent="HBoxContainer/VBoxContainer2/buttons" instance=ExtResource("1_abhxk")]
+layout_mode = 2
+text = "UPGRADE"
+
+[node name="ui_button4" parent="HBoxContainer/VBoxContainer2/buttons" instance=ExtResource("1_abhxk")]
+layout_mode = 2
+text = "QUIT"

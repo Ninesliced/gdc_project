@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://7b5nmq4mjbu8"]
+
+[ext_resource type="Texture2D" uid="uid://cnwd8cjcn1m2e" path="res://assets/ui/card.png" id="1_dw7eh"]
+[ext_resource type="Texture2D" uid="uid://b870u5vca6t7n" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk2.png" id="2_mdpvr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_in5kj"]
+
+[sub_resource type="Theme" id="Theme_bo4vg"]
+Panel/styles/panel = SubResource("StyleBoxEmpty_in5kj")
+
+[node name="Box" type="NinePatchRect"]
+size_flags_horizontal = 3
+texture = ExtResource("1_dw7eh")
+patch_margin_left = 7
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 26
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "caca"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_bo4vg")
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Panel"]
+position = Vector2(19.5, 21)
+rotation = 0.785398
+texture = ExtResource("2_mdpvr")
