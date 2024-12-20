@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://brfq32hg5bfi2"]
+
+[ext_resource type="Script" path="res://entities/enemies/spawner/enemy_spawner.gd" id="1_vkf78"]
+
+[node name="EnemySpawner" type="Node"]
+script = ExtResource("1_vkf78")
+
+[node name="SpawnDelay" type="Timer" parent="."]
+autostart = true
+
+[node name="CycleDelay" type="Timer" parent="."]
+
+[connection signal="timeout" from="SpawnDelay" to="." method="_on_spawn_delay_timeout"]
+[connection signal="timeout" from="CycleDelay" to="." method="_on_cycle_delay_timeout"]

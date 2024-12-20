@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://lbaknsn35a0g"]
+
+[ext_resource type="PackedScene" uid="uid://g2o8ee42dabs" path="res://entities/enemies/enemies.tscn" id="1_k0stg"]
+[ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/generic/weapon.tscn" id="2_jxlpx"]
+
+[node name="Enemies" instance=ExtResource("1_k0stg")]
+
+[node name="Weapon" parent="." index="5" instance=ExtResource("2_jxlpx")]
+scale = Vector2(0.7, 0.7)
+damage = 1.0
+attack_range = 200
+target_enemy = false
+aimbot = false
+shoot_interval = 1.0
