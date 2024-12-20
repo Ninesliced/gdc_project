@@ -10,14 +10,14 @@ enum ShopType {
 
 var currentShopType : ShopType = ShopType.BUY
 
-@onready var buy_ui : VBoxContainer = $HBoxContainer/Buy
-@onready var upgrade_ui : VBoxContainer = $HBoxContainer/Upgrade
-@onready var sell : VBoxContainer =  $HBoxContainer/Sell
+@onready var buy_ui : VBoxContainer = $Shop/HBoxContainer/Buy
+@onready var upgrade_ui : VBoxContainer = $Shop/HBoxContainer/Upgrade
+@onready var sell : VBoxContainer =  $Shop/HBoxContainer/Sell
 
 var dict_type : Dictionary = {}
 
 var box_card : PackedScene = preload("res://ui/Shops/shop_box.tscn")
-@onready var item_containter : HBoxContainer = $HBoxContainer/Buy/ItemContainer
+@onready var item_containter : HBoxContainer = $Shop/HBoxContainer/Buy/ItemContainer
 var buy_cards : Array = []
 
 func _ready() -> void:
