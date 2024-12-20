@@ -1,19 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://r5slvbs5dk1e"]
+[gd_scene load_steps=12 format=3 uid="uid://c2eemep8skl7h"]
 
 [ext_resource type="Texture2D" uid="uid://2p5xlj0knnee" path="res://assets/ui/button.png" id="1_4jp0w"]
 [ext_resource type="Texture2D" uid="uid://bq5mmey6abh07" path="res://assets/ui/button_hover.png" id="1_101l1"]
 [ext_resource type="Texture2D" uid="uid://coepoivki4peq" path="res://assets/ui/button_pressed.png" id="3_komb5"]
+[ext_resource type="FontFile" uid="uid://cmf6daamewwxl" path="res://assets/fonts/monogram.ttf" id="4_5n7gs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kd7lj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2hxwi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1kmv"]
 texture = ExtResource("1_101l1")
-texture_margin_left = 8.0
-texture_margin_top = 7.0
-texture_margin_right = 7.0
-texture_margin_bottom = 12.0
-region_rect = Rect2(0, 0, 32, 32)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_do4k7"]
-texture = ExtResource("3_komb5")
 texture_margin_left = 8.0
 texture_margin_top = 7.0
 texture_margin_right = 7.0
@@ -28,10 +25,19 @@ texture_margin_right = 7.0
 texture_margin_bottom = 12.0
 region_rect = Rect2(0, 0, 32, 32)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_do4k7"]
+texture = ExtResource("3_komb5")
+texture_margin_left = 8.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(0, 0, 32, 32)
+
 [sub_resource type="Theme" id="Theme_q4y8a"]
 Button/constants/outline_size = 0
+Button/styles/disabled = SubResource("StyleBoxEmpty_kd7lj")
+Button/styles/focus = SubResource("StyleBoxEmpty_2hxwi")
 Button/styles/hover = SubResource("StyleBoxTexture_y1kmv")
-Button/styles/hover_pressed = SubResource("StyleBoxTexture_do4k7")
 Button/styles/normal = SubResource("StyleBoxTexture_y23yu")
 Button/styles/pressed = SubResource("StyleBoxTexture_do4k7")
 
@@ -60,7 +66,9 @@ offset_bottom = 42.0
 scale = Vector2(1.04051, 0.99303)
 size_flags_vertical = 3
 theme = SubResource("Theme_q4y8a")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("4_5n7gs")
+theme_override_font_sizes/font_size = 16
 text = "TEMPLATE"
 script = SubResource("GDScript_k5hle")
-
-[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://7b5nmq4mjbu8"]
+[gd_scene load_steps=6 format=3 uid="uid://7b5nmq4mjbu8"]
 
 [ext_resource type="Texture2D" uid="uid://cnwd8cjcn1m2e" path="res://assets/ui/card.png" id="1_dw7eh"]
+[ext_resource type="FontFile" uid="uid://cmf6daamewwxl" path="res://assets/fonts/monogram.ttf" id="2_6h587"]
 [ext_resource type="Texture2D" uid="uid://b870u5vca6t7n" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk2.png" id="2_mdpvr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_in5kj"]
@@ -29,15 +30,21 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "caca"
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6h587")
+theme_override_font_sizes/font_size = 0
+text = "SUPER CACA BIDON"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 theme = SubResource("Theme_bo4vg")
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Panel"]
-position = Vector2(19.5, 21)
 rotation = 0.785398
 texture = ExtResource("2_mdpvr")
