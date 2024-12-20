@@ -38,12 +38,9 @@ script = ExtResource("4_5m1kd")
 acceleration = 800
 decceleration = 300
 
-[node name="HealthComponent" parent="." index="5" instance=ExtResource("5_7pfo1")]
+[node name="HealthComponent2" parent="." index="5" instance=ExtResource("5_7pfo1")]
 max_hp = 10
 initial_hp = 10
 
 [node name="SlotManager" parent="." index="6" instance=ExtResource("6_jbqv1")]
 script = ExtResource("7_h8khn")
-
-[connection signal="on_damage" from="HealthComponent" to="." method="_on_health_component_on_damage"]
-[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]

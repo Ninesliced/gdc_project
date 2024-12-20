@@ -33,6 +33,10 @@ window/stretch/mode="viewport"
 Player=""
 Enemy=""
 
+[gui]
+
+theme/custom_font="res://assets/fonts/monogram.ttf"
+
 [input]
 
 left={
