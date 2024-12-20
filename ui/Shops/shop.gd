@@ -1,4 +1,5 @@
-extends Control
+extends CanvasLayer
+class_name Shop
 
 enum ShopType { 
 	BUY,
@@ -66,4 +67,5 @@ func _on_upgrade_button_pressed():
 	pass
 
 func _on_quit_button_pressed():
+	ShopData.close_shop()
 	pass
