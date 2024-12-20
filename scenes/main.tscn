@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://brvbeliklg4pq"]
+[gd_scene load_steps=6 format=3 uid="uid://brvbeliklg4pq"]
 
 [ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_uhlg2"]
 [ext_resource type="Texture2D" uid="uid://da5no17h7cchy" path="res://assets/space_breaker_asset/Ships/Big/body_01.png" id="2_irioc"]
 [ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_mkvc0"]
 [ext_resource type="PackedScene" uid="uid://brfq32hg5bfi2" path="res://entities/enemies/spawner/enemy_spawner.tscn" id="4_73t8l"]
+[ext_resource type="PackedScene" uid="uid://cchsone545eea" path="res://entities/planets/planet.tscn" id="5_1caxx"]
 
 [node name="main" type="Node2D"]
 
@@ -22,3 +23,6 @@ texture = ExtResource("2_irioc")
 [node name="EnemySpawner" parent="." instance=ExtResource("4_73t8l")]
 spawn_count = 1
 spawn_distance_max = 1000
+
+[node name="Planet" parent="." instance=ExtResource("5_1caxx")]
+position = Vector2(120, 299)
