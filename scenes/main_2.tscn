@@ -21,4 +21,4 @@ texture = ExtResource("3_q7e5f")
 
 [node name="Planet" parent="." instance=ExtResource("4_xrfc1")]
 z_index = -2
-position = Vector2(123, 385)
+position = Vector2(124, 385)

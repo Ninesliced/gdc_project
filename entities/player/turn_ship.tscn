@@ -26,7 +26,6 @@ texture = ExtResource("2_x0wte")
 ignore_rotation = false
 position_smoothing_speed = 30.0
 rotation_smoothing_enabled = true
-rotation_smoothing_speed = 1.0
 
 [node name="CollisionShape2D" parent="." index="3"]
 scale = Vector2(1.66685, 2.22579)
@@ -37,6 +36,7 @@ scale = Vector2(0.905638, 1)
 script = ExtResource("4_5m1kd")
 acceleration = 800
 decceleration = 300
+rotation_speed = 1.0
 
 [node name="HealthComponent2" parent="." index="5" instance=ExtResource("5_7pfo1")]
 max_hp = 10

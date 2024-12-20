@@ -1,21 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyhe2a2unekfj"]
+[gd_scene load_steps=9 format=3 uid="uid://dmxyagf76rfpr"]
 
 [ext_resource type="FontFile" uid="uid://cmf6daamewwxl" path="res://assets/fonts/monogram.ttf" id="1_d1xee"]
 [ext_resource type="Texture2D" uid="uid://cnwd8cjcn1m2e" path="res://assets/ui/card.png" id="1_wtyqi"]
 [ext_resource type="Texture2D" uid="uid://b870u5vca6t7n" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk2.png" id="2_7rf1j"]
+[ext_resource type="Script" path="res://ui/Shops/shop_box.gd" id="2_25emh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t4d0y"]
+texture = ExtResource("1_wtyqi")
+texture_margin_left = 10.0
+texture_margin_top = 7.0
+texture_margin_right = 12.0
+texture_margin_bottom = 20.0
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Theme" id="Theme_w2j40"]
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxTexture_t4d0y")
+Button/styles/hover = SubResource("StyleBoxTexture_t4d0y")
+Button/styles/normal = SubResource("StyleBoxTexture_t4d0y")
+Button/styles/pressed = SubResource("StyleBoxTexture_t4d0y")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_in5kj"]
 
 [sub_resource type="Theme" id="Theme_bo4vg"]
 Panel/styles/panel = SubResource("StyleBoxEmpty_in5kj")
 
-[node name="ShopBox" type="NinePatchRect"]
+[node name="ShopBox" type="Button"]
 size_flags_horizontal = 3
-texture = ExtResource("1_wtyqi")
-patch_margin_left = 7
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 26
+theme = SubResource("Theme_w2j40")
+script = ExtResource("2_25emh")
 
 [node name="HBox" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -35,7 +48,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="Label" type="Label" parent="HBox/BoxContainer3"]
+[node name="Title" type="Label" parent="HBox/BoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -55,7 +68,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = SubResource("Theme_bo4vg")
 
-[node name="Sprite2D" type="Sprite2D" parent="HBox/BoxContainer/Panel2"]
+[node name="Icon" type="Sprite2D" parent="HBox/BoxContainer/Panel2"]
 rotation = 0.785398
 texture = ExtResource("2_7rf1j")
 
@@ -69,13 +82,13 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="Label" type="Label" parent="HBox/BoxContainer2"]
+[node name="Price" type="Label" parent="HBox/BoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_d1xee")
-text = "Make your things really great, I think, some text to fill the box card, hahaha"
+text = "Make your things really great"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -88,3 +101,5 @@ size_flags_stretch_ratio = 0.1
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
