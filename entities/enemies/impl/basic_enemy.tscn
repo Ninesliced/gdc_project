@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://lbaknsn35a0g"]
+[gd_scene load_steps=7 format=3 uid="uid://lbaknsn35a0g"]
 
 [ext_resource type="PackedScene" uid="uid://g2o8ee42dabs" path="res://entities/enemies/enemies.tscn" id="1_k0stg"]
 [ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_jxlpx"]
+[ext_resource type="PackedScene" uid="uid://dpyx7hf8384hb" path="res://entities/weapons/bullet.tscn" id="3_cvagu"]
+[ext_resource type="Script" path="res://entities/weapons/weapon_property.gd" id="4_6x1qu"]
+[ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="5_khkte"]
+
+[sub_resource type="Resource" id="Resource_x0uhd"]
+script = ExtResource("4_6x1qu")
+rotation_speed = 0.1
+bullet = ExtResource("3_cvagu")
+texture = ExtResource("5_khkte")
+damage = 1.0
+attack_range = 250
+target_enemy = false
+aimbot = false
+shoot_interval = 1.0
 
 [node name="Enemies" instance=ExtResource("1_k0stg")]
 
@@ -10,8 +24,4 @@ position = Vector2(-9.04998e-07, -0.25)
 
 [node name="Weapon" parent="." index="5" instance=ExtResource("2_jxlpx")]
 scale = Vector2(0.7, 0.7)
-damage = 1.0
-attack_range = 200
-target_enemy = false
-aimbot = false
-shoot_interval = 1.0
+weapon_property = SubResource("Resource_x0uhd")

@@ -1,32 +1,29 @@
 extends Node2D
 
-@export var direction: Vector2 = Vector2(1, 0)
-@export var rotation_speed: float = 0.1
+var direction: Vector2 = Vector2(1, 0)
 
-@export var bullet: PackedScene = load("res://entities/weapons/bullet.tscn")
-@export var damage := 5.0
-@export var attack_range := 500
-
-@export var target_enemy := true
-@export var aimbot := true
-@export var shoot_interval := 0.2:
-	set(value):
-		$Timer.wait_time = value
+@export var weapon_property: WeaponProperty = null
 
 var target: Node2D = null
 
 func select_target() -> Node2D:
-	var enemies: Array[Node] = get_tree().get_nodes_in_group("Enemy" if target_enemy else "Player")
+	var enemies: Array[Node] = get_tree().get_nodes_in_group("Enemy" if weapon_property.target_enemy else "Player")
 	var enemies_in_range: Array[Variant] = []
 	for enemy in enemies:
 		var distance: float = global_position.distance_to(enemy.global_position)
-		if distance < attack_range:
+		if distance < weapon_property.attack_range:
 			enemies_in_range.append(enemy)
 	
 	if enemies_in_range.size() > 0:
 		return enemies_in_range[randi() % enemies_in_range.size()]
-	
 	return null
+
+func _ready() -> void:
+	if weapon_property == null:
+		weapon_property = WeaponProperty.new()
+	
+	$Timer.wait_time = weapon_property.shoot_interval
+	$Sprite.texture = weapon_property.texture
 
 func _process(delta: float) -> void:
 	if (target == null or !is_instance_valid(target)):
@@ -38,17 +35,17 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if bullet == null or target == null:
+	if weapon_property.bullet == null or target == null:
 		return
 	
-	var instance: Bullet = bullet.instantiate() as Bullet
+	var instance: Bullet = weapon_property.bullet.instantiate() as Bullet
 	instance.global_position = global_position
 	instance.rotation = rotation
 	instance.direction = direction
-	instance.target_enemy = target_enemy
-	if aimbot:
+	instance.target_enemy = weapon_property.target_enemy
+	if weapon_property.aimbot:
 		instance.target = target
-	instance.damage = damage
+	instance.damage = weapon_property.damage
 	get_tree().current_scene.add_child(instance)
 
 	target = select_target()
