@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2eemep8skl7h"]
+[gd_scene load_steps=11 format=3 uid="uid://r5slvbs5dk1e"]
 
 [ext_resource type="Texture2D" uid="uid://2p5xlj0knnee" path="res://assets/ui/button.png" id="1_4jp0w"]
 [ext_resource type="Texture2D" uid="uid://bq5mmey6abh07" path="res://assets/ui/button_hover.png" id="1_101l1"]
@@ -41,25 +41,6 @@ Button/styles/hover = SubResource("StyleBoxTexture_y1kmv")
 Button/styles/normal = SubResource("StyleBoxTexture_y23yu")
 Button/styles/pressed = SubResource("StyleBoxTexture_do4k7")
 
-[sub_resource type="GDScript" id="GDScript_k5hle"]
-script/source = "extends Button
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func _on_pressed():
-	print(\"caca\")
-	pass # Replace with function body.
-"
-
 [node name="ui_button" type="Button"]
 offset_right = 95.0
 offset_bottom = 42.0
@@ -71,4 +52,3 @@ theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("4_5n7gs")
 theme_override_font_sizes/font_size = 16
 text = "TEMPLATE"
-script = SubResource("GDScript_k5hle")

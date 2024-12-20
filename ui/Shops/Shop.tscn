@@ -1,25 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnxeifd466luv"]
+[gd_scene load_steps=5 format=3 uid="uid://bi7mhoshr45fr"]
 
-[ext_resource type="PackedScene" uid="uid://c2eemep8skl7h" path="res://ui/ui_button.tscn" id="1_abhxk"]
-[ext_resource type="Script" path="res://ui/Shops/shop.gd" id="1_f6c5x"]
-[ext_resource type="Texture2D" uid="uid://2p5xlj0knnee" path="res://assets/ui/button.png" id="1_h2mu5"]
-[ext_resource type="PackedScene" uid="uid://cyhe2a2unekfj" path="res://ui/Shops/shop_box.tscn" id="1_xagkx"]
+[ext_resource type="Script" path="res://ui/Shops/shop.gd" id="1_rgx1f"]
+[ext_resource type="Texture2D" uid="uid://2p5xlj0knnee" path="res://assets/ui/button.png" id="2_1qmga"]
+[ext_resource type="PackedScene" uid="uid://dmxyagf76rfpr" path="res://ui/Shops/shop_box.tscn" id="2_r8d14"]
+[ext_resource type="PackedScene" uid="uid://r5slvbs5dk1e" path="res://ui/ui_button.tscn" id="3_mej8u"]
 
-[node name="Shop" type="Control"]
-process_mode = 2
+[node name="Shop2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_f6c5x")
+script = ExtResource("1_rgx1f")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_top = 2.0
 offset_right = 640.0
 offset_bottom = 362.0
+mouse_filter = 2
 
 [node name="Buy" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -32,20 +32,14 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.6
 alignment = 1
 
-[node name="ShopBox" parent="HBoxContainer/Buy/ItemContainer" instance=ExtResource("1_xagkx")]
-layout_mode = 2
-
-[node name="ShopBox2" parent="HBoxContainer/Buy/ItemContainer" instance=ExtResource("1_xagkx")]
-layout_mode = 2
-
-[node name="ShopBox3" parent="HBoxContainer/Buy/ItemContainer" instance=ExtResource("1_xagkx")]
+[node name="ShopBox" parent="HBoxContainer/Buy/ItemContainer" instance=ExtResource("2_r8d14")]
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Buy"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
-texture = ExtResource("1_h2mu5")
+texture = ExtResource("2_1qmga")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 7
@@ -61,7 +55,7 @@ size_flags_stretch_ratio = 0.7
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
-texture = ExtResource("1_h2mu5")
+texture = ExtResource("2_1qmga")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 7
@@ -77,7 +71,7 @@ size_flags_stretch_ratio = 0.7
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
-texture = ExtResource("1_h2mu5")
+texture = ExtResource("2_1qmga")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 7
@@ -88,6 +82,7 @@ custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.4
+mouse_filter = 2
 
 [node name="icon" type="ColorRect" parent="HBoxContainer/StaticRight"]
 layout_mode = 2
@@ -99,23 +94,27 @@ color = Color(0.507, 0.67535, 0.78, 1)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
+mouse_filter = 2
 
-[node name="BuyButton" parent="HBoxContainer/StaticRight/buttons" instance=ExtResource("1_abhxk")]
+[node name="BuyButton" parent="HBoxContainer/StaticRight/buttons" instance=ExtResource("3_mej8u")]
 layout_mode = 2
 text = "BUY"
 
-[node name="SellButton" parent="HBoxContainer/StaticRight/buttons" instance=ExtResource("1_abhxk")]
+[node name="SellButton" parent="HBoxContainer/StaticRight/buttons" instance=ExtResource("3_mej8u")]
 layout_mode = 2
 text = "SELL"
 
-[node name="UpgradeButton" parent="HBoxContainer/StaticRight/buttons" instance=ExtResource("1_abhxk")]
+[node name="UpgradeButton" parent="HBoxContainer/StaticRight/buttons" instance=ExtResource("3_mej8u")]
 layout_mode = 2
 text = "UPGRADE"
 
-[node name="QuitButton" parent="HBoxContainer/StaticRight/buttons" instance=ExtResource("1_abhxk")]
+[node name="QuitButton" parent="HBoxContainer/StaticRight/buttons" instance=ExtResource("3_mej8u")]
 layout_mode = 2
 text = "QUIT"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="pressed" from="HBoxContainer/StaticRight/buttons/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/StaticRight/buttons/SellButton" to="." method="_on_sell_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/StaticRight/buttons/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/StaticRight/buttons/QuitButton" to="." method="_on_quit_button_pressed"]
