@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://7du57xeorynb"]
 
 [ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_m01jj"]
-[ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/generic/weapon.tscn" id="2_sfvlp"]
+[ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_sfvlp"]
 [ext_resource type="Texture2D" uid="uid://da5no17h7cchy" path="res://assets/space_breaker_asset/Ships/Big/body_01.png" id="3_q7e5f"]
 [ext_resource type="PackedScene" uid="uid://cchsone545eea" path="res://entities/planets/planet.tscn" id="4_xrfc1"]
 

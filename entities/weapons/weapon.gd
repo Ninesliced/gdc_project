@@ -3,7 +3,7 @@ extends Node2D
 @export var direction: Vector2 = Vector2(1, 0)
 @export var rotation_speed: float = 0.1
 
-@export var bullet: PackedScene = load("res://entities/generic/bullet.tscn")
+@export var bullet: PackedScene = load("res://entities/weapons/bullet.tscn")
 @export var damage := 5.0
 @export var attack_range := 500
 
@@ -29,7 +29,7 @@ func select_target() -> Node2D:
 	return null
 
 func _process(delta: float) -> void:
-	if (target == null or (not is_instance_valid(target)) or (is_instance_valid(target) and global_position.distance_to(target.global_position) > attack_range)):
+	if (target == null or !is_instance_valid(target)):
 		target = select_target()
 	
 	if target != null and is_instance_valid(target):
@@ -50,3 +50,8 @@ func _on_timer_timeout() -> void:
 		instance.target = target
 	instance.damage = damage
 	get_tree().current_scene.add_child(instance)
+
+	target = select_target()
+	if target != null and is_instance_valid(target):
+		direction = (target.global_position - global_position).normalized()
+		global_rotation = direction.angle()

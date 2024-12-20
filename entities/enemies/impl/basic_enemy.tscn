@@ -1,9 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://lbaknsn35a0g"]
 
 [ext_resource type="PackedScene" uid="uid://g2o8ee42dabs" path="res://entities/enemies/enemies.tscn" id="1_k0stg"]
-[ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/generic/weapon.tscn" id="2_jxlpx"]
+[ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_jxlpx"]
 
 [node name="Enemies" instance=ExtResource("1_k0stg")]
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-9.04998e-07, -0.25)
 
 [node name="Weapon" parent="." index="5" instance=ExtResource("2_jxlpx")]
 scale = Vector2(0.7, 0.7)

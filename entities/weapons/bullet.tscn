@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpyx7hf8384hb"]
 
-[ext_resource type="Script" path="res://entities/generic/bullet.gd" id="1_xvlya"]
+[ext_resource type="Script" path="res://entities/weapons/bullet.gd" id="1_xvlya"]
 [ext_resource type="Texture2D" uid="uid://dofhmagtkdahc" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_bullet_01.png" id="2_2pdi6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqpgu"]

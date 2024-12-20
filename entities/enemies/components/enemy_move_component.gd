@@ -4,7 +4,7 @@ var speed = 100
 var players := []
 var parent : Enemy = null
 
-@export var scene : PackedScene = load("res://entities/generic/bullet.tscn")
+@export var scene : PackedScene = load("res://entities/weapons/bullet.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	players = get_tree().get_nodes_in_group("Player")
