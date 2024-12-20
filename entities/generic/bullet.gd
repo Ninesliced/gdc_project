@@ -25,7 +25,7 @@ func _ready() -> void:
 	update_velocity()
 
 func _physics_process(_delta: float) -> void:
-	if target != null:
+	if target != null and is_instance_valid(target):
 		direction = (target.global_position - global_position).normalized()
 		global_rotation = direction.angle()
 	move_and_slide()

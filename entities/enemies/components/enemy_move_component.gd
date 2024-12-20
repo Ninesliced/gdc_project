@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	if players.size() == 0:
 		return
 	var player = players[0]
-	if player == null:
+	if player == null or not is_instance_valid(player):
 		return
 	
 	var direction : Vector2 = (player.global_position - parent.global_position).normalized()

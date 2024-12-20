@@ -16,7 +16,7 @@ extends Node2D
 var target: Node2D = null
 
 func select_target() -> Node2D:
-	var enemies: Array[Node]             = get_tree().get_nodes_in_group("Enemy" if target_enemy else "Player")
+	var enemies: Array[Node] = get_tree().get_nodes_in_group("Enemy" if target_enemy else "Player")
 	var enemies_in_range: Array[Variant] = []
 	for enemy in enemies:
 		var distance: float = global_position.distance_to(enemy.global_position)
@@ -29,10 +29,10 @@ func select_target() -> Node2D:
 	return null
 
 func _process(delta: float) -> void:
-	if target == null or global_position.distance_to(target.global_position) > attack_range:
+	if (target == null or (not is_instance_valid(target)) or (is_instance_valid(target) and global_position.distance_to(target.global_position) > attack_range)):
 		target = select_target()
 	
-	if target != null:
+	if target != null and is_instance_valid(target):
 		direction = (target.global_position - global_position).normalized()
 		global_rotation = direction.angle()
 
