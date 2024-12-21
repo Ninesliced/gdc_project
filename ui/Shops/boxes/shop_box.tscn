@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyhe2a2unekfj"]
+[gd_scene load_steps=8 format=3 uid="uid://cyhe2a2unekfj"]
 
 [ext_resource type="FontFile" uid="uid://cmf6daamewwxl" path="res://assets/fonts/monogram.ttf" id="1_d1xee"]
 [ext_resource type="Texture2D" uid="uid://cnwd8cjcn1m2e" path="res://assets/ui/card.png" id="1_wtyqi"]
 [ext_resource type="Texture2D" uid="uid://b870u5vca6t7n" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk2.png" id="2_7rf1j"]
-[ext_resource type="Script" path="res://ui/Shops/shop_box.gd" id="2_25emh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t4d0y"]
 texture = ExtResource("1_wtyqi")
@@ -27,8 +26,8 @@ Panel/styles/panel = SubResource("StyleBoxEmpty_in5kj")
 
 [node name="ShopBox" type="Button"]
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = SubResource("Theme_w2j40")
-script = ExtResource("2_25emh")
 
 [node name="HBox" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -101,5 +100,3 @@ size_flags_stretch_ratio = 0.1
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
-
-[connection signal="pressed" from="." to="." method="_on_pressed"]

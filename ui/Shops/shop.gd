@@ -12,22 +12,22 @@ var currentShopType : ShopType = ShopType.BUY
 
 @onready var buy_ui : VBoxContainer = $Shop/HBoxContainer/Buy
 @onready var upgrade_ui : Upgrade = $Shop/HBoxContainer/Upgrade
-@onready var sell : VBoxContainer =  $Shop/HBoxContainer/Sell
+@onready var sell_ui : SellUI =  $Shop/HBoxContainer/Sell
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 var dict_type : Dictionary = {}
 
-var box_card : PackedScene = preload("res://ui/Shops/shop_box.tscn")
+var box_card : PackedScene = preload("res://ui/Shops/boxes/buy_box.tscn")
 @onready var item_containter : HBoxContainer = $Shop/HBoxContainer/Buy/ItemContainer
 var buy_cards : Array = []
-
+var item: Item = load("res://entities/items/weapon_items/canon_base.tres")
+var item2 : Item = load("res://entities/items/weapon_items/canon_base_2.tres")
 func _ready() -> void:
 	dict_type = {
 		ShopType.BUY : buy_ui,
-		ShopType.SELL : sell,
+		ShopType.SELL : sell_ui,
 		ShopType.UPGRADE : upgrade_ui,
 	}
-	print(item_containter)
-	set_buy_cards(["card1", "card2", "card3"])
+	set_buy_cards([item, item2, item])
 	pass
 
 func _process(delta: float) -> void:
@@ -38,7 +38,8 @@ func _process(delta: float) -> void:
 func set_buy_cards(cards : Array) -> void:
 	for card in cards:
 		var instantiated = box_card.instantiate()
-		# instantiated.set_card(card)
+		print(card)
+		instantiated.set_item(card)
 		item_containter.add_child(instantiated)
 		buy_cards.append(instantiated)
 	pass
@@ -67,6 +68,7 @@ func _on_buy_button_pressed():
 
 func _on_sell_button_pressed():
 	show_type(ShopType.SELL)
+	sell_ui.update()
 	pass
 
 func _on_upgrade_button_pressed():

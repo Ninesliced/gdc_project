@@ -1,23 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpyx7hf8384hb"]
 
 [ext_resource type="Script" path="res://entities/weapons/bullet.gd" id="1_xvlya"]
-[ext_resource type="Texture2D" uid="uid://dofhmagtkdahc" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_bullet_01.png" id="2_2pdi6"]
+[ext_resource type="Texture2D" uid="uid://buvckvsal4t21" path="res://assets/bullets/bullet_1.png" id="2_ixuu5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqpgu"]
-size = Vector2(3.99893, 6.00071)
+[sub_resource type="CircleShape2D" id="CircleShape2D_memf3"]
+radius = 7.0
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_xvlya")
+speed = 400.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_2pdi6")
+texture = ExtResource("2_ixuu5")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-5.96046e-08, -1.19209e-07)
 rotation = -0.000177632
-shape = SubResource("RectangleShape2D_pqpgu")
+shape = SubResource("CircleShape2D_memf3")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

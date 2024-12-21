@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://hu3f0ui18w8n"]
+
+[ext_resource type="Script" path="res://ui/Shops/upgrade/equipment_slot.gd" id="1_x1mtp"]
+
+[node name="EquipmentSlot" type="Panel"]
+z_index = 1
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_x1mtp")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(10, 10)

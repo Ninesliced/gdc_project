@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4f5ui1kmtn7x"]
+
+[ext_resource type="PackedScene" uid="uid://cyhe2a2unekfj" path="res://ui/Shops/boxes/shop_box.tscn" id="1_vsswf"]
+[ext_resource type="Script" path="res://ui/Shops/boxes/buy_component.gd" id="2_fk70x"]
+[ext_resource type="Script" path="res://ui/Shops/boxes/shop_box.gd" id="2_g0n36"]
+
+[node name="ShopBox" instance=ExtResource("1_vsswf")]
+script = ExtResource("2_g0n36")
+
+[node name="BuyComponent" type="Node" parent="." index="1"]
+script = ExtResource("2_fk70x")
+
+[connection signal="pressed" from="." to="BuyComponent" method="_on_shop_box_pressed"]

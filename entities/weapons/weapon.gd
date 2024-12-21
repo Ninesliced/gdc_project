@@ -3,8 +3,16 @@ extends Node2D
 var direction: Vector2 = Vector2(1, 0)
 
 @export var weapon_property: WeaponProperty = null
-
+@onready var sprite = $Sprite
 var target: Node2D = null
+
+
+func load_resource(resource : Resource) -> void:
+	if resource is WeaponProperty:
+		weapon_property = resource
+		$Sprite.texture = weapon_property.texture
+	else:
+		assert(false, "Invalid resource type")
 
 func select_target() -> Node2D:
 	var enemies: Array[Node] = get_tree().get_nodes_in_group("Enemy" if weapon_property.target_enemy else "Player")

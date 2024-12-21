@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgo7t0jmq53j0"]
+[gd_scene load_steps=4 format=3 uid="uid://dgo7t0jmq53j0"]
 
 [ext_resource type="Script" path="res://entities/weapons/weapon.gd" id="1_lgbee"]
 [ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="1_tsxf7"]
+[ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/weapon.tres" id="2_2rmih"]
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_lgbee")
+weapon_property = ExtResource("2_2rmih")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = 1.5708

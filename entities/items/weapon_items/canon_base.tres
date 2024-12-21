@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://ccw7k2y8pni61"]
+
+[ext_resource type="Texture2D" uid="uid://b870u5vca6t7n" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk2.png" id="1_2rbj4"]
+[ext_resource type="Script" path="res://entities/items/item.gd" id="1_ymi6m"]
+[ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_86ecr"]
+[ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/weapon.tres" id="3_ctguo"]
+
+[resource]
+script = ExtResource("1_ymi6m")
+name = "simple cannon"
+description = "a simple cannon"
+icon_form_resource = true
+icon = ExtResource("1_2rbj4")
+price = 10
+resource = ExtResource("3_ctguo")
+item_scene = ExtResource("2_86ecr")

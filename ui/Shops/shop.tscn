@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/Shops/shop.gd" id="1_rgx1f"]
 [ext_resource type="Texture2D" uid="uid://2p5xlj0knnee" path="res://assets/ui/button.png" id="2_1qmga"]
-[ext_resource type="PackedScene" uid="uid://cyhe2a2unekfj" path="res://ui/Shops/shop_box.tscn" id="2_r8d14"]
+[ext_resource type="Script" path="res://ui/Shops/sell.gd" id="3_5d0dw"]
 [ext_resource type="PackedScene" uid="uid://c2eemep8skl7h" path="res://ui/ui_button.tscn" id="3_mej8u"]
 [ext_resource type="Script" path="res://ui/Shops/upgrade.gd" id="4_57mfb"]
 [ext_resource type="Texture2D" uid="uid://xw68rrdxl2ih" path="res://assets/ui/shops/blueprint.png" id="4_f3fbu"]
@@ -74,6 +74,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -87,6 +91,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Buy" type="VBoxContainer" parent="Shop/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
@@ -96,9 +101,6 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.6
 alignment = 1
-
-[node name="ShopBox" parent="Shop/HBoxContainer/Buy/ItemContainer" instance=ExtResource("2_r8d14")]
-layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Shop/HBoxContainer/Buy"]
 layout_mode = 2
@@ -115,6 +117,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
+script = ExtResource("3_5d0dw")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Shop/HBoxContainer/Sell"]
 layout_mode = 2
@@ -126,24 +129,42 @@ patch_margin_top = 6
 patch_margin_right = 7
 patch_margin_bottom = 12
 
-[node name="Upgrade" type="VBoxContainer" parent="Shop/HBoxContainer"]
-visible = false
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop/HBoxContainer/Sell/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Shop/HBoxContainer/Sell/NinePatchRect/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+columns = 3
+
+[node name="Upgrade" type="HBoxContainer" parent="Shop/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
 script = ExtResource("4_57mfb")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Shop/HBoxContainer/Upgrade"]
+[node name="Bench" type="NinePatchRect" parent="Shop/HBoxContainer/Upgrade"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.8
 texture = ExtResource("2_1qmga")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 7
 patch_margin_bottom = 12
 
-[node name="Panel" type="Panel" parent="Shop/HBoxContainer/Upgrade/NinePatchRect"]
+[node name="Panel" type="Panel" parent="Shop/HBoxContainer/Upgrade/Bench"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -153,7 +174,7 @@ anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Shop/HBoxContainer/Upgrade/NinePatchRect/Panel"]
+[node name="TextureRect" type="TextureRect" parent="Shop/HBoxContainer/Upgrade/Bench/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -164,16 +185,42 @@ size_flags_horizontal = 3
 texture = ExtResource("4_f3fbu")
 stretch_mode = 1
 
-[node name="Ship" type="TextureRect" parent="Shop/HBoxContainer/Upgrade/NinePatchRect/Panel"]
+[node name="Center" type="Panel" parent="Shop/HBoxContainer/Upgrade/Bench/Panel"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+
+[node name="Ship" type="Sprite2D" parent="Shop/HBoxContainer/Upgrade/Bench/Panel/Center"]
+
+[node name="Items" type="NinePatchRect" parent="Shop/HBoxContainer/Upgrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+texture = ExtResource("2_1qmga")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 7
+patch_margin_bottom = 12
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop/HBoxContainer/Upgrade/Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Shop/HBoxContainer/Upgrade/Items/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -10
 
 [node name="StaticRight" type="VBoxContainer" parent="Shop/HBoxContainer"]
 custom_minimum_size = Vector2(200, 2.08165e-12)

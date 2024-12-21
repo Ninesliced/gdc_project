@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dy30yy5axn8vr"]
+[gd_scene load_steps=11 format=3 uid="uid://dy30yy5axn8vr"]
 
 [ext_resource type="PackedScene" uid="uid://b0cu8ml0ttn5j" path="res://entities/player/player.tscn" id="1_0dfpd"]
 [ext_resource type="Resource" uid="uid://bv7b42lp1dll5" path="res://entities/player/player_stats/player_base.tres" id="2_qi0ks"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://b51s7gt8mn0ih" path="res://entities/components/health_component.tscn" id="5_7pfo1"]
 [ext_resource type="PackedScene" uid="uid://bxvp8fluu1lsf" path="res://entities/player/components/slot_manager.tscn" id="6_jbqv1"]
 [ext_resource type="Script" path="res://entities/player/components/slot_manager.gd" id="7_h8khn"]
+
+[sub_resource type="Gradient" id="Gradient_rm2ba"]
+offsets = PackedFloat32Array(0, 0.177606, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bg8xi"]
 radius = 7.19923
@@ -20,6 +24,7 @@ test = 23123
 [node name="CPUParticles2D" parent="." index="0"]
 z_index = -2
 emission_rect_extents = Vector2(1300, 1300)
+color_ramp = SubResource("Gradient_rm2ba")
 
 [node name="Icon" parent="." index="1"]
 texture = ExtResource("3_us1kq")
@@ -28,18 +33,21 @@ texture = ExtResource("3_us1kq")
 ignore_rotation = false
 position_smoothing_speed = 30.0
 rotation_smoothing_enabled = true
-rotation_smoothing_speed = 1.0
 
 [node name="CollisionShape2D" parent="." index="3"]
+visible = false
 scale = Vector2(1.66685, 2.22579)
 shape = SubResource("CapsuleShape2D_bg8xi")
 
-[node name="MovementComponent" parent="." index="4" instance=ExtResource("3_2nx3a")]
+[node name="MovementComponent" parent="." index="4" node_paths=PackedStringArray("camera") instance=ExtResource("3_2nx3a")]
 scale = Vector2(0.905638, 1)
 script = ExtResource("4_5m1kd")
-acceleration = 800
+speed = 400.0
+acceleration = 500
 decceleration = 300
-rotation_speed = 1.0
+rotation_speed = 2.0
+movement_mode = 0
+camera = NodePath("../Camera2D")
 
 [node name="HealthComponent2" parent="." index="5" instance=ExtResource("5_7pfo1")]
 max_hp = 10

@@ -4,7 +4,6 @@ extends Node2D
 var can_interact = false
 
 func _on_area_2d_body_entered(body:Node2D) -> void:
-    print("can intreract")
     if body is Player:
         ui.show()
         can_interact = true
