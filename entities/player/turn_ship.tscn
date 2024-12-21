@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy30yy5axn8vr"]
+[gd_scene load_steps=10 format=3 uid="uid://dy30yy5axn8vr"]
 
 [ext_resource type="PackedScene" uid="uid://b0cu8ml0ttn5j" path="res://entities/player/player.tscn" id="1_0dfpd"]
-[ext_resource type="Texture2D" uid="uid://cr65f13xwt747" path="res://assets/space_breaker_asset/Ships/Medium/body_02.png" id="2_x0wte"]
+[ext_resource type="Resource" uid="uid://bv7b42lp1dll5" path="res://entities/player/player_stats/player_base.tres" id="2_qi0ks"]
 [ext_resource type="PackedScene" uid="uid://b6jh8b7n8rf7c" path="res://entities/player/components/movement_component.tscn" id="3_2nx3a"]
+[ext_resource type="Texture2D" uid="uid://bqtdpn5sf17x4" path="res://assets/space_breaker_asset/Ships/Medium/body_01.png" id="3_us1kq"]
 [ext_resource type="Script" path="res://entities/player/components/movement_component.gd" id="4_5m1kd"]
 [ext_resource type="PackedScene" uid="uid://b51s7gt8mn0ih" path="res://entities/components/health_component.tscn" id="5_7pfo1"]
 [ext_resource type="PackedScene" uid="uid://bxvp8fluu1lsf" path="res://entities/player/components/slot_manager.tscn" id="6_jbqv1"]
@@ -13,6 +14,8 @@ radius = 7.19923
 height = 26.5074
 
 [node name="CharacterBody2D" instance=ExtResource("1_0dfpd")]
+_player_stats = ExtResource("2_qi0ks")
+test = 23123
 
 [node name="CPUParticles2D" parent="." index="0"]
 z_index = -2
@@ -20,12 +23,13 @@ z_as_relative = false
 emission_rect_extents = Vector2(1300, 1300)
 
 [node name="Icon" parent="." index="1"]
-texture = ExtResource("2_x0wte")
+texture = ExtResource("3_us1kq")
 
 [node name="Camera2D" parent="." index="2"]
 ignore_rotation = false
 position_smoothing_speed = 30.0
 rotation_smoothing_enabled = true
+rotation_smoothing_speed = 1.0
 
 [node name="CollisionShape2D" parent="." index="3"]
 scale = Vector2(1.66685, 2.22579)

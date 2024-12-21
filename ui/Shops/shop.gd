@@ -11,9 +11,9 @@ enum ShopType {
 var currentShopType : ShopType = ShopType.BUY
 
 @onready var buy_ui : VBoxContainer = $Shop/HBoxContainer/Buy
-@onready var upgrade_ui : VBoxContainer = $Shop/HBoxContainer/Upgrade
+@onready var upgrade_ui : Upgrade = $Shop/HBoxContainer/Upgrade
 @onready var sell : VBoxContainer =  $Shop/HBoxContainer/Sell
-
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
 var dict_type : Dictionary = {}
 
 var box_card : PackedScene = preload("res://ui/Shops/shop_box.tscn")
@@ -48,11 +48,18 @@ func set_buy_cards(cards : Array) -> void:
 
 # no need to look
 
-func show_type(shop_type : ShopType) -> void:
+func show_type(shop_type : ShopType, animate:bool = false) -> void:
+	if animate:
+		animation_player.play("Fall")
+
+		await animation_player.animation_finished
 	for type in dict_type.keys():
 		dict_type[type].hide()
 	
 	dict_type[shop_type].show()
+
+	if animate:
+		animation_player.play("rise")
 
 func _on_buy_button_pressed():
 	show_type(ShopType.BUY)
@@ -64,8 +71,20 @@ func _on_sell_button_pressed():
 
 func _on_upgrade_button_pressed():
 	show_type(ShopType.UPGRADE)
+	upgrade_ui.update_player_stats()
 	pass
 
 func _on_quit_button_pressed():
-	ShopData.close_shop()
+	close_shop()
+	pass
+
+func open_shop() -> void:
+	show_type(ShopType.BUY, false)
+	show()
+	get_tree().paused = true
+	pass
+
+func close_shop() -> void:
+	hide()
+	get_tree().paused = false
 	pass

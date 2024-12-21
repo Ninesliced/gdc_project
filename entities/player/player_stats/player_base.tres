@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=3 format=3 uid="uid://bv7b42lp1dll5"]
+
+[ext_resource type="Script" path="res://entities/player/player_stats.gd" id="1_k0gno"]
+[ext_resource type="Texture2D" uid="uid://bqtdpn5sf17x4" path="res://assets/space_breaker_asset/Ships/Medium/body_01.png" id="2_4k17g"]
+
+[resource]
+script = ExtResource("1_k0gno")
+texture = ExtResource("2_4k17g")

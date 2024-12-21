@@ -17,11 +17,9 @@ func _process(delta: float) -> void:
 
 
 func open_shop() -> void:
-	shop.show()
-	get_tree().paused = true
+	shop.open_shop()
 	pass
 
 func close_shop() -> void:
-	shop.hide()
-	get_tree().paused = false
+	shop.close_shop()
 	pass

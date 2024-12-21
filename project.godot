@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerData="*res://globals/player_data.gd"
 ShopData="*res://globals/shop_data.gd"
+PlayerData="*res://globals/player_data.gd"
 
 [display]
 
