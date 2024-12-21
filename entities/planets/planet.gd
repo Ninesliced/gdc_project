@@ -4,6 +4,7 @@ extends Node2D
 var can_interact = false
 
 func _on_area_2d_body_entered(body:Node2D) -> void:
+    print("can intreract")
     if body is Player:
         ui.show()
         can_interact = true
@@ -17,5 +18,6 @@ func _on_area_2d_body_exited(body:Node2D) -> void:
     pass # Replace with function body.
 
 func _process(delta: float) -> void:
-    if Input.is_action_just_pressed("interact"):
+    if Input.is_action_just_pressed("interact") and \
+        can_interact:
         ShopData.open_shop()

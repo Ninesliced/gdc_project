@@ -8,9 +8,13 @@
 size = Vector2(22, 59)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_lh0fv")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -3
+z_as_relative = false
 amount = 200
 lifetime = 2.0
 preprocess = 2.0

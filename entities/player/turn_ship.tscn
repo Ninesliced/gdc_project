@@ -19,7 +19,6 @@ test = 23123
 
 [node name="CPUParticles2D" parent="." index="0"]
 z_index = -2
-z_as_relative = false
 emission_rect_extents = Vector2(1300, 1300)
 
 [node name="Icon" parent="." index="1"]
