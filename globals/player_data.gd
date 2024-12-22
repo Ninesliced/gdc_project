@@ -80,10 +80,13 @@ func load_equipment() -> void:
 		var item = slots[i].item
 		if item == null:
 			continue
+
 		var instance = item.item_scene.instantiate()
+		instance.rotation = slots[i].rotation
 		equipments.append(instance)
 		player.add_child(instance)
 		instance.position = slots[i].position
+
 		if instance.has_method("load_resource"):
 			instance.load_resource(item.resource)
 	pass

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4dryshm6vblr"]
+
+[sub_resource type="Curve" id="Curve_r48mq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.771995, 0.1427), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Trail" type="Line2D"]
+width_curve = SubResource("Curve_r48mq")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 32
+antialiased = true

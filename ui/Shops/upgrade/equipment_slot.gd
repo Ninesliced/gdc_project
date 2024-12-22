@@ -13,10 +13,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func set_slot(item: Item) -> void:
-	if item:
-		sprite.texture = item.icon
+func set_slot(slot_data: Slot) -> void:
+	if slot_data.item:
+		sprite.texture = slot_data.item.icon
 		sprite.visible = true
+		sprite.rotation = slot_data.rotation + PI/2
 	else:
 		sprite.visible = false
 	pass

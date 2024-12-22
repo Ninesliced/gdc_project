@@ -64,7 +64,7 @@ func handle_slots():
 		ship_sprite.add_child(slot)
 		slots.append(slot)
 		slot.index = i
-		slot.set_slot(slot_data.item)
+		slot.set_slot(slot_data)
 		slot.upgrade_parent = self
 		slot.position = slot.position + slot_data.position
 		pass

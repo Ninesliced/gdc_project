@@ -15,7 +15,7 @@ position = Vector2(521, 298)
 texture = ExtResource("2_irioc")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_73t8l")]
-spawn_interval = 0.1
+spawn_interval = 2.0
 spawn_count = 1
 spawn_distance_max = 1000
 
