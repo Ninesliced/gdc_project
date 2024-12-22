@@ -51,6 +51,10 @@ decceleration = 500
 rotation_speed = 8.0
 camera = NodePath("../Camera2D")
 
+[node name="Line2D" type="Line2D" parent="MovementComponent" index="0"]
+position = Vector2(0, 41)
+points = PackedVector2Array(-20, 0, 20, 0)
+
 [node name="CollisionShape2D" parent="." index="4"]
 visible = false
 scale = Vector2(1.66685, 2.22579)
