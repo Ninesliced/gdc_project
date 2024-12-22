@@ -4,6 +4,7 @@ extends Resource
 class_name Item
 
 @export var name : String = ""
+@export var type : PlayerData.ItemType = PlayerData.ItemType.ALL
 @export var description : String = ""
 @export var icon_form_resource : bool = false:
     set(value):

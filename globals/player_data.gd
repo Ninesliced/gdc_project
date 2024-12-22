@@ -5,6 +5,13 @@ var money = 400
 var inventory : Array[Item] = []
 var equipments : Array[Node2D] = []
 
+enum ItemType {
+	WEAPON = 0,
+	SHIELD = 1,
+	BOOSTER = 2,
+	ALL = 3
+}
+
 func _ready() -> void:
 
 	pass # Replace with function body.
@@ -26,28 +33,35 @@ func get_player_stats() -> PlayerStats:
 
 func replace_item(item: Item, index: int) -> void:
 	if player == null:
-		print("warning: player not found")
+		assert(false, "warning: player not found")
 		return
 	if player._player_stats == null:
-		assert(false,"player stats not found")
+		assert(false, "player stats not found")
 		return
 	if player._player_stats.item_slots.size() <= index:
-		assert(false,"index out of range")
+		assert(false, "index out of range")
 		return
 
-	var temp_item = player._player_stats.item_slots[index]
+	if item and !check_type(item, player._player_stats.item_slots[index]):
+		return
 
-	player._player_stats.item_slots[index] = item
+	var temp_item = player._player_stats.item_slots[index].item
+	player._player_stats.item_slots[index].item = item
+
 	if temp_item:
-		print(inventory)
-		inventory.erase(item)
-		print(inventory)
 		inventory.append(temp_item)
-		print("replaced item by: ", temp_item)
-		print("inventory size: ", inventory.size())
-	else:
-		inventory.erase(item)
+
+	inventory.erase(item)
 	load_equipment()
+
+func check_type(item: Item, slot: Slot) -> bool:
+	if item.type == ItemType.ALL:
+		return true
+	if ItemType.ALL in slot.slot_types:
+		return true
+	if item.type in slot.slot_types:
+		return true
+	return false
 
 func load_equipment() -> void:
 	for equipment in equipments:
@@ -61,13 +75,15 @@ func load_equipment() -> void:
 		assert(false,"player stats not found")
 		return
 
-	var items :Array[Item] = player._player_stats.item_slots
-
-	for equipment : Item in items:
-		var instance = equipment.item_scene.instantiate()
+	var slots : Array[Slot] = player._player_stats.item_slots
+	for i in range(slots.size()):
+		var item = slots[i].item
+		if item == null:
+			continue
+		var instance = item.item_scene.instantiate()
 		equipments.append(instance)
 		player.add_child(instance)
+		instance.position = slots[i].position
 		if instance.has_method("load_resource"):
-			print(equipment.resource)
-			instance.load_resource(equipment.resource)
+			instance.load_resource(item.resource)
 	pass

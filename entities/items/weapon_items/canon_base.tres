@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("1_ymi6m")
 name = "simple cannon"
+type = 0
 description = "a simple cannon"
 icon_form_resource = true
 icon = ExtResource("1_2rbj4")

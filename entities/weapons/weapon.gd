@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Weapon
 var direction: Vector2 = Vector2(1, 0)
 
 @export var weapon_property: WeaponProperty = null

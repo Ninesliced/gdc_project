@@ -35,3 +35,10 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	PlayerData.replace_item(item, index)
 	if upgrade_parent:
 		upgrade_parent.update_player_stats()
+
+func _on_mouse_entered() -> void:
+	if Input.is_action_just_pressed("right_click"):
+		PlayerData.replace_item(null, index)
+	if upgrade_parent:
+		upgrade_parent.update_player_stats()
+	pass # Replace with function body.

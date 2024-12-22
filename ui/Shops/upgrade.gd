@@ -23,11 +23,15 @@ func _process(delta: float) -> void:
 
 func update_player_stats() -> void:
 	handle_ship()
+	handle_slots()
+	handle_items()
 
+func handle_items():
 	items = PlayerData.inventory
 	for item in list_box_scene:
 		if is_instance_valid(item):
 			item.queue_free()
+
 
 	for item in items:
 		var instantiated : InventoryBox = box_card.instantiate()
@@ -35,6 +39,8 @@ func update_player_stats() -> void:
 		instantiated.parent_box = self
 		item_list_ui.add_child(instantiated)
 		list_box_scene.append(instantiated)
+
+
 
 func handle_ship():
 	var new_stats = PlayerData.get_player_stats()
@@ -45,17 +51,20 @@ func handle_ship():
 		ship_sprite.texture = player_stats.texture
 	pass
 
+
+func handle_slots():
 	for slot in slots:
 		slot.queue_free()
-	
 	slots = []
 
-	for i in range(player_stats.slots_position.size()):
+	for i in range(player_stats.item_slots.size()):
+		var slot_data : Slot = player_stats.item_slots[i]
 		var slot : SlotUI = slot_scene.instantiate()
+	
 		ship_sprite.add_child(slot)
 		slots.append(slot)
 		slot.index = i
-		slot.set_slot(player_stats.item_slots[i])
+		slot.set_slot(slot_data.item)
 		slot.upgrade_parent = self
-		slot.position = slot.position + player_stats.slots_position[i]
+		slot.position = slot.position + slot_data.position
 		pass

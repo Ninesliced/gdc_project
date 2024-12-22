@@ -5,7 +5,9 @@ class_name Player
 @export var _player_stats : PlayerStats:
     set(stats):
         _player_stats = stats
-        if stats != null:
+        print(stats)
+        if stats != null and $Icon != null:
+            print(stats.texture, $Icon)
             $Icon.texture = stats.texture
 
 
@@ -18,6 +20,8 @@ class_name Player
 
 func _ready() -> void:
     PlayerData.player = self
+    PlayerData.load_equipment()
+    print("printing: ",_player_stats.item_slots)
     pass
 
 
