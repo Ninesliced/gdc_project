@@ -45,7 +45,7 @@ rotation_smoothing_enabled = true
 
 [node name="MovementComponent" parent="." index="3" node_paths=PackedStringArray("camera") instance=ExtResource("3_2nx3a")]
 script = ExtResource("4_5m1kd")
-speed = 280.0
+speed = 200.0
 acceleration = 700
 decceleration = 500
 rotation_speed = 8.0
