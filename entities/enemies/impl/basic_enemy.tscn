@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://entities/weapons/weapon_property.gd" id="4_6x1qu"]
 [ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="5_khkte"]
 
-[sub_resource type="Resource" id="Resource_x0uhd"]
+[sub_resource type="Resource" id="Resource_jgmhj"]
 script = ExtResource("4_6x1qu")
 rotation_speed = 0.1
 bullet = ExtResource("3_cvagu")
@@ -24,4 +24,4 @@ position = Vector2(-9.04998e-07, -0.25)
 
 [node name="Weapon" parent="." index="5" instance=ExtResource("2_jxlpx")]
 scale = Vector2(0.7, 0.7)
-weapon_property = SubResource("Resource_x0uhd")
+weapon_property = SubResource("Resource_jgmhj")

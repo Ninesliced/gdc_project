@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://vk7tcw1qavtp"]
+
+[ext_resource type="Script" path="res://entities/enemies/drops/components/magnet_drop_component.gd" id="1_ew5q6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8enig"]
+radius = 78.0577
+
+[node name="MagnetDropComponent" type="Area2D"]
+script = ExtResource("1_ew5q6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8enig")
+debug_color = Color(0, 0.7, 0.186667, 0.0509804)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
