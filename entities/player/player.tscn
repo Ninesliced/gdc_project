@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0cu8ml0ttn5j"]
+[gd_scene load_steps=7 format=3 uid="uid://b0cu8ml0ttn5j"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_lh0fv"]
-[ext_resource type="Texture2D" uid="uid://jtyv2q83selb" path="res://assets/space_breaker_asset/Ships/Small/body_01.png" id="3_5ywr2"]
+[ext_resource type="Script" path="res://globals/counter_data.gd" id="2_bymm5"]
+[ext_resource type="Texture2D" uid="uid://brnwunjep1air" path="res://icon.svg" id="2_nlwd6"]
 [ext_resource type="PackedScene" uid="uid://b51s7gt8mn0ih" path="res://entities/components/health_component.tscn" id="3_relkd"]
+
+[sub_resource type="Resource" id="Resource_t4h0r"]
+script = ExtResource("2_bymm5")
+weapon_coin = 0.0
+booster_coin = 0.0
+accelerator_coin = 0.0
+shield_coin = 0.0
+view_coin = 0.0
+score = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qml0v"]
 size = Vector2(22, 59)
@@ -11,7 +21,7 @@ size = Vector2(22, 59)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_lh0fv")
-test = null
+_player_counter = SubResource("Resource_t4h0r")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = -3

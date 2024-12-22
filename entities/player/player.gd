@@ -10,6 +10,7 @@ class_name Player
             print(stats.texture, $Icon)
             $Icon.texture = stats.texture
 
+@export var _player_counter : CounterData
 
 @export var test : int = 0 :
     set(value):

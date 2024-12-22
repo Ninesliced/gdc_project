@@ -4,6 +4,7 @@ class_name Enemy
 @onready var health_component : HealthComponent = $HealthComponent
 
 @export var damage := 5.0
+@export var drop: PackedScene = load("res://entities/enemies/drops/basic_drop.tscn")
 
 func _physics_process(delta: float) -> void:
 	move_and_collide(velocity * delta)
@@ -17,5 +18,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_health_component_on_death() -> void:
+	if drop != null:
+		var instance : Node2D = drop.instantiate()
+		instance.global_position = global_position
+		get_tree().current_scene.add_child(instance)
+	
 	queue_free()
-	pass # Replace with function body.
