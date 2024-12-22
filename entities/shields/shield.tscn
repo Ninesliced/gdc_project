@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://duvhv66jp4fll"]
+
+[ext_resource type="Script" path="res://entities/shields/shield.gd" id="1_a4tsu"]
+[ext_resource type="PackedScene" uid="uid://b51s7gt8mn0ih" path="res://entities/components/health_component.tscn" id="2_b6v1w"]
+[ext_resource type="Texture2D" uid="uid://bds8nncilm33r" path="res://assets/space_breaker_asset/Bonus/turret_01c_mk3.png" id="3_pdug4"]
+[ext_resource type="Texture2D" uid="uid://dq0hmcycqhvaw" path="res://assets/shield/shield.png" id="4_tt6vr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kggpn"]
+size = Vector2(12.4702, 38.9453)
+
+[node name="Shield" type="StaticBody2D"]
+scale = Vector2(0.641529, 0.487864)
+script = ExtResource("1_a4tsu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(26.4992, -3.90959e-06)
+scale = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_kggpn")
+
+[node name="ReloadDelay" type="Timer" parent="."]
+
+[node name="RegenTimer" type="Timer" parent="."]
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_b6v1w")]
+
+[node name="Generator" type="Sprite2D" parent="."]
+rotation = 1.5686
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_pdug4")
+
+[node name="Shield" type="Sprite2D" parent="."]
+position = Vector2(27, 7.45058e-09)
+rotation = 1.5729
+scale = Vector2(1.5, 1)
+texture = ExtResource("4_tt6vr")
+
+[connection signal="timeout" from="ReloadDelay" to="." method="_on_reload_delay_timeout"]
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regeneration_timer_timeout"]
+[connection signal="on_damage" from="HealthComponent" to="." method="_on_health_component_on_damage"]
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]

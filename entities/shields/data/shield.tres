@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShieldProperty" load_steps=4 format=3 uid="uid://pn8mirl6took"]
+
+[ext_resource type="Script" path="res://entities/shields/shield_property.gd" id="1_qgop4"]
+[ext_resource type="Texture2D" uid="uid://bds8nncilm33r" path="res://assets/space_breaker_asset/Bonus/turret_01c_mk3.png" id="1_ust1a"]
+[ext_resource type="Texture2D" uid="uid://dq0hmcycqhvaw" path="res://assets/shield/shield.png" id="3_l3n56"]
+
+[resource]
+script = ExtResource("1_qgop4")
+generatorTexture = ExtResource("1_ust1a")
+shieldTexture = ExtResource("3_l3n56")
+max_health = 25.0
+regeneration_rate_s = 0.5
+regeneration = 2.0
+regeneration_delay = 15.0
+shield_scale = 3.0

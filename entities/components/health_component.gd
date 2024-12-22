@@ -40,7 +40,6 @@ func damage(n):
 		hp = 0
 		emit_signal("on_death")
 	progress_bar.value = hp
-	print(hp)
 	pass 
 
 func heal(n):

@@ -40,6 +40,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var player: Player = body as Player
 		player.health_component.damage(damage)
 		queue_free()
+	
+	if body is Shield and not target_enemy:
+		var shield: Shield = body as Shield
+		shield.health_component.damage(damage)
+		queue_free()
 
 func _on_timer_timeout() -> void:
 	queue_free()

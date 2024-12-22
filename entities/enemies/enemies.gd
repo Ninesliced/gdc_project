@@ -15,6 +15,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var player : Player = body
 		player.health_component.damage(damage)
 		queue_free()
+	
+	if body is Shield:
+		var shield: Shield = body
+		shield.health_component.damage(damage)
+		queue_free()
 
 
 func _on_health_component_on_death() -> void:
