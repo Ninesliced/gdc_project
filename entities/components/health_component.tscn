@@ -1,6 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://b51s7gt8mn0ih"]
+[gd_scene load_steps=3 format=3 uid="uid://b51s7gt8mn0ih"]
 
 [ext_resource type="Script" path="res://entities/components/health_component.gd" id="1_q87qp"]
+[ext_resource type="Texture2D" uid="uid://bf207rcmua2bm" path="res://assets/ui/player_ui/hp.png" id="2_vldlp"]
 
 [node name="HealthComponent" type="Node2D"]
 script = ExtResource("1_q87qp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+custom_minimum_size = Vector2(50, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = 11.0
+offset_right = 25.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 70.0
+texture_progress = ExtResource("2_vldlp")
