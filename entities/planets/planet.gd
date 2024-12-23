@@ -17,9 +17,6 @@ func _on_area_2d_body_exited(body:Node2D) -> void:
     pass # Replace with function body.
 
 func _process(delta: float) -> void:
-    if Input.is_action_just_pressed("interact"):
-        print(can_interact)
-        print("caca")
     if Input.is_action_just_pressed("interact") and \
         can_interact:
         ShopData.open_shop()

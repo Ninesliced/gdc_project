@@ -18,7 +18,6 @@ func _ready() -> void:
 func update_points() -> void:
 	if points.size() > 0:
 		points.remove_at(0)
-		print(points)
 	# points.append(parent.global_position)
 	pass
 
