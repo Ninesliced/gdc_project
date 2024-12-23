@@ -11,7 +11,7 @@ extends Node
 @export var cycle_interval := 120.0
 @export var cycle_multiplier := 1.75
 
-@export var enemies := [load("res://entities/enemies/impl/basic_enemy.tscn")]
+@export var enemies : Array[PackedScene]= [load("res://entities/enemies/impl/basic_enemy.tscn")]
 
 func calculate_cycle_value(val: float) -> float:
 	return val + (val * cycle * cycle_multiplier)

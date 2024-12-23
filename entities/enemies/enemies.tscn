@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b51s7gt8mn0ih" path="res://entities/components/health_component.tscn" id="3_7gbns"]
 [ext_resource type="Script" path="res://entities/enemies/components/enemy_move_component.gd" id="4_krqto"]
 
-[sub_resource type="Shader" id="Shader_al0u2"]
+[sub_resource type="Shader" id="Shader_iq2n0"]
 code = "shader_type canvas_item;
 
 uniform vec4 flash_color : source_color = vec4(1.0);
@@ -27,11 +27,38 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w0agy"]
 resource_local_to_scene = true
-shader = SubResource("Shader_al0u2")
+shader = SubResource("Shader_iq2n0")
 shader_parameter/flash_color = Color(1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ru3q2"]
-size = Vector2(14, 31)
+size = Vector2(14, 30.4375)
+
+[sub_resource type="Animation" id="Animation_84tv5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_mjjqx"]
 resource_name = "hit"
@@ -55,25 +82,22 @@ tracks/1/path = NodePath(".:material:shader_parameter/flash_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(0.366022, 0.450625, 1),
+"times": PackedFloat32Array(0, 0.1, 0.133333),
+"transitions": PackedFloat32Array(0.450625, 0.965937, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_84tv5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/flash_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-3.72529e-09, 0.1, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(2, 2), Vector2(-2, -2), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bfts0"]
@@ -93,7 +117,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_rt6ne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(1, 0)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ru3q2")
 
@@ -108,7 +132,7 @@ script = ExtResource("4_krqto")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -0.5)
+position = Vector2(1, 5.68434e-14)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ru3q2")
 

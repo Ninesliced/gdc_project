@@ -13,18 +13,9 @@ class_name HealthComponent
 
 ## show damage when hit
 @export_group("Damage Indicator")
-@export var show_damage_indicator = false :
-	set(value):
-		if $DamageIndicator:
-			$DamageIndicator.visible = value
-			show_damage_indicator = value
-@export var damage_indicator_duration = 0.5
-@export var damage_indicator_color = Color(1, 1, 1, 1) :
-	set(value):
-		if $DamageIndicator:
-			$DamageIndicator.modulate = value
-			damage_indicator_color = value
-@onready var animation_player : AnimationPlayer = $AnimationPlayer
+var damage_indicator : PackedScene = preload("res://entities/components/damage_indicator.tscn")
+@export var show_damage_indicator = false
+@onready var animation_player : AnimationPlayer = $DamageIndicator/AnimationPlayer
 var damage_indicator_timer : Timer = Timer.new()
 
 var hp = 0
@@ -41,8 +32,6 @@ func _ready():
 		progress_bar.visible = show_hp
 		progress_bar.max_value = max_hp
 		progress_bar.value = hp
-
-	init_damage_indicator()
 
 func _process(delta):
 	global_rotation = 0
@@ -71,20 +60,11 @@ func heal(n):
 
 func indicate_damage(n):
 	if show_damage_indicator:
-		$DamageIndicator.visible = true
-		damage_indicator_timer.start()
-		$DamageIndicator.text = str(n)
-		animation_player.play("crit")
+		var damage_indicator_instance = damage_indicator.instantiate()
+		damage_indicator_instance.global_position = global_position
+		get_tree().current_scene.add_child(damage_indicator_instance)
 
-func init_damage_indicator():
-	if show_damage_indicator:
-		damage_indicator_timer = Timer.new()
-		damage_indicator_timer.one_shot = true
-		damage_indicator_timer.wait_time = damage_indicator_duration
-		add_child(damage_indicator_timer)
-		damage_indicator_timer.timeout.connect(_on_DamageIndicator_timeout)
-
-		$DamageIndicator.text = ""
+		damage_indicator_instance.set_damage(n)
 
 
 func _on_DamageIndicator_timeout():

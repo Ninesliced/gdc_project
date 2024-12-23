@@ -21,7 +21,7 @@ var box_card : PackedScene = preload("res://ui/Shops/boxes/buy_box.tscn")
 var buy_cards : Array = []
 var item: Item = load("res://entities/items/weapon_items/canon_base.tres")
 var item2 : Item = load("res://entities/items/weapon_items/canon_base_2.tres")
-var shield : Item = load("res://entities/items/shield_items/basic_shield_item.tres")
+# var shield : Item = load("res://entities/items/shield_items/basic_shield_item.tres")
 
 func _ready() -> void:
 	dict_type = {
@@ -29,7 +29,7 @@ func _ready() -> void:
 		ShopType.SELL : sell_ui,
 		ShopType.UPGRADE : upgrade_ui,
 	}
-	set_buy_cards([item, item2, item, item2, shield, shield, shield, shield])
+	set_buy_cards([item, item2, item, item2])
 	pass
 
 func _process(delta: float) -> void:

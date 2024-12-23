@@ -1,63 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b51s7gt8mn0ih"]
+[gd_scene load_steps=3 format=3 uid="uid://b51s7gt8mn0ih"]
 
 [ext_resource type="Script" path="res://entities/components/health_component.gd" id="1_q87qp"]
 [ext_resource type="Texture2D" uid="uid://bf207rcmua2bm" path="res://assets/ui/player_ui/hp.png" id="2_vldlp"]
 
-[sub_resource type="Animation" id="Animation_k8qln"]
-resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DamageIndicator:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.499999, 1),
-"update": 0,
-"values": [Vector2(-20, -6.5), Vector2(-20, -15)]
-}
-
-[sub_resource type="Animation" id="Animation_gr467"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DamageIndicator:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-20, -6.5)]
-}
-
-[sub_resource type="Animation" id="Animation_5rmqq"]
-resource_name = "crit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DamageIndicator:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.366667, 0.7, 0.866667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-20, -6.5), Vector2(-25, -11.45), Vector2(-15, -15.95), Vector2(-24, -18.2), Vector2(-20, -20)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_awtjk"]
-_data = {
-"RESET": SubResource("Animation_gr467"),
-"crit": SubResource("Animation_5rmqq"),
-"new_animation": SubResource("Animation_k8qln")
-}
-
 [node name="HealthComponent" type="Node2D"]
 script = ExtResource("1_q87qp")
-damage_indicator_color = Color(1, 1, 1, 1)
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
 visible = false
@@ -75,32 +22,3 @@ grow_horizontal = 2
 grow_vertical = 2
 value = 100.0
 texture_progress = ExtResource("2_vldlp")
-
-[node name="DamageIndicator" type="Label" parent="."]
-visible = false
-z_index = 50
-z_as_relative = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 16
-text = "damage"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_awtjk")
-}
-speed_scale = 4.0

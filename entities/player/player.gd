@@ -20,7 +20,6 @@ class_name Player
 func _ready() -> void:
 	PlayerData.player = self
 	PlayerData.load_equipment()
-	print("printing: ",_player_stats.item_slots)
 	pass
 
 
