@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgo7t0jmq53j0"]
+[gd_scene load_steps=5 format=3 uid="uid://dgo7t0jmq53j0"]
 
 [ext_resource type="Script" path="res://entities/weapons/weapon.gd" id="1_lgbee"]
 [ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="1_tsxf7"]
-[ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/weapon.tres" id="2_2rmih"]
+[ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/base_weapon.tres" id="2_2rmih"]
+[ext_resource type="AudioStream" uid="uid://doevu1wj3n1e4" path="res://assets/sounds/weapons/SHOOT011.mp3" id="4_s3fxy"]
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_lgbee")
 weapon_property = ExtResource("2_2rmih")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+use_parent_material = true
 rotation = 1.5708
 texture = ExtResource("1_tsxf7")
 
@@ -16,4 +18,10 @@ texture = ExtResource("1_tsxf7")
 wait_time = 0.2
 autostart = true
 
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_s3fxy")
+volume_db = -10.0
+pitch_scale = 0.7
+
+[connection signal="shoot" from="." to="." method="_on_shoot"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b870u5vca6t7n" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk2.png" id="1_55ih8"]
 [ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_qlhd3"]
-[ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/weapon.tres" id="3_d5i2i"]
+[ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/base_weapon.tres" id="3_d5i2i"]
 [ext_resource type="Script" path="res://entities/items/item.gd" id="4_43icg"]
 
 [resource]

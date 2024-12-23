@@ -3,9 +3,10 @@ class_name Weapon
 var direction: Vector2 = Vector2(1, 0)
 
 @export var weapon_property: WeaponProperty = null
+@export var play_shoot_audio: bool = false
 @onready var sprite = $Sprite
 var target: Node2D = null
-
+signal shoot
 
 func load_resource(resource : Resource) -> void:
 	if resource is WeaponProperty:
@@ -55,8 +56,14 @@ func _on_timer_timeout() -> void:
 		instance.target = target
 	instance.damage = weapon_property.damage
 	get_tree().current_scene.add_child(instance)
-
+	emit_signal("shoot")
 	target = select_target()
 	if target != null and is_instance_valid(target):
 		direction = (target.global_position - global_position).normalized()
 		global_rotation = direction.angle()
+
+
+func _on_shoot() -> void:
+	if weapon_property.enable_audio:
+		$ShootAudio.play()
+	pass # Replace with function body.

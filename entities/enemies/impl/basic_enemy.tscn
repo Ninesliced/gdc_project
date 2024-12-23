@@ -1,27 +1,61 @@
-[gd_scene load_steps=7 format=3 uid="uid://lbaknsn35a0g"]
+[gd_scene load_steps=9 format=3 uid="uid://lbaknsn35a0g"]
 
 [ext_resource type="PackedScene" uid="uid://g2o8ee42dabs" path="res://entities/enemies/enemies.tscn" id="1_k0stg"]
 [ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_jxlpx"]
-[ext_resource type="PackedScene" uid="uid://dpyx7hf8384hb" path="res://entities/weapons/bullet.tscn" id="3_cvagu"]
+[ext_resource type="PackedScene" uid="uid://ctr6pf6d1gbmr" path="res://entities/weapons/bullets/bullet_enemy.tscn" id="3_c3arf"]
 [ext_resource type="Script" path="res://entities/weapons/weapon_property.gd" id="4_6x1qu"]
 [ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="5_khkte"]
+
+[sub_resource type="Shader" id="Shader_al0u2"]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color : source_color = vec4(1.0);
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = mix(COLOR, flash_color, COLOR.a * flash_color.a);
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3oxo"]
+resource_local_to_scene = true
+shader = SubResource("Shader_al0u2")
+shader_parameter/flash_color = Color(1, 1, 1, 0)
 
 [sub_resource type="Resource" id="Resource_jgmhj"]
 script = ExtResource("4_6x1qu")
 rotation_speed = 0.1
-bullet = ExtResource("3_cvagu")
+bullet = ExtResource("3_c3arf")
 texture = ExtResource("5_khkte")
 damage = 1.0
 attack_range = 250
 target_enemy = false
 aimbot = false
 shoot_interval = 1.0
+enable_audio = false
 
 [node name="Enemies" instance=ExtResource("1_k0stg")]
+material = SubResource("ShaderMaterial_l3oxo")
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
+[node name="Area2D" parent="." index="4"]
+visible = false
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(-9.04998e-07, -0.25)
 
 [node name="Weapon" parent="." index="5" instance=ExtResource("2_jxlpx")]
+use_parent_material = true
 scale = Vector2(0.7, 0.7)
 weapon_property = SubResource("Resource_jgmhj")

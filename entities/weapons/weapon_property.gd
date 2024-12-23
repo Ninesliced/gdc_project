@@ -12,3 +12,4 @@ class_name WeaponProperty
 @export var target_enemy := true
 @export var aimbot := true
 @export var shoot_interval := 0.2
+@export var enable_audio := false

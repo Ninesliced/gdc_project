@@ -1,5 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctr6pf6d1gbmr"]
+[gd_scene load_steps=3 format=3 uid="uid://ctr6pf6d1gbmr"]
 
 [ext_resource type="PackedScene" uid="uid://dpyx7hf8384hb" path="res://entities/weapons/bullet.tscn" id="1_7s4f4"]
+[ext_resource type="Texture2D" uid="uid://dlcqqnrqip8bx" path="res://assets/bullets/bullet_enemy.png" id="2_lypvl"]
 
 [node name="Bullet" instance=ExtResource("1_7s4f4")]
+speed = 200.0
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_lypvl")

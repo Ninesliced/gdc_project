@@ -24,3 +24,9 @@ func _on_health_component_on_death() -> void:
 		get_tree().current_scene.add_child(instance)
 	
 	queue_free()
+
+
+func _on_health_component_on_damage(damage:int) -> void:
+	print("Hit")
+	$HitPlayer.play("hit")
+	pass # Replace with function body.

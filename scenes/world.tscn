@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://1713ucjydt4a"]
+
+[ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_40l4n"]
+[ext_resource type="PackedScene" uid="uid://brfq32hg5bfi2" path="res://entities/enemies/spawner/enemy_spawner.tscn" id="2_o7w43"]
+
+[node name="World_tscn" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_40l4n")]
+
+[node name="EnemySpawner" parent="CharacterBody2D" instance=ExtResource("2_o7w43")]
+spawn_interval = 2.0
+spawn_count = 1
