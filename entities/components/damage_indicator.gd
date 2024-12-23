@@ -3,31 +3,47 @@ class_name DamageIndicator
 
 var damage: float = 0.0
 @export var damage_indicator_duration = 0.5
+var damage_timer : Timer = Timer.new()
 
 @export var damage_color_list : Array[Color] = []
 @export var damage_number_list : Array[int] = []
 
-@onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var damage_label : Label = $Label
 var damage_indicator_timer : Timer = Timer.new()
 
+var init_position : Vector2 = Vector2(0, 0)
+
 func _ready() -> void:
-	animation_player.play("crit")
-	await animation_player.animation_finished
-	queue_free()
+	damage_timer.one_shot = true
+	damage_timer.wait_time = damage_indicator_duration
+	add_child(damage_timer)
+	damage_timer.timeout.connect(_on_damage_indicator_timeout)
+	damage_timer.start()
+	init_position = global_position
+
 	pass # Replace with function body.
 
+func _process(delta: float) -> void:
+	var x = randi_range(-1, 1)
+	var y = randi_range(-1, 1)
+	global_position = init_position + Vector2(x, y)
+	pass
+
+
+func _on_damage_indicator_timeout() -> void:
+	queue_free()
+	pass
+
 func set_damage(new_damage: float) -> void:
-	$Node2D/Label.text = str(new_damage)
+	damage_label.text = str(new_damage)
 	var index_color = 0
 
 	for i in range(damage_number_list.size() - 1):
 		if new_damage < damage_number_list[i + 1]:
 			break
 		index_color += 1
-	print(new_damage, " ", index_color)
-	$Node2D/Label.modulate = damage_color_list[index_color]
+
+	damage_label.modulate = damage_color_list[index_color]
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b51s7gt8mn0ih" path="res://entities/components/health_component.tscn" id="3_7gbns"]
 [ext_resource type="Script" path="res://entities/enemies/components/enemy_move_component.gd" id="4_krqto"]
 
-[sub_resource type="Shader" id="Shader_iq2n0"]
+[sub_resource type="Shader" id="Shader_2f0cd"]
 code = "shader_type canvas_item;
 
 uniform vec4 flash_color : source_color = vec4(1.0);
@@ -25,9 +25,9 @@ void fragment() {
 //}
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0agy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hwsn2"]
 resource_local_to_scene = true
-shader = SubResource("Shader_iq2n0")
+shader = SubResource("Shader_2f0cd")
 shader_parameter/flash_color = Color(1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ru3q2"]
@@ -62,7 +62,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_mjjqx"]
 resource_name = "hit"
-length = 0.3
+length = 0.37
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -82,7 +82,7 @@ tracks/1/path = NodePath(".:material:shader_parameter/flash_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.133333),
+"times": PackedFloat32Array(0, 0.166667, 0.366667),
 "transitions": PackedFloat32Array(0.450625, 0.965937, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0)]
@@ -94,7 +94,7 @@ tracks/2/path = NodePath("Icon:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(-3.72529e-09, 0.1, 0.133333),
+"times": PackedFloat32Array(-3.72529e-09, 0.166667, 0.366667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(2, 2), Vector2(-2, -2), Vector2(0, 0)]
@@ -107,7 +107,7 @@ _data = {
 }
 
 [node name="Enemies" type="CharacterBody2D" groups=["Enemy"]]
-material = SubResource("ShaderMaterial_w0agy")
+material = SubResource("ShaderMaterial_hwsn2")
 script = ExtResource("1_fr6v8")
 
 [node name="Icon" type="Sprite2D" parent="."]

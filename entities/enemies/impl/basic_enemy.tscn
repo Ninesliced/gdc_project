@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://entities/weapons/weapon_property.gd" id="4_6x1qu"]
 [ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="5_khkte"]
 
-[sub_resource type="Shader" id="Shader_al0u2"]
+[sub_resource type="Shader" id="Shader_i7b3d"]
 code = "shader_type canvas_item;
 
 uniform vec4 flash_color : source_color = vec4(1.0);
@@ -27,9 +27,9 @@ void fragment() {
 //}
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3oxo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpth7"]
 resource_local_to_scene = true
-shader = SubResource("Shader_al0u2")
+shader = SubResource("Shader_i7b3d")
 shader_parameter/flash_color = Color(1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6yhvf"]
@@ -42,13 +42,14 @@ bullet = ExtResource("3_c3arf")
 texture = ExtResource("5_khkte")
 damage = 1.0
 attack_range = 250
+shoot_interval = 1.0
+bullet_speed = 300
 target_enemy = false
 aimbot = false
-shoot_interval = 1.0
 enable_audio = false
 
 [node name="Enemies" instance=ExtResource("1_k0stg")]
-material = SubResource("ShaderMaterial_l3oxo")
+material = SubResource("ShaderMaterial_cpth7")
 
 [node name="Icon" parent="." index="0"]
 scale = Vector2(1, 1)
@@ -58,9 +59,6 @@ texture = ExtResource("2_f0r44")
 position = Vector2(6.72265, 9.85596e-06)
 shape = SubResource("RectangleShape2D_6yhvf")
 debug_color = Color(0, 0.595, 0.7, 0.235294)
-
-[node name="HealthComponent" parent="." index="2"]
-position = Vector2(3, 0)
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(7, 0)

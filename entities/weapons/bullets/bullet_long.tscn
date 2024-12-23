@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://vg43s1sdvoud"]
+
+[ext_resource type="PackedScene" uid="uid://dpyx7hf8384hb" path="res://entities/weapons/bullet.tscn" id="1_6hqdl"]
+[ext_resource type="Texture2D" uid="uid://ba6vohwat2ijj" path="res://assets/bullets/bullet_long.png" id="2_oexvs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_deah1"]
+radius = 3.0
+height = 16.0
+
+[node name="Bullet" instance=ExtResource("1_6hqdl")]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_oexvs")
+
+[node name="Collision" parent="Area2D" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_deah1")

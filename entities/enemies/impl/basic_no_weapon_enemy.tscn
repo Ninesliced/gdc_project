@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://g2o8ee42dabs" path="res://entities/enemies/enemies.tscn" id="1_tndh3"]
 
-[sub_resource type="Shader" id="Shader_iq2n0"]
+[sub_resource type="Shader" id="Shader_blc2e"]
 code = "shader_type canvas_item;
 
 uniform vec4 flash_color : source_color = vec4(1.0);
@@ -22,16 +22,16 @@ void fragment() {
 //}
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ga7v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x4at5"]
 resource_local_to_scene = true
-shader = SubResource("Shader_iq2n0")
+shader = SubResource("Shader_blc2e")
 shader_parameter/flash_color = Color(1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqisj"]
 size = Vector2(31.0002, 43)
 
 [node name="Enemies" instance=ExtResource("1_tndh3")]
-material = SubResource("ShaderMaterial_8ga7v")
+material = SubResource("ShaderMaterial_x4at5")
 
 [node name="Icon" parent="." index="0"]
 position = Vector2(9.53674e-07, 5.96046e-08)

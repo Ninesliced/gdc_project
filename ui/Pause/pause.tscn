@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://hj4fuk4jfqw4"]
+
+[ext_resource type="Script" path="res://ui/Pause/pause.gd" id="1_8yhs5"]
+[ext_resource type="PackedScene" uid="uid://c8k4hesi65v50" path="res://ui/Pause/continue.tscn" id="2_ao8yn"]
+
+[node name="Pause" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_8yhs5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+modulate = Color(0.0081, 0.064065, 0.09, 0.435294)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Continue" parent="Pause/HBoxContainer" instance=ExtResource("2_ao8yn")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause/HBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Settings" parent="Pause/HBoxContainer" instance=ExtResource("2_ao8yn")]
+layout_mode = 2
+text = "Settings
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Pause/HBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Quit" parent="Pause/HBoxContainer" instance=ExtResource("2_ao8yn")]
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="pressed" from="Pause/HBoxContainer/Continue" to="." method="_on_continue_pressed"]

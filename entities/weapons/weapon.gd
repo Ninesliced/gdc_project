@@ -6,6 +6,10 @@ var direction: Vector2 = Vector2(1, 0)
 @export var play_shoot_audio: bool = false
 @onready var sprite = $Sprite
 var target: Node2D = null
+var parent : Node2D = null
+
+var current_damage: float = 0.0
+
 signal shoot
 
 func load_resource(resource : Resource) -> void:
@@ -28,11 +32,22 @@ func select_target() -> Node2D:
 	return null
 
 func _ready() -> void:
+	parent = get_parent()
 	if weapon_property == null:
 		weapon_property = WeaponProperty.new()
-	
+	current_damage = weapon_property.damage
 	$Timer.wait_time = weapon_property.shoot_interval
 	$Sprite.texture = weapon_property.texture
+	var parent = get_parent()
+	if parent is Player:
+		var player: Player = parent as Player
+		player._player_stats.connect("on_player_stats_changed", update_stats)
+		update_stats()
+
+func update_stats():
+	var player_stat : PlayerStats = parent._player_stats
+	$Timer.wait_time = weapon_property.shoot_interval - (weapon_property.shoot_interval * player_stat.reduction_delay_boost)
+	current_damage = weapon_property.damage * player_stat.damage_multiplier
 
 func _process(delta: float) -> void:
 	if (target == null or !is_instance_valid(target)):
@@ -47,20 +62,25 @@ func _on_timer_timeout() -> void:
 	if weapon_property.bullet == null or target == null:
 		return
 	
-	var instance: Bullet = weapon_property.bullet.instantiate() as Bullet
-	instance.global_position = global_position
-	instance.rotation = rotation
-	instance.direction = direction
-	instance.target_enemy = weapon_property.target_enemy
+	var bullet_instance : Bullet = init_bullet(weapon_property.bullet)
 	if weapon_property.aimbot:
-		instance.target = target
-	instance.damage = weapon_property.damage
-	get_tree().current_scene.add_child(instance)
+		bullet_instance.target = target
+
+	get_tree().current_scene.add_child(bullet_instance)
 	emit_signal("shoot")
 	target = select_target()
-	if target != null and is_instance_valid(target):
-		direction = (target.global_position - global_position).normalized()
-		global_rotation = direction.angle()
+
+
+func init_bullet(bullet: PackedScene) -> Bullet:
+	var instance : Bullet = bullet.instantiate() as Bullet
+	instance.global_position = global_position
+	instance.global_rotation = direction.angle()
+	instance.direction = direction
+	instance.target_enemy = weapon_property.target_enemy
+	instance.speed = weapon_property.bullet_speed
+	instance.damage = current_damage
+
+	return instance
 
 
 func _on_shoot() -> void:

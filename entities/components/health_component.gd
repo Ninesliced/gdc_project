@@ -34,7 +34,7 @@ func _ready():
 		progress_bar.value = hp
 
 func _process(delta):
-	global_rotation = 0
+	global_position = get_parent().global_position
 	
 
 func damage(n):
@@ -58,9 +58,13 @@ func heal(n):
 	
 # Damage indicator
 
+var damage_indicator_instance : Node2D
+
 func indicate_damage(n):
+	# if is_instance_valid(damage_indicator_instance):
+	# 	damage_indicator_instance.queue_free()
 	if show_damage_indicator:
-		var damage_indicator_instance = damage_indicator.instantiate()
+		damage_indicator_instance = damage_indicator.instantiate()
 		damage_indicator_instance.global_position = global_position
 		get_tree().current_scene.add_child(damage_indicator_instance)
 

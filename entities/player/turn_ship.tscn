@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dy30yy5axn8vr"]
+[gd_scene load_steps=8 format=3 uid="uid://dy30yy5axn8vr"]
 
 [ext_resource type="PackedScene" uid="uid://b0cu8ml0ttn5j" path="res://entities/player/player.tscn" id="1_0dfpd"]
-[ext_resource type="PackedScene" uid="uid://b6jh8b7n8rf7c" path="res://entities/player/components/movement_component.tscn" id="3_2nx3a"]
 [ext_resource type="Script" path="res://globals/counter_data.gd" id="3_bakv3"]
-[ext_resource type="Script" path="res://entities/player/components/movement_component.gd" id="4_5m1kd"]
 [ext_resource type="PackedScene" uid="uid://bxvp8fluu1lsf" path="res://entities/player/components/slot_manager.tscn" id="6_jbqv1"]
 [ext_resource type="Script" path="res://entities/player/components/slot_manager.gd" id="7_h8khn"]
 
@@ -40,23 +38,20 @@ ignore_rotation = false
 position_smoothing_speed = 30.0
 rotation_smoothing_enabled = true
 
-[node name="MovementComponent" parent="." index="3" node_paths=PackedStringArray("camera") instance=ExtResource("3_2nx3a")]
-script = ExtResource("4_5m1kd")
-speed = 200.0
-acceleration = 700
-decceleration = 500
-rotation_speed = 8.0
-camera = NodePath("../Camera2D")
-
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" parent="." index="3"]
 visible = false
 scale = Vector2(1.66685, 2.22579)
 shape = SubResource("CapsuleShape2D_bg8xi")
 
-[node name="SlotManager" parent="." index="5" instance=ExtResource("6_jbqv1")]
+[node name="SlotManager" parent="." index="4" instance=ExtResource("6_jbqv1")]
 script = ExtResource("7_h8khn")
 
-[node name="HealthComponent" parent="." index="6"]
+[node name="HealthComponent" parent="." index="5"]
+top_level = true
 max_hp = 20
 initial_hp = 20
 show_hp = true
+
+[node name="MovementComponent" parent="." index="6" node_paths=PackedStringArray("camera")]
+movement_mode = null
+camera = NodePath("../Camera2D")
