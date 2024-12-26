@@ -61,11 +61,9 @@ func heal(n):
 var damage_indicator_instance : Node2D
 
 func indicate_damage(n):
-	# if is_instance_valid(damage_indicator_instance):
-	# 	damage_indicator_instance.queue_free()
 	if show_damage_indicator:
 		damage_indicator_instance = damage_indicator.instantiate()
-		damage_indicator_instance.global_position = global_position
+		damage_indicator_instance.global_position = global_position + Vector2(randi_range(-10, 10), randi_range(-10, 10))
 		get_tree().current_scene.add_child(damage_indicator_instance)
 
 		damage_indicator_instance.set_damage(n)

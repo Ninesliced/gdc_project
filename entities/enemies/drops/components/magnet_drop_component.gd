@@ -12,7 +12,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if follow != null:
+	if is_instance_valid(follow):
 		var direction = follow.global_position - global_position
 		direction = direction.normalized()
 		follower.global_position += direction * speed * delta

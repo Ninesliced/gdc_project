@@ -53,5 +53,4 @@ initial_hp = 20
 show_hp = true
 
 [node name="MovementComponent" parent="." index="6" node_paths=PackedStringArray("camera")]
-movement_mode = null
 camera = NodePath("../Camera2D")

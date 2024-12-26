@@ -8,5 +8,12 @@ class_name PlayerStats
 @export var damage_multiplier : float = 2.0
 @export var speed : float = 100.0
 @export var health : float = 100.0
+@export var critical_chance : float = 1
+@export var critical_damage : float = 2
+
+
 
 signal on_player_stats_changed(stats: PlayerStats)
+
+func is_critical_hit() -> bool:
+    return randf() < critical_chance
