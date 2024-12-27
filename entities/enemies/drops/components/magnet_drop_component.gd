@@ -3,6 +3,7 @@ extends Area2D
 @export var follower : Node2D 
 var follow : Node2D = null
 var speed : float = 200
+var multiplier : float = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if follower == null:
@@ -15,7 +16,8 @@ func _process(delta: float) -> void:
 	if is_instance_valid(follow):
 		var direction = follow.global_position - global_position
 		direction = direction.normalized()
-		follower.global_position += direction * speed * delta
+		follower.global_position += direction * speed * delta * multiplier
+		multiplier += 1 * delta
 	pass
 
 
