@@ -37,12 +37,12 @@ func _process(delta):
 	global_position = get_parent().global_position
 	
 
-func damage(n):
+func damage(n, is_critical_hit = false):
 	if invincible:
 		return
 	hp -= n
 	emit_signal("on_damage", n)
-	indicate_damage(n)
+	indicate_damage(n, is_critical_hit)
 	if hp <= 0:
 		hp = 0
 		emit_signal("on_death")
@@ -60,13 +60,13 @@ func heal(n):
 
 var damage_indicator_instance : Node2D
 
-func indicate_damage(n):
+func indicate_damage(n, is_critical_hit):
 	if show_damage_indicator:
 		damage_indicator_instance = damage_indicator.instantiate()
 		damage_indicator_instance.global_position = global_position + Vector2(randi_range(-10, 10), randi_range(-10, 10))
 		get_tree().current_scene.add_child(damage_indicator_instance)
 
-		damage_indicator_instance.set_damage(n)
+		damage_indicator_instance.set_damage(n, is_critical_hit)
 
 
 func _on_DamageIndicator_timeout():

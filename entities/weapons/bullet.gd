@@ -13,6 +13,7 @@ class_name Bullet
 		update_velocity()
 
 @export var damage := 5.0
+@export var is_critical_hit := false
 
 var target_enemy := true
 var target: Node2D = null
@@ -33,17 +34,17 @@ func _physics_process(_delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Enemy and target_enemy:
 		var enemy: Enemy = body as Enemy
-		enemy.health_component.damage(damage)
+		enemy.health_component.damage(damage, is_critical_hit)
 		queue_free()
 	
 	if body is Player and not target_enemy:
 		var player: Player = body as Player
-		player.health_component.damage(damage)
+		player.health_component.damage(damage, is_critical_hit)
 		queue_free()
 	
 	if body is Shield and not target_enemy:
 		var shield: Shield = body as Shield
-		shield.health_component.damage(damage)
+		shield.health_component.damage(damage, is_critical_hit)
 		queue_free()
 
 func _on_timer_timeout() -> void:

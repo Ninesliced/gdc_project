@@ -42,6 +42,8 @@ func _ready() -> void:
 	if parent is Player:
 		var player: Player = parent as Player
 		player._player_stats.connect("on_player_stats_changed", update_stats)
+		weapon_property.critical_chance += player._player_stats.critical_chance
+		weapon_property.critical_damage += player._player_stats.critical_damage
 		update_stats()
 
 func update_stats():
@@ -78,7 +80,12 @@ func init_bullet(bullet: PackedScene) -> Bullet:
 	instance.direction = direction
 	instance.target_enemy = weapon_property.target_enemy
 	instance.speed = weapon_property.bullet_speed
-	instance.damage = current_damage
+
+	if randf() < weapon_property.critical_chance:
+		instance.is_critical_hit = true
+		instance.damage = current_damage * weapon_property.critical_damage
+	else:
+		instance.damage = current_damage
 
 	return instance
 

@@ -10,6 +10,8 @@ class_name WeaponProperty
 @export var attack_range := 500
 @export var shoot_interval := 0.2
 @export var bullet_speed := 300
+@export var critical_chance := 0.0
+@export var critical_damage := 0.0
 
 @export var target_enemy := true
 @export var aimbot := true
