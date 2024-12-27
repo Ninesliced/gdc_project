@@ -11,17 +11,22 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
-		if get_tree().paused == false:
+		if get_tree().paused == false and paused_by_pause_menu == false:
 			get_tree().paused = true
 			visible = true
 			$Pause/HBoxContainer/Continue.grab_focus()
-		else:
+			paused_by_pause_menu = true
+			return
+		if get_tree().paused == true and paused_by_pause_menu == true:
+			print("unpausing")
 			get_tree().paused = false
+			paused_by_pause_menu = false
 			visible = false
 
 
 func _on_continue_pressed() -> void:
 	if get_tree().paused == true:
+		paused_by_pause_menu = false
 		get_tree().paused = false
 		visible = false
 	else:
