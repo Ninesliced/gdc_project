@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://pptr5lrjp0jp"]
+[gd_scene load_steps=9 format=3 uid="uid://pptr5lrjp0jp"]
 
 [ext_resource type="PackedScene" uid="uid://cbqivsninv7sj" path="res://entities/enemies/drops/collectible.tscn" id="1_8n850"]
 [ext_resource type="Script" path="res://entities/enemies/drops/basic_drop.gd" id="1_qpvsb"]
 [ext_resource type="Script" path="res://globals/counter_data.gd" id="2_b0rmn"]
 [ext_resource type="Texture2D" uid="uid://bx6i6youbbm3h" path="res://assets/space_breaker_asset/Background/galaxy.png" id="3_rpr1k"]
 [ext_resource type="PackedScene" uid="uid://vk7tcw1qavtp" path="res://entities/enemies/drops/components/magnet_drop_component.tscn" id="5_ik4t3"]
+[ext_resource type="AudioStream" uid="uid://cjpvls2vcakh" path="res://assets/sounds/collectibles/coinsplash.ogg" id="6_pauo1"]
 
 [sub_resource type="Resource" id="Resource_brm41"]
 script = ExtResource("2_b0rmn")
@@ -33,6 +34,10 @@ texture = ExtResource("3_rpr1k")
 
 [node name="MagnetDropComponent" parent="." node_paths=PackedStringArray("follower") instance=ExtResource("5_ik4t3")]
 follower = NodePath("..")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_pauo1")
+pitch_scale = 1.4
 
 [connection signal="on_collectible_collected" from="Collectible" to="." method="_on_collectible_collected"]
 

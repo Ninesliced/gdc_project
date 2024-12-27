@@ -35,9 +35,9 @@ shader_parameter/flash_color = Color(1, 1, 1, 0)
 position = Vector2(55, 219)
 
 [node name="EnemySpawner" parent="CharacterBody2D" instance=ExtResource("2_o7w43")]
-spawn_interval = 0.5
 spawn_count = 1
 spawn_distance_max = 900
+cycle_interval = 1.0
 
 [node name="Enemies" parent="." instance=ExtResource("3_s5o7a")]
 material = SubResource("ShaderMaterial_i2qcn")
