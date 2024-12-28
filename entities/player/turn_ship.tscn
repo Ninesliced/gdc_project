@@ -19,8 +19,8 @@ offsets = PackedFloat32Array(0, 0.177606, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bg8xi"]
-radius = 7.19923
-height = 26.5074
+radius = 5.39941
+height = 25.1596
 
 [node name="CharacterBody2D" instance=ExtResource("1_0dfpd")]
 _player_counter = SubResource("Resource_65xbv")
@@ -39,7 +39,7 @@ position_smoothing_speed = 30.0
 rotation_smoothing_enabled = true
 
 [node name="CollisionShape2D" parent="." index="3"]
-visible = false
+position = Vector2(0, 0)
 scale = Vector2(1.66685, 2.22579)
 shape = SubResource("CapsuleShape2D_bg8xi")
 

@@ -32,5 +32,6 @@ func _on_health_component_on_death() -> void:
 
 
 func _on_health_component_on_damage(damage:int) -> void:
+	$HitPlayer.stop()
 	$HitPlayer.play("hit")
 	pass # Replace with function body.
