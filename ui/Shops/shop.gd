@@ -17,10 +17,11 @@ var currentShopType : ShopType = ShopType.BUY
 var dict_type : Dictionary = {}
 
 var box_card : PackedScene = preload("res://ui/Shops/boxes/buy_box.tscn")
-@onready var item_containter : HBoxContainer = $Shop/HBoxContainer/Buy/ItemContainer
+@onready var item_containter : HBoxContainer = $Shop/HBoxContainer/Buy/Panel/ItemContainer
 var buy_cards : Array = []
 var item: Item = load("res://entities/items/weapon_items/canon_base.tres")
 var item2 : Item = load("res://entities/items/weapon_items/canon_base_2.tres")
+
 # var shield : Item = load("res://entities/items/shield_items/basic_shield_item.tres")
 
 func _ready() -> void:
@@ -33,6 +34,8 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel") and PauseGlobal.current_pause_type == PauseGlobal.PauseType.SHOP:
+		close_shop()
 	pass
 
 
@@ -82,12 +85,21 @@ func _on_quit_button_pressed():
 	pass
 
 func open_shop() -> void:
+	animation_player.speed_scale = 2
+	animation_player.play("rise")
+	PauseGlobal.current_pause_type = PauseGlobal.PauseType.SHOP
 	show_type(ShopType.BUY, false)
 	show()
 	get_tree().paused = true
+	# await animation_player.animation_finished
+	# animation_player.play("fall_items")
 	pass
 
 func close_shop() -> void:
+	animation_player.speed_scale = 4
+	animation_player.play_backwards("rise")
+	await animation_player.animation_finished
+	PauseGlobal.current_pause_type = PauseGlobal.PauseType.NONE
 	hide()
 	get_tree().paused = false
 	pass
