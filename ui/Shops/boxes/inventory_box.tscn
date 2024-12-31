@@ -4,6 +4,9 @@
 [ext_resource type="Script" path="res://ui/Shops/boxes/inventory_box.gd" id="2_msikt"]
 
 [node name="ShopBox" instance=ExtResource("1_u7phh")]
-custom_minimum_size = Vector2(0, 200)
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 108.0
+offset_bottom = 172.0
 size_flags_vertical = 1
 script = ExtResource("2_msikt")

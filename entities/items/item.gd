@@ -14,6 +14,7 @@ class_name Item
             icon = null
         icon_form_resource = value
 
+
 @export var icon : Texture = null
 @export var price : int = 0
 

@@ -68,3 +68,9 @@ func handle_slots():
 		slot.upgrade_parent = self
 		slot.position = slot.position + slot_data.position
 		pass
+
+
+func play_sound(sound: String) -> void:
+	if sound == "load":
+		$AudioStreamPlayer2D.pitch_scale = randf_range(0.9, 1.1)
+		$AudioStreamPlayer2D.play()

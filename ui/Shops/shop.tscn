@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1u4h1x8nx1t3"]
+[gd_scene load_steps=13 format=3 uid="uid://c1u4h1x8nx1t3"]
 
 [ext_resource type="Script" path="res://ui/Shops/shop.gd" id="1_rgx1f"]
 [ext_resource type="Texture2D" uid="uid://2p5xlj0knnee" path="res://assets/ui/button.png" id="2_1qmga"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c2eemep8skl7h" path="res://ui/ui_button.tscn" id="3_mej8u"]
 [ext_resource type="Script" path="res://ui/Shops/upgrade.gd" id="4_57mfb"]
 [ext_resource type="Texture2D" uid="uid://xw68rrdxl2ih" path="res://assets/ui/shops/blueprint.png" id="4_f3fbu"]
+[ext_resource type="AudioStream" uid="uid://ixrgwn0h3277" path="res://assets/sounds/shops/weapload.wav" id="7_x6ht5"]
 
 [sub_resource type="Animation" id="Animation_w645c"]
 resource_name = "Fall"
@@ -37,32 +38,17 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_tlvpr"]
-resource_name = "rise"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Shop:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.258816, 1),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shop:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 547), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("Shop/HBoxContainer/Buy/Panel/ItemContainer:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -899), Vector2(0, 0)]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_mkawg"]
@@ -92,6 +78,33 @@ tracks/1/keys = {
 "values": [Vector2(0, -322), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_tlvpr"]
+resource_name = "rise"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.833333, 1),
+"transitions": PackedFloat32Array(0.258816, 1, 1),
+"update": 0,
+"values": [Vector2(0, 547), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shop:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.633333, 0.833333, 1),
+"transitions": PackedFloat32Array(1, 0.307786, 1.46409, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.95, 1.1), Vector2(0.95, 1.1), Vector2(1.02, 1), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mkkd2"]
 _data = {
 "Fall": SubResource("Animation_w645c"),
@@ -111,6 +124,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(480, 270)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Shop"]
 layout_mode = 1
@@ -162,6 +176,7 @@ layout_mode = 2
 text = "QUIT"
 
 [node name="Buy" type="VBoxContainer" parent="Shop/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
@@ -172,9 +187,12 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.6
 
 [node name="ItemContainer" type="HBoxContainer" parent="Shop/HBoxContainer/Buy/Panel"]
-layout_mode = 2
-offset_right = 603.0
-offset_bottom = 319.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.6
 alignment = 1
@@ -190,7 +208,6 @@ patch_margin_right = 7
 patch_margin_bottom = 12
 
 [node name="Sell" type="VBoxContainer" parent="Shop/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
@@ -211,10 +228,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -222,7 +239,9 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-columns = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 4
 
 [node name="Upgrade" type="HBoxContainer" parent="Shop/HBoxContainer"]
 visible = false
@@ -252,7 +271,7 @@ anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Shop/HBoxContainer/Upgrade/Bench/Panel"]
+[node name="Blueprint" type="TextureRect" parent="Shop/HBoxContainer/Upgrade/Bench/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -296,9 +315,16 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Shop/HBoxContainer/Upgrade/Items/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 size_flags_vertical = 3
 theme_override_constants/separation = -10
+
+[node name="MarginContainer" type="MarginContainer" parent="Shop/HBoxContainer/Upgrade/Items/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Shop/HBoxContainer/Upgrade"]
+stream = ExtResource("7_x6ht5")
 
 [node name="MarginContainer" type="MarginContainer" parent="Shop/HBoxContainer"]
 layout_mode = 2

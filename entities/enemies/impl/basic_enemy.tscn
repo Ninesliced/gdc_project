@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://0h2fyc6rg3xc" path="res://assets/enemies/normal_ship_v3.png" id="2_f0r44"]
 [ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_jxlpx"]
 [ext_resource type="PackedScene" uid="uid://ctr6pf6d1gbmr" path="res://entities/weapons/bullets/bullet_enemy.tscn" id="3_c3arf"]
-[ext_resource type="Script" path="res://entities/weapons/weapon_property.gd" id="4_6x1qu"]
+[ext_resource type="Script" path="res://entities/weapons/data/weapon_property.gd" id="4_6x1qu"]
 [ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="5_khkte"]
 
 [sub_resource type="Shader" id="Shader_i7b3d"]
@@ -44,6 +44,8 @@ damage = 1.0
 attack_range = 250
 shoot_interval = 1.0
 bullet_speed = 300
+critical_chance = 0.0
+critical_damage = 0.0
 target_enemy = false
 aimbot = false
 enable_audio = false
@@ -51,11 +53,7 @@ enable_audio = false
 [node name="Enemies" instance=ExtResource("1_k0stg")]
 material = SubResource("ShaderMaterial_cpth7")
 
-[node name="Icon" parent="." index="0"]
-scale = Vector2(1, 1)
-texture = ExtResource("2_f0r44")
-
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(6.72265, 9.85596e-06)
 shape = SubResource("RectangleShape2D_6yhvf")
 debug_color = Color(0, 0.595, 0.7, 0.235294)
@@ -64,6 +62,10 @@ debug_color = Color(0, 0.595, 0.7, 0.235294)
 position = Vector2(7, 0)
 shape = SubResource("RectangleShape2D_6yhvf")
 debug_color = Color(0, 0.595, 0.7, 0.14902)
+
+[node name="Icon" parent="." index="2"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_f0r44")
 
 [node name="Weapon" parent="." index="5" instance=ExtResource("2_jxlpx")]
 use_parent_material = true

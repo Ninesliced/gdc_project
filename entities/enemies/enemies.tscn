@@ -110,16 +110,23 @@ _data = {
 material = SubResource("ShaderMaterial_hwsn2")
 script = ExtResource("1_fr6v8")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ru3q2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 5.68434e-14)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ru3q2")
+
 [node name="Icon" type="Sprite2D" parent="."]
 use_parent_material = true
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_rt6ne")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_ru3q2")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_7gbns")]
 max_hp = 5
@@ -129,18 +136,11 @@ show_damage_indicator = true
 [node name="EnemyMoveComponent" type="Node2D" parent="."]
 script = ExtResource("4_krqto")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 5.68434e-14)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_ru3q2")
-
 [node name="HitPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_bfts0")
 }
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="on_damage" from="HealthComponent" to="." method="_on_health_component_on_damage"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

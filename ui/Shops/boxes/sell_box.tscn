@@ -2,15 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://cyhe2a2unekfj" path="res://ui/Shops/boxes/shop_box.tscn" id="1_7hc2k"]
 [ext_resource type="Script" path="res://ui/Shops/boxes/sell_component.gd" id="2_dylhw"]
-[ext_resource type="Script" path="res://ui/Shops/boxes/shop_box.gd" id="2_u1ukf"]
+[ext_resource type="AudioStream" uid="uid://b15p3af6ussto" path="res://assets/sounds/shops/buy.ogg" id="3_u2rlh"]
 
-[node name="Box" instance=ExtResource("1_7hc2k")]
-custom_minimum_size = Vector2(200, 200)
+[node name="box" instance=ExtResource("1_7hc2k")]
+offset_right = 41.6
+offset_bottom = 57.72
+pivot_offset = Vector2(64, 96)
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource("2_u1ukf")
 
 [node name="SellComponent" type="Node" parent="." index="1"]
 script = ExtResource("2_dylhw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="3"]
+position = Vector2(0.400024, 0.279999)
+stream = ExtResource("3_u2rlh")
 
 [connection signal="pressed" from="." to="SellComponent" method="_on_box_pressed"]

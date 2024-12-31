@@ -6,6 +6,7 @@ var upgrade_parent : Upgrade = null
 var index = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	sprite.position = Vector2(abs(sprite.position.x), abs(sprite.position.y))
 	pass # Replace with function body.
 
 
@@ -33,7 +34,9 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	else:
 		sprite.visible = false
 	pass
-	PlayerData.replace_item(item, index)
+	# will try to replace the item in the slot
+	if (PlayerData.replace_item(item, index)):
+		upgrade_parent.play_sound("load")
 	if upgrade_parent:
 		upgrade_parent.update_player_stats()
 

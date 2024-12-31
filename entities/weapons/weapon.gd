@@ -8,7 +8,7 @@ var direction: Vector2 = Vector2(1, 0)
 var target: Node2D = null
 var parent : Node2D = null
 
-var current_damage: float = 0.0
+var _player_stats : PlayerStats = null
 
 signal shoot
 
@@ -35,21 +35,12 @@ func _ready() -> void:
 	parent = get_parent()
 	if weapon_property == null:
 		weapon_property = WeaponProperty.new()
-	current_damage = weapon_property.damage
 	$Timer.wait_time = weapon_property.shoot_interval
 	$Sprite.texture = weapon_property.texture
-	var parent = get_parent()
+
 	if parent is Player:
 		var player: Player = parent as Player
-		player._player_stats.connect("on_player_stats_changed", update_stats)
-		weapon_property.critical_chance += player._player_stats.critical_chance
-		weapon_property.critical_damage += player._player_stats.critical_damage
-		update_stats()
-
-func update_stats():
-	var player_stat : PlayerStats = parent._player_stats
-	$Timer.wait_time = weapon_property.shoot_interval - (weapon_property.shoot_interval * player_stat.reduction_delay_boost)
-	current_damage = weapon_property.damage * player_stat.damage_multiplier
+		_player_stats = player._player_stats
 
 func _process(delta: float) -> void:
 	if (target == null or !is_instance_valid(target)):
@@ -75,17 +66,21 @@ func _on_timer_timeout() -> void:
 
 func init_bullet(bullet: PackedScene) -> Bullet:
 	var instance : Bullet = bullet.instantiate() as Bullet
+	var additional_cc = 0 if _player_stats == null else _player_stats.critical_chance
+	var additional_cd = 0 if _player_stats == null else _player_stats.critical_damage
+
 	instance.global_position = global_position
 	instance.global_rotation = direction.angle()
 	instance.direction = direction
 	instance.target_enemy = weapon_property.target_enemy
 	instance.speed = weapon_property.bullet_speed
 
-	if randf() < weapon_property.critical_chance:
+	if randf() < (weapon_property.critical_chance + additional_cc):
 		instance.is_critical_hit = true
-		instance.damage = current_damage * weapon_property.critical_damage
+		instance.damage = weapon_property.get_damage() * \
+		(weapon_property.critical_damage + additional_cd)
 	else:
-		instance.damage = current_damage
+		instance.damage = weapon_property.get_damage()
 
 	return instance
 

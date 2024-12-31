@@ -24,6 +24,9 @@ func _on_box_pressed() -> void:
 		PlayerData.inventory.erase(item)
 		print(PlayerData.inventory)
 		PlayerData.money += item.price
+		box_parent.play_sound("buy")
+		box_parent.animation_player.play("delete")
+		await box_parent.animation_player.animation_finished
 		box_parent.queue_free()
 	else:
 		assert(false, "No item in box")

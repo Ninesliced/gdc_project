@@ -28,4 +28,9 @@ func _on_shop_box_pressed() -> void:
 			print(item)
 			bought = true
 			box_parent.price.text = "bought"
+
+		box_parent.animation_player.play("delete")
+		box_parent.play_sound("buy")
+		await box_parent.animation_player.animation_finished
+		box_parent.queue_free()
 	pass # Replace with function body.

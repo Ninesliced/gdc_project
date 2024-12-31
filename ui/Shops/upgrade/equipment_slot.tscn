@@ -1,18 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://hu3f0ui18w8n"]
+[gd_scene load_steps=3 format=3 uid="uid://hu3f0ui18w8n"]
 
 [ext_resource type="Script" path="res://ui/Shops/upgrade/equipment_slot.gd" id="1_x1mtp"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vn1ul"]
+bg_color = Color(0.1296, 0.143787, 0.16, 0.760784)
+corner_detail = 1
+
 [node name="EquipmentSlot" type="Panel"]
 z_index = 1
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_vn1ul")
 script = ExtResource("1_x1mtp")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(10, 10)
+position = Vector2(15, 15)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

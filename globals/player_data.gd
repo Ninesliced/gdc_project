@@ -31,19 +31,19 @@ func get_player_stats() -> PlayerStats:
 		return null
 	return player._player_stats
 
-func replace_item(item: Item, index: int) -> void:
+func replace_item(item: Item, index: int) -> bool:
 	if player == null:
 		assert(false, "warning: player not found")
-		return
+		return false
 	if player._player_stats == null:
 		assert(false, "player stats not found")
-		return
+		return false
 	if player._player_stats.item_slots.size() <= index:
 		assert(false, "index out of range")
-		return
+		return false
 
 	if item and !check_type(item, player._player_stats.item_slots[index]):
-		return
+		return false
 
 	var temp_item = player._player_stats.item_slots[index].item
 	player._player_stats.item_slots[index].item = item
@@ -53,6 +53,7 @@ func replace_item(item: Item, index: int) -> void:
 
 	inventory.erase(item)
 	load_equipment()
+	return true
 
 func check_type(item: Item, slot: Slot) -> bool:
 	if item.type == ItemType.ALL:
