@@ -14,7 +14,6 @@ var pause_menu : Pause = null
 func _ready() -> void:
 	pause_menu = pause_menu_scene.instantiate() as Pause
 	add_child(pause_menu)
-	
 	pass # Replace with function body.
 
 

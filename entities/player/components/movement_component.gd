@@ -63,6 +63,7 @@ func _process(delta: float) -> void:
 	pass
 
 func handle_acceleration(direction,velocity, delta):
+	print(speed)
 	if direction.x > 0:
 		velocity.x = velocity.move_toward(direction * speed, acceleration * delta).x
 	if direction.x < 0:

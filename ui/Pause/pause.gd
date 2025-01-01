@@ -18,7 +18,6 @@ func _process(delta: float) -> void:
 			PauseGlobal.current_pause_type = PauseGlobal.PauseType.PAUSE
 			return
 		if get_tree().paused == true and PauseGlobal.current_pause_type == PauseGlobal.PauseType.PAUSE:
-			print("unpausing")
 			get_tree().paused = false
 			PauseGlobal.current_pause_type = PauseGlobal.PauseType.NONE
 			visible = false

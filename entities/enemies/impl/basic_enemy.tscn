@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://lbaknsn35a0g"]
+[gd_scene load_steps=14 format=3 uid="uid://lbaknsn35a0g"]
 
 [ext_resource type="PackedScene" uid="uid://g2o8ee42dabs" path="res://entities/enemies/enemies.tscn" id="1_k0stg"]
+[ext_resource type="Script" path="res://entities/enemies/enemy_data.gd" id="2_6tdlp"]
 [ext_resource type="Texture2D" uid="uid://0h2fyc6rg3xc" path="res://assets/enemies/normal_ship_v3.png" id="2_f0r44"]
+[ext_resource type="PackedScene" uid="uid://pptr5lrjp0jp" path="res://entities/enemies/drops/basic_drop.tscn" id="2_fhgjo"]
 [ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_jxlpx"]
 [ext_resource type="PackedScene" uid="uid://ctr6pf6d1gbmr" path="res://entities/weapons/bullets/bullet_enemy.tscn" id="3_c3arf"]
 [ext_resource type="Script" path="res://entities/weapons/data/weapon_property.gd" id="4_6x1qu"]
@@ -32,11 +34,17 @@ resource_local_to_scene = true
 shader = SubResource("Shader_i7b3d")
 shader_parameter/flash_color = Color(1, 1, 1, 0)
 
+[sub_resource type="Resource" id="Resource_cvk7t"]
+script = ExtResource("2_6tdlp")
+damage = 5
+drop = ExtResource("2_fhgjo")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6yhvf"]
 size = Vector2(38.9999, 50.5547)
 
 [sub_resource type="Resource" id="Resource_jgmhj"]
 script = ExtResource("4_6x1qu")
+level = 1
 rotation_speed = 0.1
 bullet = ExtResource("3_c3arf")
 texture = ExtResource("5_khkte")
@@ -52,6 +60,7 @@ enable_audio = false
 
 [node name="Enemies" instance=ExtResource("1_k0stg")]
 material = SubResource("ShaderMaterial_cpth7")
+enemy_data = SubResource("Resource_cvk7t")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(6.72265, 9.85596e-06)

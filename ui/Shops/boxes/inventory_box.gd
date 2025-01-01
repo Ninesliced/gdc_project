@@ -1,4 +1,4 @@
-extends UiBox
+extends ShopBox
 class_name InventoryBox
 var parent_box : Upgrade = null
 # Called when the node enters the scene tree for the first time.

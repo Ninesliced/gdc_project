@@ -17,9 +17,11 @@ class_name Player
 @onready var camera = $Camera2D
 @onready var health_component : HealthComponent = $HealthComponent
 func _ready() -> void:
-	$MovementComponent.speed = _player_stats.speed
+	if PlayerData.player_stats != null:
+		_player_stats = PlayerData.player_stats
 	PlayerData.player = self
 	PlayerData.load_equipment()
+	$MovementComponent.speed = _player_stats.speed
 	pass
 
 

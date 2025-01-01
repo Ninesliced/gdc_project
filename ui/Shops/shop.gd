@@ -34,6 +34,7 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
+	print("ta")
 	if Input.is_action_just_pressed("ui_cancel") and PauseGlobal.current_pause_type == PauseGlobal.PauseType.SHOP:
 		close_shop()
 	pass

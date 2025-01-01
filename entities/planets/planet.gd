@@ -4,9 +4,6 @@ extends Node2D
 var can_interact = false
 @export var buy_cards : Array[Item] = []
 
-var item: Item = load("res://entities/items/weapon_items/canon_base.tres")
-var item2 : Item = load("res://entities/items/weapon_items/canon_base_2.tres")
-
 func _ready() -> void:
 	buy_cards = ShopData.get_random_items(3)
 	pass # Replace with function body.

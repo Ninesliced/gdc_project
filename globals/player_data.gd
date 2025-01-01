@@ -1,5 +1,6 @@
 extends Node
 var player = null
+var player_stats = null
 var player_rotation = 0
 var money = 400
 var inventory : Array[Item] = []
@@ -11,16 +12,6 @@ enum ItemType {
 	BOOSTER = 2,
 	ALL = 3
 }
-
-func _ready() -> void:
-
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func get_player() -> Player:
 	return player

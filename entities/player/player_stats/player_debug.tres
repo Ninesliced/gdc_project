@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=10 format=3 uid="uid://qlkil1fbaq57"]
+
+[ext_resource type="Script" path="res://entities/player/slot.gd" id="1_eufnt"]
+[ext_resource type="Resource" uid="uid://db6xo6xvupfk8" path="res://entities/items/weapon_items/canon_fast.tres" id="2_jt16m"]
+[ext_resource type="Script" path="res://entities/player/player_stats.gd" id="3_qk8h1"]
+[ext_resource type="Texture2D" uid="uid://c73b3burpaitk" path="res://assets/space_breaker_asset/Ships/Small/body_03.png" id="4_dn2e8"]
+
+[sub_resource type="Resource" id="Resource_npy0g"]
+script = ExtResource("1_eufnt")
+position = Vector2(0, 0)
+item = ExtResource("2_jt16m")
+slot_types = Array[int]([0])
+rotation = -1.57
+
+[sub_resource type="Resource" id="Resource_tac16"]
+script = ExtResource("1_eufnt")
+position = Vector2(32, 0)
+slot_types = Array[int]([0, 1])
+rotation = 0.0
+
+[sub_resource type="Resource" id="Resource_g3xh0"]
+script = ExtResource("1_eufnt")
+position = Vector2(0, 32)
+slot_types = Array[int]([1])
+rotation = 1.57
+
+[sub_resource type="Resource" id="Resource_tlr3s"]
+script = ExtResource("1_eufnt")
+position = Vector2(-32, 0)
+slot_types = Array[int]([1, 0])
+rotation = -3.14
+
+[sub_resource type="Resource" id="Resource_xc7ek"]
+script = ExtResource("1_eufnt")
+position = Vector2(0, -32)
+slot_types = Array[int]([0, 1])
+rotation = -1.57
+
+[resource]
+script = ExtResource("3_qk8h1")
+locked = false
+name = "Debug character"
+description = "Cheat"
+rarity = 4
+texture = ExtResource("4_dn2e8")
+item_slots = Array[ExtResource("1_eufnt")]([SubResource("Resource_npy0g"), SubResource("Resource_tac16"), SubResource("Resource_g3xh0"), SubResource("Resource_tlr3s"), SubResource("Resource_xc7ek")])
+reduction_delay_boost = 0.0
+damage_multiplier = 5.0
+speed = 500.0
+health = 100000.0
+critical_chance = 1.0
+critical_damage = 30.0

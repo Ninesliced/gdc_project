@@ -54,7 +54,6 @@ script = ExtResource("7_l5tyt")
 acceleration = 700
 decceleration = 500
 rotation_speed = 8.0
-movement_mode = null
 
 [connection signal="on_damage" from="HealthComponent" to="." method="_on_health_component_on_damage"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]

@@ -1,9 +1,27 @@
-[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://db6xo6xvupfk8"]
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://db6xo6xvupfk8"]
 
 [ext_resource type="Texture2D" uid="uid://b870u5vca6t7n" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk2.png" id="1_01far"]
 [ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_2og11"]
-[ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/base_weapon.tres" id="3_0m0tx"]
+[ext_resource type="PackedScene" uid="uid://vg43s1sdvoud" path="res://entities/weapons/bullets/bullet_long.tscn" id="3_7et0a"]
+[ext_resource type="Script" path="res://entities/weapons/data/weapon_property.gd" id="4_hm41q"]
 [ext_resource type="Script" path="res://entities/items/item.gd" id="4_joajl"]
+[ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="5_jq1at"]
+
+[sub_resource type="Resource" id="Resource_w0lqv"]
+script = ExtResource("4_hm41q")
+level = 1
+rotation_speed = 0.1
+bullet = ExtResource("3_7et0a")
+texture = ExtResource("5_jq1at")
+damage = 2.0
+attack_range = 500
+shoot_interval = 0.1
+bullet_speed = 800
+critical_chance = 0.0
+critical_damage = 0.0
+target_enemy = true
+aimbot = false
+enable_audio = false
 
 [resource]
 script = ExtResource("4_joajl")
@@ -14,5 +32,5 @@ description = "a simple cannon"
 icon_form_resource = true
 icon = ExtResource("1_01far")
 price = 5
-resource = ExtResource("3_0m0tx")
+resource = SubResource("Resource_w0lqv")
 item_scene = ExtResource("2_2og11")

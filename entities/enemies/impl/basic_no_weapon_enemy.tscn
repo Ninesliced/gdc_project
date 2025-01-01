@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://br0br7lxdlqwh"]
+[gd_scene load_steps=8 format=3 uid="uid://br0br7lxdlqwh"]
 
 [ext_resource type="PackedScene" uid="uid://g2o8ee42dabs" path="res://entities/enemies/enemies.tscn" id="1_tndh3"]
+[ext_resource type="PackedScene" uid="uid://pptr5lrjp0jp" path="res://entities/enemies/drops/basic_drop.tscn" id="2_u5cl2"]
+[ext_resource type="Script" path="res://entities/enemies/enemy_data.gd" id="3_e1a3q"]
 
 [sub_resource type="Shader" id="Shader_blc2e"]
 code = "shader_type canvas_item;
@@ -27,22 +29,28 @@ resource_local_to_scene = true
 shader = SubResource("Shader_blc2e")
 shader_parameter/flash_color = Color(1, 1, 1, 0)
 
+[sub_resource type="Resource" id="Resource_leftw"]
+script = ExtResource("3_e1a3q")
+damage = 5
+drop = ExtResource("2_u5cl2")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqisj"]
 size = Vector2(31.0002, 43)
 
 [node name="Enemies" instance=ExtResource("1_tndh3")]
 material = SubResource("ShaderMaterial_x4at5")
+enemy_data = SubResource("Resource_leftw")
 
-[node name="Icon" parent="." index="0"]
-position = Vector2(9.53674e-07, 5.96046e-08)
-scale = Vector2(0.7, 0.7)
-
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_eqisj")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_eqisj")
+
+[node name="Icon" parent="." index="2"]
+position = Vector2(9.53674e-07, 5.96046e-08)
+scale = Vector2(0.7, 0.7)
 
 [node name="Node2D" type="Node2D" parent="." index="6"]

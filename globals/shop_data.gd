@@ -32,7 +32,6 @@ func set_weigthed_items(items : Array) -> void:
 	weights_total = 0
 	for item in items:
 		weights_total += item.get_weight() * 100
-		print("test_weight")
 		items_weigthed.append({ "weight" : weights_total, "item" : item })
 	pass
 
@@ -49,7 +48,6 @@ func get_random_items(amount : int) -> Array:
 	for i in range(amount):
 		var weight = randi() % weights_total
 		var new_item = get_weigthed_item(weight).duplicate()
-		print(new_item)
 		items.append(new_item)
 	return items
 	pass

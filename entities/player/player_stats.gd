@@ -2,6 +2,10 @@
 extends Resource
 class_name PlayerStats
 
+@export var locked : bool = false
+@export var name : String = "unnamed soldier"
+@export var description : String = "A soldier with no name"
+@export var rarity : Item.Rarity = Item.Rarity.COMMON
 @export var texture : Texture2D = load("res://assets/space_breaker_asset/Ships/Medium/body_02.png")
 @export var item_slots : Array[Slot] = []
 @export var reduction_delay_boost : float = 0.0

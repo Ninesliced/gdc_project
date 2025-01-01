@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwkqunlapqv16"]
+[gd_scene load_steps=5 format=3 uid="uid://cwkqunlapqv16"]
 
 [ext_resource type="PackedScene" uid="uid://cyhe2a2unekfj" path="res://ui/Shops/boxes/shop_box.tscn" id="1_7hc2k"]
 [ext_resource type="Script" path="res://ui/Shops/boxes/sell_component.gd" id="2_dylhw"]
+[ext_resource type="Script" path="res://ui/Shops/boxes/shop_box.gd" id="2_n0mmf"]
 [ext_resource type="AudioStream" uid="uid://b15p3af6ussto" path="res://assets/sounds/shops/buy.ogg" id="3_u2rlh"]
 
 [node name="box" instance=ExtResource("1_7hc2k")]
@@ -10,6 +11,7 @@ offset_bottom = 57.72
 pivot_offset = Vector2(64, 96)
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = ExtResource("2_n0mmf")
 
 [node name="SellComponent" type="Node" parent="." index="1"]
 script = ExtResource("2_dylhw")
