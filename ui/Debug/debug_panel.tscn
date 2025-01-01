@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dbixh0qpvjc84"]
+
+[node name="DebugPanel" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 21.0
+text = "DEBUG
+"

@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_6nte1")
-level = 5
+level = 1
 rotation_speed = 0.1
 bullet = ExtResource("1_f3ut3")
 texture = ExtResource("3_8dmcm")

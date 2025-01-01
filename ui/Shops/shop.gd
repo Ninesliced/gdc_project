@@ -14,13 +14,14 @@ var currentShopType : ShopType = ShopType.BUY
 @onready var upgrade_ui : Upgrade = $Shop/HBoxContainer/Upgrade
 @onready var sell_ui : SellUI =  $Shop/HBoxContainer/Sell
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
-var dict_type : Dictionary = {}
-
-var box_card : PackedScene = preload("res://ui/Shops/boxes/buy_box.tscn")
 @onready var item_containter : HBoxContainer = $Shop/HBoxContainer/Buy/Panel/ItemContainer
-var buy_cards : Array = []
-var item: Item = load("res://entities/items/weapon_items/canon_base.tres")
-var item2 : Item = load("res://entities/items/weapon_items/canon_base_2.tres")
+@export var random_items : bool = false
+
+var dict_type : Dictionary = {}
+var box_card : PackedScene = preload("res://ui/Shops/boxes/buy_box.tscn")
+var item_boxes : Array = []
+var items: Array = []
+# TODO: changer
 
 # var shield : Item = load("res://entities/items/shield_items/basic_shield_item.tres")
 
@@ -30,7 +31,6 @@ func _ready() -> void:
 		ShopType.SELL : sell_ui,
 		ShopType.UPGRADE : upgrade_ui,
 	}
-	set_buy_cards([item, item2, item, item2])
 	pass
 
 func _process(delta: float) -> void:
@@ -40,15 +40,17 @@ func _process(delta: float) -> void:
 
 
 
-func set_buy_cards(cards : Array) -> void:
+func set_boxes(cards : Array) -> void:
+	for card in item_boxes:
+		if is_instance_valid(card):
+			card.queue_free()
 	for card in cards:
 		var instantiated = box_card.instantiate()
 		instantiated.set_item(card)
 		item_containter.add_child(instantiated)
-		buy_cards.append(instantiated)
+		item_boxes.append(instantiated)
+	items = cards
 	pass
-
-
 
 
 # no need to look
@@ -91,8 +93,6 @@ func open_shop() -> void:
 	show_type(ShopType.BUY, false)
 	show()
 	get_tree().paused = true
-	# await animation_player.animation_finished
-	# animation_player.play("fall_items")
 	pass
 
 func close_shop() -> void:

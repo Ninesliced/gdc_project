@@ -1,5 +1,14 @@
 extends Button
 class_name UiBox
+
+var rarity_colors : Dictionary = {
+	0: Color(1, 1, 1, 1),
+	1 : Color.html("#488bd4"),
+	2 : Color.html("#3dff6e"),
+	3 : Color.html("#d61a88"),
+	4 : Color.html("#ffb84a"),
+}
+
 @onready var title: Label = $HBox/BoxContainer3/Title
 @onready var price: Label = $HBox/BoxContainer2/Price
 @onready var item_icon: Sprite2D = $HBox/BoxContainer/Panel2/Icon
@@ -18,6 +27,7 @@ func _process(delta):
 func set_item(new_item: Item) -> void: # SCOTCH UTILISER LES RESSOURCES
 	await ready
 	title.text = new_item.name
+	title.modulate = rarity_colors[new_item.rarity]
 	if new_item.resource is WeaponProperty:
 		var weapon = new_item.resource as WeaponProperty
 		title.text += " v" + str(weapon.level)

@@ -25,6 +25,7 @@ enable_audio = false
 [resource]
 script = ExtResource("4_uhl7u")
 name = "simple cannon v2"
+rarity = 0
 type = 0
 description = "a better cannon"
 icon_form_resource = true

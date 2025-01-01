@@ -31,6 +31,10 @@ func get_player_stats() -> PlayerStats:
 		return null
 	return player._player_stats
 
+
+
+# equipment manager
+
 func replace_item(item: Item, index: int) -> bool:
 	if player == null:
 		assert(false, "warning: player not found")

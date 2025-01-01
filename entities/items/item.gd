@@ -3,7 +3,16 @@ extends Resource
 
 class_name Item
 
+enum Rarity {
+    COMMON = 0,
+    UNCOMMON = 1,
+    RARE = 2,
+    EPIC = 3,
+    LEGENDARY = 4,
+}
+
 @export var name : String = ""
+@export var rarity : Rarity = Rarity.COMMON
 @export var type : PlayerData.ItemType = PlayerData.ItemType.ALL
 @export var description : String = ""
 @export var icon_form_resource : bool = false:
@@ -24,3 +33,16 @@ var resell_percentage : float = 0.7
 
 func get_resell_price() -> int:
     return int(price * resell_percentage)
+
+func get_weight() -> float:
+    if rarity == Rarity.COMMON:
+        return 0.5
+    elif rarity == Rarity.UNCOMMON:
+        return 0.3
+    elif rarity == Rarity.RARE:
+        return 0.15
+    elif rarity == Rarity.EPIC:
+        return 0.04
+    elif rarity == Rarity.LEGENDARY:
+        return 0.01
+    return 0.0

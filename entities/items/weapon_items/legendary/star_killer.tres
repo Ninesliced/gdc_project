@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://bfwbxnhhd08mc"]
+
+[ext_resource type="Script" path="res://entities/weapons/data/weapon_property.gd" id="1_3osnc"]
+[ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="1_jm2qo"]
+[ext_resource type="Script" path="res://entities/items/item.gd" id="1_l43ul"]
+[ext_resource type="PackedScene" uid="uid://dpyx7hf8384hb" path="res://entities/weapons/bullet.tscn" id="2_cwvr7"]
+[ext_resource type="Texture2D" uid="uid://cto87s70ihx6e" path="res://assets/space_breaker_asset/Bonus/turret_03b_mk3.png" id="4_6lkop"]
+
+[sub_resource type="Resource" id="Resource_1otjc"]
+script = ExtResource("1_3osnc")
+level = 1
+rotation_speed = 0.1
+bullet = ExtResource("2_cwvr7")
+texture = ExtResource("4_6lkop")
+damage = 30.0
+attack_range = 500
+shoot_interval = 0.4
+bullet_speed = 300
+critical_chance = 0.25
+critical_damage = 0.0
+target_enemy = true
+aimbot = true
+enable_audio = false
+
+[resource]
+script = ExtResource("1_l43ul")
+name = "star killer"
+rarity = 1
+type = 0
+description = "a star killer"
+icon_form_resource = true
+icon = ExtResource("4_6lkop")
+price = 50
+resource = SubResource("Resource_1otjc")
+item_scene = ExtResource("1_jm2qo")

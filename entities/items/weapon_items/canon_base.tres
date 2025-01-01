@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("1_ymi6m")
 name = "Turret-A"
+rarity = 0
 type = 0
 description = "a simple cannon"
 icon_form_resource = true

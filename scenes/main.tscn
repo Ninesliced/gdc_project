@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://brvbeliklg4pq"]
+[gd_scene load_steps=9 format=3 uid="uid://brvbeliklg4pq"]
 
 [ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_uhlg2"]
 [ext_resource type="Texture2D" uid="uid://da5no17h7cchy" path="res://assets/space_breaker_asset/Ships/Big/body_01.png" id="2_irioc"]
 [ext_resource type="PackedScene" uid="uid://brfq32hg5bfi2" path="res://entities/enemies/spawner/enemy_spawner.tscn" id="4_73t8l"]
 [ext_resource type="PackedScene" uid="uid://cchsone545eea" path="res://entities/planets/planet.tscn" id="5_1caxx"]
+[ext_resource type="Resource" uid="uid://ccw7k2y8pni61" path="res://entities/items/weapon_items/canon_base.tres" id="5_02tkh"]
+[ext_resource type="Script" path="res://entities/items/item.gd" id="5_6fj1n"]
 [ext_resource type="PackedScene" uid="uid://pptr5lrjp0jp" path="res://entities/enemies/drops/basic_drop.tscn" id="5_8r2ik"]
+[ext_resource type="Resource" uid="uid://dmik1de6q5mfc" path="res://entities/items/weapon_items/canon_base_2.tres" id="6_d56hd"]
 
 [node name="main" type="Node2D"]
 
@@ -21,6 +24,7 @@ spawn_distance_max = 1000
 
 [node name="Planet" parent="." instance=ExtResource("5_1caxx")]
 position = Vector2(272, 206)
+buy_cards = Array[ExtResource("5_6fj1n")]([ExtResource("5_02tkh"), ExtResource("6_d56hd")])
 
 [node name="BasicDrop" parent="." instance=ExtResource("5_8r2ik")]
 position = Vector2(405, 443)

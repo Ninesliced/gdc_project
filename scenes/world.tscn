@@ -1,50 +1,29 @@
 [gd_scene load_steps=6 format=3 uid="uid://1713ucjydt4a"]
 
 [ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_40l4n"]
+[ext_resource type="PackedScene" uid="uid://dbixh0qpvjc84" path="res://ui/Debug/debug_panel.tscn" id="1_pdniv"]
+[ext_resource type="Script" path="res://ui/Debug/debug_panel.gd" id="2_nm54c"]
 [ext_resource type="PackedScene" uid="uid://brfq32hg5bfi2" path="res://entities/enemies/spawner/enemy_spawner.tscn" id="2_o7w43"]
-[ext_resource type="PackedScene" uid="uid://lbaknsn35a0g" path="res://entities/enemies/impl/basic_enemy.tscn" id="3_s5o7a"]
-
-[sub_resource type="Shader" id="Shader_al0u2"]
-code = "shader_type canvas_item;
-
-uniform vec4 flash_color : source_color = vec4(1.0);
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	COLOR = mix(COLOR, flash_color, COLOR.a * flash_color.a);
-	// Called for every pixel the material is visible on.
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2qcn"]
-resource_local_to_scene = true
-shader = SubResource("Shader_al0u2")
-shader_parameter/flash_color = Color(1, 1, 1, 0)
+[ext_resource type="PackedScene" uid="uid://cchsone545eea" path="res://entities/planets/planet.tscn" id="3_lqoco"]
 
 [node name="world" type="Node2D"]
+
+[node name="DebugPanel" parent="." instance=ExtResource("1_pdniv")]
+script = ExtResource("2_nm54c")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_40l4n")]
 position = Vector2(44, 224)
 
 [node name="EnemySpawner" parent="CharacterBody2D" instance=ExtResource("2_o7w43")]
+spawn_interval = 2.0
 spawn_count = 1
 spawn_distance_max = 900
-cycle_interval = 1.0
 
-[node name="Enemies" parent="." instance=ExtResource("3_s5o7a")]
-material = SubResource("ShaderMaterial_i2qcn")
-position = Vector2(-248, 184)
+[node name="Planet" parent="." instance=ExtResource("3_lqoco")]
+position = Vector2(-200, 384)
 
-[node name="HealthComponent" parent="Enemies" index="3"]
-max_hp = 1000
-initial_hp = 1000
+[node name="Planet2" parent="." instance=ExtResource("3_lqoco")]
+position = Vector2(0, 56)
 
-[editable path="Enemies"]
+[node name="Planet3" parent="." instance=ExtResource("3_lqoco")]
+position = Vector2(312, 472)
