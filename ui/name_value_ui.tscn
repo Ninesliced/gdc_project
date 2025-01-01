@@ -1,0 +1,118 @@
+[gd_scene load_steps=6 format=3 uid="uid://wlsjjcw1epik"]
+
+[ext_resource type="Texture2D" uid="uid://c20d1f3ovy4an" path="res://assets/ui/round_nine_patch.png" id="1_lkmow"]
+[ext_resource type="Script" path="res://ui/name_value_ui.gd" id="2_ilcol"]
+
+[sub_resource type="Animation" id="Animation_8nukv"]
+resource_name = "move_text"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_kqs61"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xfs3c"]
+_data = {
+"RESET": SubResource("Animation_kqs61"),
+"move_text": SubResource("Animation_8nukv")
+}
+
+[node name="NameValueUi" type="NinePatchRect"]
+self_modulate = Color(0.3344, 0.33972, 0.38, 1)
+custom_minimum_size = Vector2(100, 30)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -15.5
+offset_right = 108.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("1_lkmow")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 3
+patch_margin_bottom = 6
+script = ExtResource("2_ilcol")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+texture = ExtResource("1_lkmow")
+patch_margin_left = 4
+patch_margin_top = 6
+patch_margin_right = 4
+patch_margin_bottom = 8
+
+[node name="Text" type="Label" parent="HBoxContainer/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -9.0
+offset_right = 51.5
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+text = "NAME OF THE VALUE"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer"]
+self_modulate = Color(0.1776, 0.1776, 0.24, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+texture = ExtResource("1_lkmow")
+patch_margin_left = 4
+patch_margin_top = 6
+patch_margin_right = 4
+patch_margin_bottom = 8
+
+[node name="Value" type="Label" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = -9.0
+offset_right = 30.5
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+text = "12 123 123"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xfs3c")
+}

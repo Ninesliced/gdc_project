@@ -6,9 +6,12 @@ var class_box_scene = preload("res://ui/Menu/class_box.tscn")
 var world_scene = preload("res://scenes/world.tscn")
 var list_class_boxes : Array = []
 
-@onready var grid_container: GridContainer = $CanvasLayer/Control/VBoxContainer/Panel/VScrollBar/ClassContainer
-@onready var stats: Label = $CanvasLayer/Control/VBoxContainer/Panel/NinePatchRect/VBoxContainer/Stats
 
+var name_value_ui_scene = preload("res://ui/name_value_ui.tscn")
+var stats_ui_list : Array = []
+
+@onready var grid_container: GridContainer = $CanvasLayer/Control/VBoxContainer/Panel/VScrollBar/ClassContainer
+@onready var stats_container: VBoxContainer = $CanvasLayer/Control/VBoxContainer/Panel/NinePatchRect/StatsContainer
 func _ready() -> void:
 	for character in GameData.list_available_characters:
 		var class_box_instance = class_box_scene.instantiate()
@@ -28,10 +31,27 @@ func select_class(box : ClassBox) -> void:
 	selected_class_box.select()
 
 func change_stat_display() -> void:
-	stats.text = "Health: " + str(selected_class.health) + "\n" + \
-	"Speed: " + str(selected_class.critical_damage) + "\n" + \
-	"Critical chance: " + str(selected_class.critical_chance) + "\n" + \
-	"Critical damage: " + str(selected_class.critical_damage) + "\n"
+	for stat_ui in stats_ui_list:
+		stat_ui.queue_free()
+	stats_ui_list.clear()
+
+	var new_stats = {
+		"health": selected_class.health,
+		"damage_multiplier": str(selected_class.damage_multiplier) + "X",
+		"critical_chance": str(selected_class.critical_chance * 100) + "%",
+		"critical_damage": str(selected_class.critical_damage * 100) + "%",
+		"speed": selected_class.speed,
+	}
+
+	for stat in new_stats:
+		var name_value_ui_instance :NameValueUI = name_value_ui_scene.instantiate()
+		var formated_name = stat.replace("_", " ")
+		name_value_ui_instance.set_name_value(formated_name, str(new_stats[stat]))
+		name_value_ui_instance.set_value_color(GameData.rarity_colors[stat])
+		stats_ui_list.append(name_value_ui_instance)
+		stats_container.add_child(name_value_ui_instance)
+
+	pass # Replace with function body.
 	
 
 func _process(delta: float) -> void:

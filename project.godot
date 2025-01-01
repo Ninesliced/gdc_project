@@ -22,6 +22,7 @@ PlayerData="*res://globals/player_data.gd"
 PauseGlobal="*res://globals/pause_global.gd"
 GameData="*res://globals/game_data.gd"
 SceneManagerGlobal="*res://globals/scene_manager_global.gd"
+UiGlobal="*res://globals/ui_global.gd"
 
 [display]
 

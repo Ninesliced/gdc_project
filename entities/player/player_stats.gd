@@ -15,8 +15,6 @@ class_name PlayerStats
 @export var critical_chance : float = 0.2
 @export var critical_damage : float = 2
 
-
-
 signal on_player_stats_changed(stats: PlayerStats)
 
 func is_critical_hit() -> bool:

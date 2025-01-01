@@ -36,8 +36,8 @@ func _on_shop_box_pressed() -> void:
 	pass # Replace with function body.
 
 func destroy() -> void:
+	var item: Item = box_parent.item
 	var id = ShopData.shop.item_boxes.find(box_parent)
-	ShopData.shop.items.remove_at(id)
-	ShopData.shop.item_boxes.remove_at(id)
+	ShopData.shop.items.erase(item)
 	box_parent.queue_free()
 	pass

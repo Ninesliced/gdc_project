@@ -5,7 +5,10 @@ var shop_scene : PackedScene = preload("res://ui/Shops/shop.tscn")
 @export var items : Array = [
 	load("res://entities/items/weapon_items/canon_base.tres"),
 	load("res://entities/items/weapon_items/canon_base_2.tres"),
-	load("res://entities/items/weapon_items/legendary/star_killer.tres")
+	load("res://entities/items/weapon_items/legendary/star_killer.tres"),
+	load("res://entities/items/weapon_items/legendary/star_killer.tres"),
+	load("res://entities/items/weapon_items/legendary/star_killer.tres"),
+	load("res://entities/items/weapon_items/legendary/star_killer.tres"),
 ]
 var items_weigthed : Array[Dictionary] = []
 var weights_total : int = 0

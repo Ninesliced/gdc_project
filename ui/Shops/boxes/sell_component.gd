@@ -20,9 +20,7 @@ func _on_box_pressed() -> void:
 	var item: Item = box_parent.item
 	if item:
 		print("sell: ", item)
-		print(PlayerData.inventory)
 		PlayerData.inventory.erase(item)
-		print(PlayerData.inventory)
 		PlayerData.money += item.price
 		box_parent.play_sound("buy")
 		box_parent.animation_player.play("delete")

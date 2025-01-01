@@ -34,7 +34,6 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	print("ta")
 	if Input.is_action_just_pressed("ui_cancel") and PauseGlobal.current_pause_type == PauseGlobal.PauseType.SHOP:
 		close_shop()
 	pass
@@ -45,6 +44,7 @@ func set_boxes(cards : Array) -> void:
 	for card in item_boxes:
 		if is_instance_valid(card):
 			card.queue_free()
+	item_boxes.clear()
 	for card in cards:
 		var instantiated = box_card.instantiate()
 		instantiated.set_item(card)
