@@ -35,7 +35,7 @@ func _ready() -> void:
 	parent = get_parent()
 	if weapon_property == null:
 		weapon_property = WeaponProperty.new()
-	$Timer.wait_time = weapon_property.shoot_interval
+	$Timer.wait_time = weapon_property.fire_rate
 	$Sprite.texture = weapon_property.texture
 
 	if parent is Player:

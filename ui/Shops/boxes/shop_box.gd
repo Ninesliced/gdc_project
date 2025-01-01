@@ -4,9 +4,17 @@ class_name ShopBox
 @onready var title: Label = $HBox/BoxContainer3/Title
 @onready var price: Label = $HBox/BoxContainer2/Price
 @onready var item_icon: Sprite2D = $HBox/BoxContainer/Panel2/Icon
+
+@onready var stats: NinePatchRect = $Stats
+@onready var stats_container: VBoxContainer = $Stats/StatsContainer
+var stats_list : Array[NameValueUI] = []
 var ressource = ""
-var item : Item = null
+@export var item : Item = null
+
+var name_value_ui_scene = preload("res://name_value_ui.tscn")
+
 func _ready():
+	stats.hide()
 	pass
 
 
@@ -25,7 +33,39 @@ func set_item(new_item: Item) -> void: # SCOTCH UTILISER LES RESSOURCES
 	item_icon.texture = new_item.icon
 	ressource = new_item.resource
 	item = new_item
+	set_stats()
 	pass
+
+func set_stats() -> void:
+	var stats = {}
+	for stat_ui in stats_list:
+		if is_instance_valid(stat_ui):
+			stat_ui.queue_free()
+	stats_list.clear()
+
+	if item.resource is WeaponProperty:
+		var weapon_property = item.resource as WeaponProperty
+		var dps = 0
+		if weapon_property.fire_rate > 0:
+			dps = weapon_property.damage / weapon_property.fire_rate
+
+		stats = {
+			"dps" : dps,
+			"damage" : weapon_property.get_damage(),
+			"fire_rate" : weapon_property.fire_rate,
+			"critical_chance" : str(weapon_property.get_critical_chance() * 100) + "%",
+			"critical_damage" : str(weapon_property.get_critical_damage() * 100) + "%",
+			# "attack_range" : weapon_property.attack_range,
+			# "bullet_speed" : weapon_property.bullet_speed,
+		}
+	
+	var new_stats : Array[NameValueUI] = UiGlobal.get_ui_stats_from_dict(stats)
+
+	for stat in new_stats:
+		stats_container.add_child(stat)
+		stats_list.append(stat)
+
+	
 
 func get_save_data() -> Dictionary:
 	return {
@@ -37,3 +77,14 @@ func play_sound(sound: String) -> void:
 		$AudioStreamPlayer2D.pitch_scale = randf_range(0.9, 1.1)
 		$AudioStreamPlayer2D.play()
 	pass
+
+func _on_mouse_entered() -> void:
+	super._on_mouse_entered()
+	stats.show()
+	pass
+
+func _on_mouse_exited() -> void:
+	super._on_mouse_exited()
+	stats.hide()
+	pass
+

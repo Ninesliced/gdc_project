@@ -1,12 +1,12 @@
 extends Node
-var box_parent : UiBox = null
+var box_parent : ShopBox = null
 var bought = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var box = get_parent()
 
-	if box is UiBox:
+	if box is ShopBox:
 		box_parent = box
 	else:
 		assert(false, "Box parent is not a UiBox")
@@ -31,6 +31,7 @@ func _on_shop_box_pressed() -> void:
 
 		box_parent.animation_player.play("delete")
 		box_parent.play_sound("buy")
+		box_parent.stats.hide()
 		await box_parent.animation_player.animation_finished
 		destroy()
 	pass # Replace with function body.

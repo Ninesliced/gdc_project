@@ -47,7 +47,7 @@ func change_stat_display() -> void:
 		var name_value_ui_instance :NameValueUI = name_value_ui_scene.instantiate()
 		var formated_name = stat.replace("_", " ")
 		name_value_ui_instance.set_name_value(formated_name, str(new_stats[stat]))
-		name_value_ui_instance.set_value_color(GameData.rarity_colors[stat])
+		name_value_ui_instance.set_value_color(GameData.name_colors[stat])
 		stats_ui_list.append(name_value_ui_instance)
 		stats_container.add_child(name_value_ui_instance)
 

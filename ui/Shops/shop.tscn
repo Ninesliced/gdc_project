@@ -226,6 +226,7 @@ patch_margin_right = 7
 patch_margin_bottom = 12
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Shop/HBoxContainer/Sell/NinePatchRect"]
+clip_contents = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -233,26 +234,28 @@ anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = -8.0
-offset_bottom = -8.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
 
 [node name="GridContainer" type="GridContainer" parent="Shop/HBoxContainer/Sell/NinePatchRect/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 4
 
 [node name="Upgrade" type="HBoxContainer" parent="Shop/HBoxContainer"]
-visible = false
+z_index = -1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
 script = ExtResource("4_57mfb")
 
 [node name="Bench" type="NinePatchRect" parent="Shop/HBoxContainer/Upgrade"]
+z_index = -1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -308,6 +311,7 @@ patch_margin_right = 7
 patch_margin_bottom = 12
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Shop/HBoxContainer/Upgrade/Items"]
+clip_contents = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

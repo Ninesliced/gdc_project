@@ -65,6 +65,7 @@ func show_type(shop_type : ShopType, animate:bool = false) -> void:
 		dict_type[type].hide()
 	
 	dict_type[shop_type].show()
+	print("showing type", shop_type)
 
 	if animate:
 		animation_player.play("rise")

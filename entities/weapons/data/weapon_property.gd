@@ -9,7 +9,7 @@ class_name WeaponProperty
 @export var texture: Texture2D = load("res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png")
 @export var damage := 5.0
 @export var attack_range := 500
-@export var shoot_interval := 0.2
+@export var fire_rate := 0.2
 @export var bullet_speed := 300
 @export var critical_chance := 0.0
 @export var critical_damage := 0.0

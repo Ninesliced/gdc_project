@@ -3,6 +3,7 @@ class_name InventoryBox
 var parent_box : Upgrade = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super._ready()
 	pass # Replace with function body.
 
 
@@ -19,13 +20,10 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	preview_control.add_child(preview)
 	set_drag_preview(preview_control)
 	parent_box.update_player_stats()
-	print("get drag data")
 	return item
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	print(data is UiBox)
 	return data is UiBox
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
-	print("drop data")
 	PlayerData.inventory.append(data)
