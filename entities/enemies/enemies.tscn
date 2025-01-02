@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://g2o8ee42dabs"]
+[gd_scene load_steps=12 format=3 uid="uid://g2o8ee42dabs"]
 
 [ext_resource type="Script" path="res://entities/enemies/enemies.gd" id="1_fr6v8"]
 [ext_resource type="Texture2D" uid="uid://jtyv2q83selb" path="res://assets/space_breaker_asset/Ships/Small/body_01.png" id="2_rt6ne"]
 [ext_resource type="PackedScene" uid="uid://b51s7gt8mn0ih" path="res://entities/components/health_component.tscn" id="3_7gbns"]
 [ext_resource type="Script" path="res://entities/enemies/components/enemy_move_component.gd" id="4_krqto"]
+[ext_resource type="AudioStream" uid="uid://cn3cswr8l15ai" path="res://assets/sounds/8bit_bomb_explosion.wav" id="5_r5pax"]
 
 [sub_resource type="Shader" id="Shader_2f0cd"]
 code = "shader_type canvas_item;
@@ -142,6 +143,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_r5pax")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="on_damage" from="HealthComponent" to="." method="_on_health_component_on_damage"]

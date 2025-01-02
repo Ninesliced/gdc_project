@@ -23,7 +23,7 @@ func handle_floaty_weapon(delta: float) -> void:
 
 		if object_parent.global_position.distance_to(target.global_position) > float_distance:
 				object_parent.global_position += (target.global_position - object_parent.global_position).normalized() * \
-			object_parent.global_position.distance_to(target.global_position) * 0.15
+			object_parent.global_position.distance_to(target.global_position) * 0.1
 
 func set_floaty(floaty: bool, new_relative_position, float_distance, new_target : Node2D) -> void:
 	target = new_target

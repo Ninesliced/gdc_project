@@ -1,6 +1,6 @@
 extends Node
 
-var sound_manager_scene = preload("res://globals/music_manager/MusicManager.tscn")
+var sound_manager_scene = preload("res://globals/music_manager/SoundManager.tscn")
 
 var sound_manager_instance : Node = null
 func _ready() -> void:

@@ -1,5 +1,6 @@
 extends Node
 var player = null
+var player_start_stats = null
 var player_stats = null
 var player_rotation = 0
 var inventory : Array[Item] = []
@@ -18,14 +19,16 @@ func _ready():
 func set_player_data(player_data: Player):
 	player = player_data
 	player_stats = player._player_stats
-	load_equipment()
 	inventory = player_stats.inventory
-	print(inventory.size())
 	equipments = player_stats.equipments
 	nodes_positioner = player_stats.nodes_positioner
-
+	load_equipment()
+ 
 func get_player() -> Player:
-	return player
+	var players = get_tree().get_nodes_in_group("Player")
+	if players.size() == 0:
+		return null
+	return players[0]
 
 func get_player_stats() -> PlayerStats:
 	if player == null:
@@ -80,7 +83,8 @@ func load_equipment() -> void:
 	for equipment in equipments:
 		if is_instance_valid(equipment):
 			equipment.queue_free()
-	equipments = []
+
+	equipments.clear()
 	if player == null:
 		push_warning("warning: player not found")
 		return

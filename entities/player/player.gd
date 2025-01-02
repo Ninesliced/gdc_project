@@ -16,11 +16,17 @@ class_name Player
 
 @onready var camera = $Camera2D
 @onready var health_component : HealthComponent = $HealthComponent
+
 func _ready() -> void:
-	if PlayerData.player_stats != null:
-		_player_stats = PlayerData.player_stats.duplicate()
+	if PlayerData.player_start_stats != null:
+		var new_data = PlayerData.player_start_stats.duplicate()
+		for i in range(PlayerData.player_start_stats.item_slots.size()):
+			var slot = PlayerData.player_start_stats.item_slots[i].duplicate()
+			new_data.item_slots[i] = slot
+			
+			
+		_player_stats = new_data
 	PlayerData.set_player_data(self)
-	PlayerData.load_equipment()
 	$MovementComponent.speed = _player_stats.speed
 	pass
 
