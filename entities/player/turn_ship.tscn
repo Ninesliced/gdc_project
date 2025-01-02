@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy30yy5axn8vr"]
+[gd_scene load_steps=7 format=3 uid="uid://dy30yy5axn8vr"]
 
 [ext_resource type="PackedScene" uid="uid://b0cu8ml0ttn5j" path="res://entities/player/player.tscn" id="1_0dfpd"]
 [ext_resource type="Script" path="res://globals/counter_data.gd" id="3_bakv3"]
@@ -14,21 +14,12 @@ shield_coin = 0.0
 view_coin = 0.0
 score = 0
 
-[sub_resource type="Gradient" id="Gradient_rm2ba"]
-offsets = PackedFloat32Array(0, 0.177606, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bg8xi"]
 radius = 5.39941
 height = 25.1596
 
 [node name="CharacterBody2D" instance=ExtResource("1_0dfpd")]
 _player_counter = SubResource("Resource_65xbv")
-
-[node name="CPUParticles2D" parent="." index="0"]
-z_index = -2
-emission_rect_extents = Vector2(1300, 1300)
-color_ramp = SubResource("Gradient_rm2ba")
 
 [node name="Icon" parent="." index="1"]
 scale = Vector2(1, 1)

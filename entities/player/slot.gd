@@ -4,3 +4,5 @@ class_name Slot extends Resource
 @export var item : Item = null
 @export var slot_types : Array[PlayerData.ItemType] = []
 @export var rotation : float = 0
+@export var floaty : bool = false
+@export var float_distance : float = 10

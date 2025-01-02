@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyhe2a2unekfj"]
+[gd_scene load_steps=17 format=3 uid="uid://cyhe2a2unekfj"]
 
 [ext_resource type="PackedScene" uid="uid://csnbo5xeydj8" path="res://ui/box.tscn" id="1_e17rd"]
 [ext_resource type="Script" path="res://ui/Shops/boxes/shop_box.gd" id="2_1ykd3"]
@@ -7,10 +7,33 @@
 [ext_resource type="Texture2D" uid="uid://2p5xlj0knnee" path="res://assets/ui/button.png" id="4_yksmm"]
 [ext_resource type="Texture2D" uid="uid://c20d1f3ovy4an" path="res://assets/ui/round_nine_patch.png" id="6_wl771"]
 [ext_resource type="Script" path="res://ui/name_value_ui.gd" id="7_fpsud"]
+[ext_resource type="Script" path="res://ui/Shops/boxes/stats.gd" id="7_njpm5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0eue"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rpkyi"]
+
+[sub_resource type="GDScript" id="GDScript_i7rts"]
+script/source = "extends Sprite2D
+
+var delta_y = 0
+var init_position
+var amplitude = 1.2
+var frequence = 2
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	init_position = position
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	delta_y = (delta_y + delta) * 1
+	if delta_y >= 2 * PI:
+		delta_y -= 2 * PI
+	position.y = init_position.y + cos(delta_y * frequence) * amplitude
+	pass
+"
 
 [sub_resource type="Animation" id="Animation_adjn0"]
 length = 0.001
@@ -95,10 +118,16 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(1, 1.1), Vector2(1.1, 1.05), Vector2(1.1, 1.1)]
 }
 
+[sub_resource type="Animation" id="Animation_jn17p"]
+resource_name = "icon_moving"
+length = 10.0
+loop_mode = 1
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5noop"]
 _data = {
 "RESET": SubResource("Animation_adjn0"),
 "delete": SubResource("Animation_nby6x"),
+"icon_moving": SubResource("Animation_jn17p"),
 "select_2": SubResource("Animation_dxnxq")
 }
 
@@ -111,28 +140,34 @@ anchor_left = 0.483
 anchor_top = 0.47
 anchor_right = 0.483
 anchor_bottom = 0.47
-offset_left = -70.08
-offset_top = -118.08
-offset_right = 57.92
-offset_bottom = 89.92
+offset_left = 7.19998
+offset_top = -75.78
+offset_right = 135.2
+offset_bottom = 132.22
 pivot_offset = Vector2(64, 104)
 size_flags_horizontal = 4
 script = ExtResource("2_1ykd3")
 item = null
 
+[node name="HBox" parent="." index="0"]
+mouse_filter = 2
+
 [node name="MarginContainer" type="MarginContainer" parent="HBox" index="0"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.01
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
 
 [node name="BoxContainer3" type="BoxContainer" parent="HBox" index="1"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
+mouse_filter = 2
 
 [node name="MarginContainer" type="HBoxContainer" parent="HBox/BoxContainer3" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HBox/BoxContainer3/MarginContainer" index="0"]
 layout_mode = 2
@@ -190,13 +225,16 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_rpkyi")
 
 [node name="Icon" type="Sprite2D" parent="HBox/BoxContainer/MarginContainer/Panel/Panel" index="0"]
+position = Vector2(0, -2.83125)
 rotation = 0.785398
 texture = ExtResource("3_dk5ws")
+script = SubResource("GDScript_i7rts")
 
 [node name="BoxContainer2" type="BoxContainer" parent="HBox" index="4"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.15
+mouse_filter = 2
 
 [node name="Price" type="Label" parent="HBox/BoxContainer2" index="0"]
 layout_mode = 2
@@ -214,43 +252,43 @@ autowrap_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
+mouse_filter = 2
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_5noop")
 }
 
-[node name="Stats" type="NinePatchRect" parent="." index="2"]
-visible = false
+[node name="Stats" type="MarginContainer" parent="." index="2"]
 z_index = 10
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -1.033
-anchor_top = 0.031
-anchor_right = -0.033
-anchor_bottom = 0.106
-offset_left = -48.324
-offset_top = -0.308001
-offset_right = -0.324
-offset_bottom = 227.592
-grow_horizontal = 2
-texture = ExtResource("4_yksmm")
-patch_margin_left = 7
-patch_margin_top = 7
-patch_margin_right = 7
-patch_margin_bottom = 13
-
-[node name="StatsContainer" type="VBoxContainer" parent="Stats" index="0"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
+layout_mode = 2
+offset_left = -178.0
 offset_top = 8.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = -2.0
+offset_bottom = 32.0
+size_flags_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_njpm5")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Stats" index="0"]
+layout_mode = 2
+texture = ExtResource("4_yksmm")
+patch_margin_left = 10
+patch_margin_top = 6
+patch_margin_right = 7
+patch_margin_bottom = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="Stats" index="1"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
+
+[node name="StatsContainer" type="VBoxContainer" parent="Stats/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/separation = 0
 

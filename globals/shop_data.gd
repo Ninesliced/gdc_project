@@ -70,7 +70,6 @@ func get_random_items(amount : int) -> Array:
 	var new_items : Array[Item] = []
 
 	for i in range(amount):
-		print(i)
 		var random_rarity = randi() % 100
 		var rarity = get_rarity(random_rarity)
 		var size_items = items_by_rarity[rarity].size()

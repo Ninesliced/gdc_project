@@ -8,6 +8,8 @@ var direction: Vector2 = Vector2(1, 0)
 var target: Node2D = null
 var parent : Node2D = null
 
+@export var floaty_weapon : bool = true
+
 var _player_stats : PlayerStats = null
 
 signal shoot
@@ -33,6 +35,7 @@ func select_target() -> Node2D:
 
 func _ready() -> void:
 	parent = get_parent()
+
 	if weapon_property == null:
 		weapon_property = WeaponProperty.new()
 	$Timer.wait_time = weapon_property.fire_rate
@@ -43,6 +46,7 @@ func _ready() -> void:
 		_player_stats = player._player_stats
 
 func _process(delta: float) -> void:
+
 	if (target == null or !is_instance_valid(target)):
 		target = select_target()
 	

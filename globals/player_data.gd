@@ -2,10 +2,9 @@ extends Node
 var player = null
 var player_stats = null
 var player_rotation = 0
-var money = 600
 var inventory : Array[Item] = []
 var equipments : Array[Node2D] = []
-
+var nodes_positioner : Array[Node2D] = []
 enum ItemType {
 	WEAPON = 0,
 	SHIELD = 1,
@@ -13,12 +12,23 @@ enum ItemType {
 	ALL = 3
 }
 
+func _ready():
+	pass
+
+func set_player_data(player_data: Player):
+	player = player_data
+	player_stats = player._player_stats
+	load_equipment()
+	inventory = player_stats.inventory
+	equipments = player_stats.equipments
+	nodes_positioner = player_stats.nodes_positioner
+
 func get_player() -> Player:
 	return player
 
 func get_player_stats() -> PlayerStats:
 	if player == null:
-		print("warning: player not found")
+		push_warning("player not found")
 		return null
 	return player._player_stats
 
@@ -60,12 +70,18 @@ func check_type(item: Item, slot: Slot) -> bool:
 	return false
 
 func load_equipment() -> void:
+	print("loading equipment")
+	for node in nodes_positioner:
+		if is_instance_valid(node):
+			node.queue_free()
+		nodes_positioner = []
+
 	for equipment in equipments:
 		if is_instance_valid(equipment):
 			equipment.queue_free()
 	equipments = []
 	if player == null:
-		print("warning: player not found")
+		push_warning("warning: player not found")
 		return
 	if player._player_stats == null:
 		assert(false,"player stats not found")
@@ -82,6 +98,22 @@ func load_equipment() -> void:
 		equipments.append(instance)
 		player.add_child(instance)
 		instance.position = slots[i].position
+
+		
+		var nodes = instance.get_children()
+
+		var node2D = Node2D.new()
+		node2D.position = slots[i].position
+		player.add_child(node2D)
+		# var sprite = load("res://assets/bullets/bullet_1.png")
+		# var sprite2D = Sprite2D.new()
+		# sprite2D.texture = sprite
+		# node2D.add_child(sprite2D)
+		nodes_positioner.append(node2D)
+
+		for node in nodes:
+			if node is FloatComponent:
+				node.set_floaty(slots[i].floaty, slots[i].position, slots[i].float_distance, node2D)
 
 		if instance.has_method("load_resource"):
 			instance.load_resource(item.resource)

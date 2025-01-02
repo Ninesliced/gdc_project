@@ -14,6 +14,10 @@ class_name PlayerStats
 @export var health : float = 100.0
 @export var critical_chance : float = 0.2
 @export var critical_damage : float = 2
+@export var money : int = 600
+var inventory : Array[Item] = []
+var equipments : Array[Node2D] = []
+var nodes_positioner : Array[Node2D] = []
 
 signal on_player_stats_changed(stats: PlayerStats)
 

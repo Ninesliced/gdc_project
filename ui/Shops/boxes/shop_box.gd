@@ -6,8 +6,8 @@ class_name ShopBox
 @onready var price: Label = $HBox/BoxContainer2/Price
 @onready var item_icon: Sprite2D = $HBox/BoxContainer/MarginContainer/Panel/Panel/Icon
 
-@onready var stats: NinePatchRect = $Stats
-@onready var stats_container: VBoxContainer = $Stats/StatsContainer
+@onready var stats_ui = $Stats
+@onready var stats_container: VBoxContainer = $Stats/MarginContainer/StatsContainer
 var stats_list : Array[NameValueUI] = []
 var ressource = ""
 @export var item : Item = null
@@ -15,11 +15,20 @@ var ressource = ""
 var name_value_ui_scene = preload("res://name_value_ui.tscn")
 
 func _ready():
-	stats.hide()
+	stats_ui.hide()
 	pass
 
-
+var counter = 1
 func _process(delta):
+	if counter % 5 != 0:
+		counter += 1
+		return
+	counter = 1
+	var windows_width = get_viewport_rect().size.x
+	if global_position.x < windows_width/2:
+		stats_ui.position.x = 134
+	else:
+		stats_ui.position.x = -134
 	pass
 
 
@@ -81,11 +90,11 @@ func play_sound(sound: String) -> void:
 
 func _on_mouse_entered() -> void:
 	super._on_mouse_entered()
-	stats.show()
+	stats_ui.show()
 	pass
 
 func _on_mouse_exited() -> void:
 	super._on_mouse_exited()
-	stats.hide()
+	stats_ui.hide()
 	pass
 

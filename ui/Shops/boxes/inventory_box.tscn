@@ -93,3 +93,10 @@ script = ExtResource("2_msikt")
 libraries = {
 "": SubResource("AnimationLibrary_pe7e7")
 }
+
+[node name="Stats" parent="." index="2"]
+offset_left = -178.0
+
+[node name="mouse_enter_sound" parent="." index="3"]
+volume_db = 0.0
+pitch_scale = 1.0

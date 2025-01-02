@@ -28,9 +28,7 @@ func _process(delta: float) -> void:
     if global_position_queue.size() > point_number:
         global_position_queue.pop_back()
     for i in range(queue.size()):
-        print(queue.size(),", ", global_position_queue.size())
         queue[i][0].global_position = global_position_queue[i]
         queue[i][1].global_position = global_position_queue[i]
-        print("sprite at ", queue[i][0].global_position)
 
     pass

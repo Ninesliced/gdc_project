@@ -11,7 +11,6 @@ func get_ui_stats_from_dict(stats : Dictionary, add_color = true) -> Array[NameV
 		name_value_ui_instance.set_name_value(formated_name, str(stats[stat]))
 
 		if add_color and GameData.name_colors.has(stat):
-			print("color added")
 			name_value_ui_instance.set_value_color(GameData.name_colors[stat])
 
 		stats_list.append(name_value_ui_instance)

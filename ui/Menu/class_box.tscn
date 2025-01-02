@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsru2q0biak0g"]
+[gd_scene load_steps=10 format=3 uid="uid://dsru2q0biak0g"]
 
 [ext_resource type="PackedScene" uid="uid://csnbo5xeydj8" path="res://ui/box.tscn" id="1_ivk5y"]
 [ext_resource type="Script" path="res://ui/Menu/class_box.gd" id="2_1xftj"]
 [ext_resource type="Texture2D" uid="uid://covebk0m187m3" path="res://assets/space_breaker_asset/Ships/Small/body_02.png" id="3_of7pl"]
 [ext_resource type="PackedScene" uid="uid://d37bgesew51k1" path="res://ui/name_ui.tscn" id="4_parje"]
+[ext_resource type="AudioStream" uid="uid://dbhikmkuxtsv7" path="res://assets/sounds/switch2.ogg" id="5_3x2yw"]
 
 [sub_resource type="Animation" id="Animation_hth05"]
 length = 0.001
@@ -141,20 +142,15 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
 
-[node name="TopMargin2" type="MarginContainer" parent="HBox" index="0"]
+[node name="Name" parent="HBox" index="0" instance=ExtResource("4_parje")]
+layout_mode = 2
+
+[node name="TopMargin" type="MarginContainer" parent="HBox" index="1"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.0
+size_flags_stretch_ratio = 0.5
 
-[node name="Name" parent="HBox" index="1" instance=ExtResource("4_parje")]
-layout_mode = 2
-
-[node name="TopMargin" type="MarginContainer" parent="HBox" index="2"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.2
-
-[node name="TextureRect" type="Panel" parent="HBox" index="3"]
+[node name="TextureRect" type="Panel" parent="HBox" index="2"]
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -162,12 +158,12 @@ size_flags_horizontal = 4
 rotation = 0.785398
 texture = ExtResource("3_of7pl")
 
-[node name="BottomMargin" type="MarginContainer" parent="HBox" index="4"]
+[node name="BottomMargin" type="MarginContainer" parent="HBox" index="3"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
+size_flags_stretch_ratio = 0.2
 
-[node name="Description" type="Label" parent="HBox" index="5"]
+[node name="Description" type="Label" parent="HBox" index="4"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
@@ -178,7 +174,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="BottomMargin2" type="MarginContainer" parent="HBox" index="6"]
+[node name="BottomMargin2" type="MarginContainer" parent="HBox" index="5"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
@@ -187,5 +183,8 @@ size_flags_stretch_ratio = 0.2
 libraries = {
 "": SubResource("AnimationLibrary_2ra8u")
 }
+
+[node name="select_sound" type="AudioStreamPlayer2D" parent="." index="3"]
+stream = ExtResource("5_3x2yw")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

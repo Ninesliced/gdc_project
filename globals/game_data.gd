@@ -39,5 +39,9 @@ var instance_crt : CanvasLayer = null
 func _ready() -> void:
 	instance_crt = crt_shader_scene.instantiate()
 	add_child(instance_crt)
-	print("Game data ready")
+	pass
+
+func _process(delta) -> void:
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
 	pass

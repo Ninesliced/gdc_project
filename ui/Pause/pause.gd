@@ -5,7 +5,6 @@ var paused_by_pause_menu := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
-	print("Pause menu ready x")
 	#$HBoxContainer/Continue.grab_focus()
 	pass # Replace with function body.
 

@@ -22,8 +22,8 @@ func _on_shop_box_pressed() -> void:
 	var item: Item = box_parent.item
 
 	if not bought and item:
-		if PlayerData.money >= item.price:
-			PlayerData.money -= item.price
+		if PlayerData.player_stats.money >= item.price:
+			PlayerData.player_stats.money -= item.price
 			PlayerData.inventory.append(item)
 
 			bought = true
@@ -31,7 +31,7 @@ func _on_shop_box_pressed() -> void:
 
 			box_parent.animation_player.play("delete")
 			box_parent.play_sound("buy")
-			box_parent.stats.hide()
+			box_parent.stats_ui.hide()
 			await box_parent.animation_player.animation_finished
 			destroy()
 	pass # Replace with function body.

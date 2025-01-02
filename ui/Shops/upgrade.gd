@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 	pass
 
 func update_player_stats() -> void:
-	print("update player stats")
 	handle_ship()
 	handle_slots()
 	handle_items()

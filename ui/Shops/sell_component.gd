@@ -19,10 +19,8 @@ func _process(delta: float) -> void:
 func _on_box_pressed() -> void:
 	var item: Item = box_parent.item
 	if item:
-		print(PlayerData.inventory)
 		PlayerData.inventory.erase(item)
-		print(PlayerData.inventory)
-		PlayerData.money += item.price
+		PlayerData.player_stats.money += item.price
 		box_parent.queue_free()
 	else:
 		assert(false, "No item in box")

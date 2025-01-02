@@ -24,11 +24,13 @@ func _process(delta: float) -> void:
 
 func _on_pressed() -> void:
 	emit_signal("on_class_selected", self)
+	$select_sound.play()
 	pass # Replace with function body.
 
 func _on_mouse_entered() -> void:
 	if selected:
 		return
+	$mouse_enter_sound.play()
 	play_animation_selected()
 	pass # Replace with function body.
 

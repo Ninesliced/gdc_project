@@ -20,10 +20,10 @@ func _on_box_pressed() -> void:
 	var item: Item = box_parent.item
 	if item:
 		PlayerData.inventory.erase(item)
-		PlayerData.money += item.price
+		PlayerData.player_stats.money += item.price
 		box_parent.play_sound("buy")
 		box_parent.animation_player.play("delete")
-		box_parent.stats.hide()
+		box_parent.stats_ui.hide()
 		await box_parent.animation_player.animation_finished
 		box_parent.queue_free()
 	else:
