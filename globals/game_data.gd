@@ -15,12 +15,22 @@ var name_colors : Dictionary = {
 	"speed" : Color.html("#488bd4"),
 }
 
+
+
+enum Rarity { # need to change somewhere too ?
+    COMMON = 0,
+    UNCOMMON = 1,
+    RARE = 2,
+    EPIC = 3,
+    LEGENDARY = 4,
+}
+
 var weight_rarity : Dictionary = {
-    Item.Rarity.COMMON : 0.57,
-    Item.Rarity.UNCOMMON : 0.25,
-    Item.Rarity.RARE : 0.12,
-    Item.Rarity.EPIC : 0.05,
-    Item.Rarity.LEGENDARY : 0.01,
+    Rarity.COMMON : 0.57,
+    Rarity.UNCOMMON : 0.25,
+    Rarity.RARE : 0.12,
+    Rarity.EPIC : 0.05,
+    Rarity.LEGENDARY : 0.01,
 }
 
 @export var crt_shader_scene : PackedScene = preload("res://shaders/crt.tscn")

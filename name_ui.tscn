@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://mmr6bc4jucsl"]
+
+[ext_resource type="PackedScene" uid="uid://wlsjjcw1epik" path="res://ui/name_value_ui.tscn" id="1_7uarp"]
+[ext_resource type="Texture2D" uid="uid://d3vwx18ss3k5f" path="res://assets/ui/roud_nine_dark.png" id="2_bygdq"]
+
+[node name="NameValueUi" instance=ExtResource("1_7uarp")]
+
+[node name="NinePatchRect2" parent="HBoxContainer" index="0"]
+texture = ExtResource("2_bygdq")
+
+[node name="Text" parent="HBoxContainer/NinePatchRect2" index="0"]
+offset_top = 2.0
+offset_bottom = 2.0
+
+[node name="NinePatchRect" parent="HBoxContainer" index="1"]
+visible = false

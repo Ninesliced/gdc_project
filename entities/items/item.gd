@@ -3,17 +3,8 @@ extends Resource
 
 class_name Item
 
-enum Rarity {
-    COMMON = 0,
-    UNCOMMON = 1,
-    RARE = 2,
-    EPIC = 3,
-    LEGENDARY = 4,
-}
-
-
 @export var name : String = ""
-@export var rarity : Rarity = Rarity.COMMON
+@export var rarity : GameData.Rarity  = GameData.Rarity.COMMON
 @export var type : PlayerData.ItemType = PlayerData.ItemType.ALL
 @export var description : String = ""
 @export var icon_form_resource : bool = false:

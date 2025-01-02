@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://7b5nmq4mjbu8"]
+[gd_scene load_steps=6 format=3 uid="uid://c6wcbwx5aqtp0"]
 
 [ext_resource type="Texture2D" uid="uid://cnwd8cjcn1m2e" path="res://assets/ui/card.png" id="1_dw7eh"]
 [ext_resource type="FontFile" uid="uid://cmf6daamewwxl" path="res://assets/fonts/monogram.ttf" id="2_6h587"]

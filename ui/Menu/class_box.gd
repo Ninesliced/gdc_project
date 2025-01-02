@@ -6,15 +6,15 @@ var player_stats : PlayerStats = null
 signal on_class_selected(box : ClassBox)
 
 @onready var class_icon = $HBox/TextureRect/Icon
-@onready var character_name: Label = $HBox/Name
+@onready var character_name: NameValueUI = $HBox/Name
 @onready var description: Label = $HBox/Description
 
 func _ready() -> void:
 	if player_stats == null:
 		return
 	class_icon.texture = player_stats.texture
-	character_name.text = player_stats.name
-	character_name.modulate = rarity_colors[player_stats.rarity]
+	character_name.set_name_value(player_stats.name, "")
+	character_name.set_text_color(rarity_colors[player_stats.rarity])
 	description.text = player_stats.description
 	pass
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d37bgesew51k1"]
+[gd_scene load_steps=3 format=3 uid="uid://d37bgesew51k1"]
 
 [ext_resource type="PackedScene" uid="uid://wlsjjcw1epik" path="res://ui/name_value_ui.tscn" id="1_mn4ld"]
+[ext_resource type="Texture2D" uid="uid://d3vwx18ss3k5f" path="res://assets/ui/roud_nine_dark.png" id="2_tbllf"]
 
 [node name="NameValueUi" instance=ExtResource("1_mn4ld")]
 custom_minimum_size = Vector2(50, 30)
@@ -9,5 +10,17 @@ offset_top = -15.0
 offset_right = 4.0
 offset_bottom = 15.0
 
+[node name="NinePatchRect2" parent="HBoxContainer" index="0"]
+texture = ExtResource("2_tbllf")
+
+[node name="Text" parent="HBoxContainer/NinePatchRect2" index="0"]
+offset_top = 2.0
+offset_bottom = 2.0
+scroll_active = false
+
 [node name="NinePatchRect" parent="HBoxContainer" index="1"]
 visible = false
+
+[node name="Value" parent="HBoxContainer/NinePatchRect" index="0"]
+visible = false
+scroll_active = false

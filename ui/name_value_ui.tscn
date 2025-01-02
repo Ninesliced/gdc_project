@@ -62,24 +62,17 @@ patch_margin_top = 6
 patch_margin_right = 4
 patch_margin_bottom = 8
 
-[node name="Text" type="Label" parent="HBoxContainer/NinePatchRect2"]
+[node name="Text" type="RichTextLabel" parent="HBoxContainer/NinePatchRect2"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.5
-offset_top = -9.0
-offset_right = 51.5
-offset_bottom = 4.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "NAME OF THE VALUE"
-horizontal_alignment = 1
-uppercase = true
+bbcode_enabled = true
+text = "[center][tornado radius=0.2 freq=5]NAME OF THE VALUE[/tornado][/center]"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer"]
 self_modulate = Color(0.1776, 0.1776, 0.24, 1)
@@ -92,7 +85,7 @@ patch_margin_top = 6
 patch_margin_right = 4
 patch_margin_bottom = 8
 
-[node name="Value" type="Label" parent="HBoxContainer/NinePatchRect"]
+[node name="Value" type="RichTextLabel" parent="HBoxContainer/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -106,11 +99,11 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+bbcode_enabled = true
 text = "12 123 123"
-horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

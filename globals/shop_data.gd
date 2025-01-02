@@ -14,16 +14,14 @@ var items_weigthed : Array[Dictionary] = [] # REWORK
 var weights_total : int = 0
 
 var items_by_rarity : Dictionary = {
-	Item.Rarity.COMMON : [],
-	Item.Rarity.UNCOMMON : [],
-	Item.Rarity.RARE : [],
-	Item.Rarity.EPIC : [],
-	Item.Rarity.LEGENDARY : [],
 }
 
 var shop : Shop = null
 
 func _ready() -> void:
+	for i in range(GameData.Rarity.size()):
+		items_by_rarity[i] = []
+		pass
 	shop = shop_scene.instantiate() as Shop
 	add_child(shop)
 	shop.hide()
@@ -60,13 +58,13 @@ func filter_items() -> void:
 # 			return item["item"].duplicate()
 # 	return null
 
-func get_rarity(number : int) -> Item.Rarity:
+func get_rarity(number : int) -> GameData.Rarity:
 	var sum_rarity = 0
-	for i in range(Item.Rarity.size()):
+	for i in range(GameData.Rarity.size()):
 		sum_rarity += GameData.weight_rarity[i] * 100
 		if number < sum_rarity:
 			return i
-	return Item.Rarity.COMMON
+	return GameData.Rarity.COMMON
 
 func get_random_items(amount : int) -> Array:
 	var new_items : Array[Item] = []
