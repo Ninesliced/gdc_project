@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("4_43icg")
 name = "SHIELD"
+rarity = 0
 type = 1
 description = "A SHIELD"
 icon_form_resource = true

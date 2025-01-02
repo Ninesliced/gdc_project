@@ -9,6 +9,8 @@ var value_color = null
 var text_color = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if text == null:
+		return
 	text.text = text_string
 	value_label.text = value_string
 
@@ -22,8 +24,13 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func set_name_value(name : String, value : String):
-	text_string = name
-	value_string = value
+	print(name + " " + value)
+	if is_node_ready():
+		text.text = name
+		value_label.text = value
+	else:
+		text_string = name
+		value_string = value
 	pass
 
 func set_ui(name : String, value : String, parent : Node):
@@ -32,9 +39,15 @@ func set_ui(name : String, value : String, parent : Node):
 	pass
 
 func set_value_color(color : Color):
-	value_color = color
+	if is_node_ready():
+		value_label.add_theme_color_override("font_color", color)
+	else:
+		value_color = color
 	pass
 
 func set_text_color(color : Color):
-	text_color = color
+	if is_node_ready():
+		text.add_theme_color_override("font_color", color)
+	else:
+		text_color = color
 	pass

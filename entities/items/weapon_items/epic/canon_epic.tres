@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://dj6icdmocxsu5"]
+
+[ext_resource type="Texture2D" uid="uid://b870u5vca6t7n" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk2.png" id="1_inyiq"]
+[ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_jyq71"]
+[ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/base_weapon.tres" id="3_iqppv"]
+[ext_resource type="Script" path="res://entities/items/item.gd" id="4_ff3jv"]
+
+[resource]
+script = ExtResource("4_ff3jv")
+name = "Turret-E"
+rarity = 3
+type = 0
+description = "a simple cannon"
+icon_form_resource = true
+icon = ExtResource("1_inyiq")
+price = 10
+resource = ExtResource("3_iqppv")
+item_scene = ExtResource("2_jyq71")

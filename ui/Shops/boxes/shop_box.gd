@@ -1,9 +1,10 @@
 extends UiBox
 class_name ShopBox
 
-@onready var title: Label = $HBox/BoxContainer3/Title
+#@onready var title: Label = $HBox/BoxContainer3/Title
+@onready var title: NameValueUI = $HBox/BoxContainer3/MarginContainer/Title
 @onready var price: Label = $HBox/BoxContainer2/Price
-@onready var item_icon: Sprite2D = $HBox/BoxContainer/Panel2/Icon
+@onready var item_icon: Sprite2D = $HBox/BoxContainer/MarginContainer/Panel/Panel/Icon
 
 @onready var stats: NinePatchRect = $Stats
 @onready var stats_container: VBoxContainer = $Stats/StatsContainer
@@ -24,11 +25,13 @@ func _process(delta):
 
 func set_item(new_item: Item) -> void: # SCOTCH UTILISER LES RESSOURCES
 	await ready
-	title.text = new_item.name
-	title.modulate = rarity_colors[new_item.rarity]
-	if new_item.resource is WeaponProperty:
-		var weapon = new_item.resource as WeaponProperty
-		title.text += " v" + str(weapon.level)
+	# title.text = new_item.name
+	title.set_name_value(new_item.name, "")
+	title.set_text_color(rarity_colors[new_item.rarity])
+	# title.modulate = rarity_colors[new_item.rarity]
+	# if new_item.resource is WeaponProperty:
+	# 	var weapon = new_item.resource as WeaponProperty
+		# title.text += " v" + str(weapon.level)
 	price.text = str(new_item.price) + "$"
 	item_icon.texture = new_item.icon
 	ressource = new_item.resource
@@ -55,8 +58,6 @@ func set_stats() -> void:
 			"fire_rate" : weapon_property.fire_rate,
 			"critical_chance" : str(weapon_property.get_critical_chance() * 100) + "%",
 			"critical_damage" : str(weapon_property.get_critical_damage() * 100) + "%",
-			# "attack_range" : weapon_property.attack_range,
-			# "bullet_speed" : weapon_property.bullet_speed,
 		}
 	
 	var new_stats : Array[NameValueUI] = UiGlobal.get_ui_stats_from_dict(stats)

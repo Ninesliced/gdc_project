@@ -3,15 +3,23 @@ extends Node
 var shop_scene : PackedScene = preload("res://ui/Shops/shop.tscn")
 
 @export var items : Array = [
-	load("res://entities/items/weapon_items/canon_base.tres"),
-	load("res://entities/items/weapon_items/canon_base_2.tres"),
-	load("res://entities/items/weapon_items/legendary/star_killer.tres"),
-	load("res://entities/items/weapon_items/legendary/star_killer.tres"),
-	load("res://entities/items/weapon_items/legendary/star_killer.tres"),
-	load("res://entities/items/weapon_items/legendary/star_killer.tres"),
+	preload("res://entities/items/weapon_items/common/canon_base.tres"),
+	preload("res://entities/items/weapon_items/common/canon_base_2.tres"),
+	preload("res://entities/items/weapon_items/uncommon/canon_uncommon.tres"),
+	preload("res://entities/items/weapon_items/rare/canon_rare.tres"),
+	preload("res://entities/items/weapon_items/epic/canon_epic.tres"),
+	preload("res://entities/items/weapon_items/legendary/star_killer.tres"),
 ]
-var items_weigthed : Array[Dictionary] = []
+var items_weigthed : Array[Dictionary] = [] # REWORK
 var weights_total : int = 0
+
+var items_by_rarity : Dictionary = {
+	Item.Rarity.COMMON : [],
+	Item.Rarity.UNCOMMON : [],
+	Item.Rarity.RARE : [],
+	Item.Rarity.EPIC : [],
+	Item.Rarity.LEGENDARY : [],
+}
 
 var shop : Shop = null
 
@@ -19,7 +27,8 @@ func _ready() -> void:
 	shop = shop_scene.instantiate() as Shop
 	add_child(shop)
 	shop.hide()
-	set_weigthed_items(items)
+	filter_items()
+	# set_weigthed_items(items)
 
 func open_shop(items : Array) -> void:
 	shop.open_shop()
@@ -31,26 +40,44 @@ func close_shop() -> void:
 
 # Weigthed items functions
 
-func set_weigthed_items(items : Array) -> void:
-	weights_total = 0
+func filter_items() -> void:
 	for item in items:
-		weights_total += item.get_weight() * 100
-		items_weigthed.append({ "weight" : weights_total, "item" : item })
+		items_by_rarity[item.rarity].append(item)
 	pass
 
-func get_weigthed_item(weight : int) -> Item:
-	if weight >= weights_total:
-		return null
-	for item in items_weigthed:
-		if weight < item["weight"]:
-			return item["item"].duplicate()
-	return null
+# func set_weigthed_items(items : Array) -> void: # DEPRECATED
+# 	weights_total = 0
+# 	for item in items:
+# 		weights_total += item.get_weight() * 100
+# 		items_weigthed.append({ "weight" : weights_total, "item" : item })
+# 	pass
+
+# func get_weigthed_item(weight : int) -> Item: # DEPRECATED
+# 	if weight >= weights_total:
+# 		return null
+# 	for item in items_weigthed:
+# 		if weight < item["weight"]:
+# 			return item["item"].duplicate()
+# 	return null
+
+func get_rarity(number : int) -> Item.Rarity:
+	var sum_rarity = 0
+	for i in range(Item.Rarity.size()):
+		sum_rarity += GameData.weight_rarity[i] * 100
+		if number < sum_rarity:
+			return i
+	return Item.Rarity.COMMON
 
 func get_random_items(amount : int) -> Array:
-	var items : Array[Item] = []
+	var new_items : Array[Item] = []
+
 	for i in range(amount):
-		var weight = randi() % weights_total
-		var new_item = get_weigthed_item(weight).duplicate()
-		items.append(new_item)
-	return items
-	pass
+		print(i)
+		var random_rarity = randi() % 100
+		var rarity = get_rarity(random_rarity)
+		var size_items = items_by_rarity[rarity].size()
+
+		if size_items > 0:
+			var random_item = randi() % size_items
+			new_items.append(items_by_rarity[rarity][random_item].duplicate())
+	return new_items

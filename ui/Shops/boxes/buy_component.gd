@@ -29,11 +29,11 @@ func _on_shop_box_pressed() -> void:
 			bought = true
 			box_parent.price.text = "bought"
 
-		box_parent.animation_player.play("delete")
-		box_parent.play_sound("buy")
-		box_parent.stats.hide()
-		await box_parent.animation_player.animation_finished
-		destroy()
+			box_parent.animation_player.play("delete")
+			box_parent.play_sound("buy")
+			box_parent.stats.hide()
+			await box_parent.animation_player.animation_finished
+			destroy()
 	pass # Replace with function body.
 
 func destroy() -> void:

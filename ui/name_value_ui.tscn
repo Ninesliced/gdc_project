@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://c20d1f3ovy4an" path="res://assets/ui/round_nine_patch.png" id="1_lkmow"]
 [ext_resource type="Script" path="res://ui/name_value_ui.gd" id="2_ilcol"]
 
+[sub_resource type="Animation" id="Animation_kqs61"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_8nukv"]
 resource_name = "move_text"
 loop_mode = 1
-
-[sub_resource type="Animation" id="Animation_kqs61"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xfs3c"]
 _data = {

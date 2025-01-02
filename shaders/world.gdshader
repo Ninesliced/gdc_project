@@ -1,28 +1,22 @@
 shader_type canvas_item;
+render_mode unshaded, skip_vertex_transform;
 
+const float curvature = 10.0;
+const float vignette_multiplier = 0.1;
 
-uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, repeat_disable, filter_nearest;
-uniform float crt_brightness: hint_range(0.0, 1.0) = 1.0;
-uniform float crt_ghost: hint_range(0.0, 10.0) = 3.0;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
+uniform sampler2D screen_texture: hint_screen_texture, filter_linear_mipmap;
 
 void fragment() {
-	vec2 screen_uv = SCREEN_UV;
-	vec3 color = texture(SCREEN_TEXTURE, screen_uv).rgb * (1.0 - crt_brightness * 0.5);
-	color += texture(SCREEN_TEXTURE, screen_uv - vec2(SCREEN_PIXEL_SIZE.x * crt_ghost, 0.0)).rgb;
-	color += texture(SCREEN_TEXTURE, screen_uv - vec2(SCREEN_PIXEL_SIZE.x * crt_ghost, 0.0)).rgb;
-	color *= crt_brightness * 0.50;
-	COLOR = vec4(color, 1.0);
+    vec2 zoomed_uv = (SCREEN_UV - 0.5) / 1.02 + 0.5;
+	vec2 centered_uv = zoomed_uv * 2.0 - 1.0;
+	vec2 uv_offset = centered_uv.yx / curvature;
+	vec2 warped_uv = centered_uv + centered_uv * uv_offset * uv_offset;
+	vec3 cutoff = vec3(step(abs(warped_uv.x), 1.0) * step(abs(warped_uv.y), 1.0));
+	float scanline_offset = mod(TIME * 0.02, 1.0);
+	vec3 scanlines = vec3(sin(1.4 * (warped_uv.y - scanline_offset) * 180.0) * 0.02 + 1.05);
+	vec3 vignette = vec3(length(pow(abs(centered_uv), vec2(4.0)) / 3.0));
 	
-	float ctr_grid_uv = mod(SCREEN_UV.x / SCREEN_UV.x, 3.0);
-	
-	// Called for every pixel the material is visible on.
+	vec3 screen_color = textureLod(screen_texture, (warped_uv + 1.0) / 2.0, 0.2).rgb * cutoff * scanlines;
+	screen_color -= vignette * vignette_multiplier;
+	COLOR = vec4(screen_color, 1.0);
 }
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
