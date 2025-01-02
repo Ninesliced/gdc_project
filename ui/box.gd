@@ -21,10 +21,16 @@ func _process(delta: float) -> void:
 
 func _on_mouse_entered() -> void:
 	play_animation_selected()
+	# $mouse_enter_sound.pitch_scale = randf_range(1.0, 1.1)
+	# $mouse_enter_sound.volume_db = randf_range(-2, 2)
+	$mouse_enter_sound.play()
 
 
 func _on_mouse_exited() -> void:
 	play_animation_selected(true)
+	# $mouse_enter_sound.pitch_scale = randf_range(0.7, 0.8)
+	# $mouse_enter_sound.volume_db = randf_range(-2, 2)
+	# $mouse_enter_sound.play()
 	pass # Replace with function body.
 
 func play_animation_selected(revert = false) -> void:

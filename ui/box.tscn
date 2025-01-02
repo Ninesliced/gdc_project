@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://csnbo5xeydj8"]
+[gd_scene load_steps=10 format=3 uid="uid://csnbo5xeydj8"]
 
 [ext_resource type="Texture2D" uid="uid://cnwd8cjcn1m2e" path="res://assets/ui/card.png" id="1_qu2of"]
 [ext_resource type="Script" path="res://ui/box.gd" id="2_ptg32"]
+[ext_resource type="AudioStream" uid="uid://yq0kj8il7ocl" path="res://assets/sounds/rollover6.ogg" id="3_3hs7x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t4d0y"]
 texture = ExtResource("1_qu2of")
@@ -141,6 +142,9 @@ libraries = {
 "": SubResource("AnimationLibrary_pe7e7")
 }
 speed_scale = 3.5
+
+[node name="mouse_enter_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3hs7x")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
