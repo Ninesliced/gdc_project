@@ -28,7 +28,8 @@ func set_name_value(name : String, value : String):
 func set_value_color(color : Color):
 	if (!is_node_ready()):
 		await ready
-	value_label.text = "[color=" + color.to_html() + "]" + value_label.text + "[/color]"
+	value_label.text = "[center][color=" + color.to_html() + "]" + value_label.text + "[/color][center]"
+	print(value_label.text)
 	#value_label.add_theme_color_override("font_color", color)
 	pass
 

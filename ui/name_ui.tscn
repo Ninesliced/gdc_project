@@ -23,4 +23,3 @@ visible = false
 
 [node name="Value" parent="HBoxContainer/NinePatchRect" index="0"]
 visible = false
-scroll_active = false

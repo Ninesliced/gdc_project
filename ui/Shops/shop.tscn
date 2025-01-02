@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1u4h1x8nx1t3"]
+[gd_scene load_steps=14 format=3 uid="uid://c1u4h1x8nx1t3"]
 
 [ext_resource type="Script" path="res://ui/Shops/shop.gd" id="1_rgx1f"]
 [ext_resource type="Texture2D" uid="uid://2p5xlj0knnee" path="res://assets/ui/button.png" id="2_1qmga"]
+[ext_resource type="Texture2D" uid="uid://730bodwhs6k5" path="res://assets/icons/icon_test.png" id="2_mc30g"]
 [ext_resource type="Script" path="res://ui/Shops/sell.gd" id="3_5d0dw"]
 [ext_resource type="PackedScene" uid="uid://c2eemep8skl7h" path="res://ui/ui_button.tscn" id="3_mej8u"]
 [ext_resource type="Script" path="res://ui/Shops/upgrade.gd" id="4_57mfb"]
@@ -10,7 +11,6 @@
 
 [sub_resource type="Animation" id="Animation_w645c"]
 resource_name = "Fall"
-length = 0.4
 
 [sub_resource type="Animation" id="Animation_xdmmr"]
 length = 0.001
@@ -122,8 +122,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 576.0
-offset_bottom = 576.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(480, 270)
@@ -149,11 +147,26 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 mouse_filter = 2
 
-[node name="icon" type="ColorRect" parent="Shop/HBoxContainer/StaticLeft"]
+[node name="Panel" type="Panel" parent="Shop/HBoxContainer/StaticLeft"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.6
+
+[node name="icon" type="TextureRect" parent="Shop/HBoxContainer/StaticLeft/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 128.0
+grow_horizontal = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.6
-color = Color(0.507, 0.67535, 0.78, 1)
+texture = ExtResource("2_mc30g")
+stretch_mode = 2
 
 [node name="buttons" type="VBoxContainer" parent="Shop/HBoxContainer/StaticLeft"]
 layout_mode = 2
@@ -178,7 +191,6 @@ layout_mode = 2
 text = "QUIT"
 
 [node name="Buy" type="VBoxContainer" parent="Shop/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
@@ -210,6 +222,7 @@ patch_margin_right = 7
 patch_margin_bottom = 12
 
 [node name="Sell" type="VBoxContainer" parent="Shop/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7

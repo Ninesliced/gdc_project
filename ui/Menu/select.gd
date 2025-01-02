@@ -60,6 +60,8 @@ func _process(delta: float) -> void:
 func _on_play_pressed() -> void:
 	PlayerData.player_stats = selected_class
 	SceneManagerGlobal.change_scene_to_packed(world_scene)
+
+	SoundManagerGlobal.set_low_pass_filter("Music", false)
 	# get_tree().change_scene_to_packed(world_scene)
 
 	pass # Replace with function body.

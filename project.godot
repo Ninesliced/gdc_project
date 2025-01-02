@@ -23,6 +23,7 @@ PauseGlobal="*res://globals/pause_global.gd"
 GameData="*res://globals/game_data.gd"
 SceneManagerGlobal="*res://globals/scene_manager_global.gd"
 UiGlobal="*res://globals/ui_global.gd"
+SoundManagerGlobal="*res://globals/sound_manager_global.gd"
 
 [display]
 
@@ -40,7 +41,9 @@ Enemy=""
 
 [gui]
 
+common/snap_controls_to_pixels=false
 theme/custom_font="res://assets/fonts/monogram.ttf"
+theme/default_font_hinting=2
 
 [input]
 
