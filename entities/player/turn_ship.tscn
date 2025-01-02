@@ -1,9 +1,72 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy30yy5axn8vr"]
+[gd_scene load_steps=17 format=3 uid="uid://dy30yy5axn8vr"]
 
 [ext_resource type="PackedScene" uid="uid://b0cu8ml0ttn5j" path="res://entities/player/player.tscn" id="1_0dfpd"]
+[ext_resource type="Script" path="res://entities/player/slot.gd" id="2_jmejf"]
 [ext_resource type="Script" path="res://globals/counter_data.gd" id="3_bakv3"]
+[ext_resource type="Resource" uid="uid://ccw7k2y8pni61" path="res://entities/items/weapon_items/common/canon_base.tres" id="3_dxmm6"]
+[ext_resource type="Script" path="res://entities/player/player_stats.gd" id="4_nh7jl"]
+[ext_resource type="Texture2D" uid="uid://jtyv2q83selb" path="res://assets/space_breaker_asset/Ships/Small/body_01.png" id="5_gsa2g"]
 [ext_resource type="PackedScene" uid="uid://bxvp8fluu1lsf" path="res://entities/player/components/slot_manager.tscn" id="6_jbqv1"]
 [ext_resource type="Script" path="res://entities/player/components/slot_manager.gd" id="7_h8khn"]
+
+[sub_resource type="Resource" id="Resource_lytji"]
+script = ExtResource("2_jmejf")
+position = Vector2(0, 0)
+item = ExtResource("3_dxmm6")
+slot_types = Array[int]([])
+rotation = 0.0
+floaty = false
+float_distance = 10.0
+
+[sub_resource type="Resource" id="Resource_8iphd"]
+script = ExtResource("2_jmejf")
+position = Vector2(32, 0)
+item = ExtResource("3_dxmm6")
+slot_types = Array[int]([0, 1])
+rotation = 0.0
+floaty = true
+float_distance = 10.0
+
+[sub_resource type="Resource" id="Resource_aav0e"]
+script = ExtResource("2_jmejf")
+position = Vector2(-32, 0)
+slot_types = Array[int]([1, 0])
+rotation = -3.14
+floaty = true
+float_distance = 10.0
+
+[sub_resource type="Resource" id="Resource_awpdo"]
+script = ExtResource("2_jmejf")
+position = Vector2(0, 32)
+slot_types = Array[int]([1])
+rotation = 1.57
+floaty = false
+float_distance = 10.0
+
+[sub_resource type="Resource" id="Resource_so5m1"]
+script = ExtResource("2_jmejf")
+position = Vector2(0, -32)
+slot_types = Array[int]([0, 1])
+rotation = -1.57
+floaty = false
+float_distance = 10.0
+
+[sub_resource type="Resource" id="Resource_750hy"]
+resource_local_to_scene = true
+script = ExtResource("4_nh7jl")
+locked = false
+name = "Default"
+description = "Default ship"
+rarity = 0
+texture = ExtResource("5_gsa2g")
+item_slots = Array[ExtResource("2_jmejf")]([SubResource("Resource_lytji"), SubResource("Resource_8iphd"), SubResource("Resource_aav0e"), SubResource("Resource_awpdo"), SubResource("Resource_so5m1")])
+reduction_delay_boost = 0.0
+damage_multiplier = 1.0
+speed = 300.0
+health = 100.0
+critical_chance = 0.2
+critical_damage = 1.5
+money = 600
 
 [sub_resource type="Resource" id="Resource_65xbv"]
 script = ExtResource("3_bakv3")
@@ -19,6 +82,7 @@ radius = 5.39941
 height = 25.1596
 
 [node name="CharacterBody2D" instance=ExtResource("1_0dfpd")]
+_player_stats = SubResource("Resource_750hy")
 _player_counter = SubResource("Resource_65xbv")
 
 [node name="Icon" parent="." index="1"]

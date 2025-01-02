@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://1713ucjydt4a"]
+[gd_scene load_steps=5 format=3 uid="uid://1713ucjydt4a"]
 
 [ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_40l4n"]
 [ext_resource type="PackedScene" uid="uid://brfq32hg5bfi2" path="res://entities/enemies/spawner/enemy_spawner.tscn" id="2_o7w43"]
+[ext_resource type="Resource" uid="uid://bv7b42lp1dll5" path="res://entities/player/player_stats/player_base.tres" id="2_we80a"]
 [ext_resource type="PackedScene" uid="uid://cchsone545eea" path="res://entities/planets/planet.tscn" id="3_lqoco"]
 
 [node name="world" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_40l4n")]
 position = Vector2(44, 224)
+_player_stats = ExtResource("2_we80a")
 
 [node name="EnemySpawner" parent="CharacterBody2D" instance=ExtResource("2_o7w43")]
 spawn_interval = 2.0
