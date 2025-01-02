@@ -20,6 +20,7 @@ func set_player_data(player_data: Player):
 	player_stats = player._player_stats
 	load_equipment()
 	inventory = player_stats.inventory
+	print(inventory.size())
 	equipments = player_stats.equipments
 	nodes_positioner = player_stats.nodes_positioner
 

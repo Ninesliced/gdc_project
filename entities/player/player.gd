@@ -18,7 +18,7 @@ class_name Player
 @onready var health_component : HealthComponent = $HealthComponent
 func _ready() -> void:
 	if PlayerData.player_stats != null:
-		_player_stats = PlayerData.player_stats
+		_player_stats = PlayerData.player_stats.duplicate()
 	PlayerData.set_player_data(self)
 	PlayerData.load_equipment()
 	$MovementComponent.speed = _player_stats.speed
