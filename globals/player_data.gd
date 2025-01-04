@@ -7,10 +7,12 @@ var inventory : Array[Item] = []
 var equipments : Array[Node2D] = []
 var nodes_positioner : Array[Node2D] = []
 enum ItemType {
-	WEAPON = 0,
-	SHIELD = 1,
-	BOOSTER = 2,
-	ALL = 3
+	ALL = 0,
+	WEAPON = 1,
+	SHIELD = 2,
+	BOOSTER = 3,
+	ITEM = 4,
+	
 }
 
 func _ready():

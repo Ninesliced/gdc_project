@@ -43,7 +43,6 @@ gravity = Vector2(0, 0)
 color_ramp = SubResource("Gradient_ttdex")
 
 [node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_5ywr2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -57,7 +56,7 @@ shape = SubResource("RectangleShape2D_qml0v")
 [node name="MovementComponent" parent="." instance=ExtResource("6_5fax1")]
 script = ExtResource("7_l5tyt")
 acceleration = 1200
-decceleration = 500
+decceleration = 400
 rotation_speed = 8.0
 
 [connection signal="on_damage" from="HealthComponent" to="." method="_on_health_component_on_damage"]

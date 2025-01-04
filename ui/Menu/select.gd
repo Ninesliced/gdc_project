@@ -6,10 +6,10 @@ var class_box_scene = preload("res://ui/Menu/class_box.tscn")
 var world_scene = preload("res://scenes/world.tscn")
 var list_class_boxes : Array = []
 
-
 var name_value_ui_scene = preload("res://ui/name_value_ui.tscn")
 var stats_ui_list : Array = []
 
+@onready var control_ui : Control = $CanvasLayer/Control
 @onready var grid_container: GridContainer = $CanvasLayer/Control/VBoxContainer/Panel/VScrollBar/ClassContainer
 @onready var stats_container: VBoxContainer = $CanvasLayer/Control/VBoxContainer/Panel/NinePatchRect/StatsContainer
 func _ready() -> void:
@@ -21,6 +21,14 @@ func _ready() -> void:
 		grid_container.add_child(class_box_instance)
 		
 	pass # Replace with function body.
+
+var delta_sin = 0
+func _process(delta):
+	delta_sin += delta
+	if delta_sin >= 2 * PI:
+		delta_sin -= 2 * PI
+	control_ui.position.y = 2 + sin(delta_sin) * 2
+	pass
 
 func select_class(box : ClassBox) -> void:
 	if selected_class_box != null:
@@ -52,10 +60,6 @@ func change_stat_display() -> void:
 		stats_container.add_child(name_value_ui_instance)
 
 	pass # Replace with function body.
-	
-
-func _process(delta: float) -> void:
-	pass
 
 func _on_play_pressed() -> void:
 	PlayerData.player_start_stats = selected_class

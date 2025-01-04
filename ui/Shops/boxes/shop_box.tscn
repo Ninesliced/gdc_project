@@ -90,6 +90,11 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(0, 1.25)]
 }
 
+[sub_resource type="Animation" id="Animation_jn17p"]
+resource_name = "icon_moving"
+length = 10.0
+loop_mode = 1
+
 [sub_resource type="Animation" id="Animation_dxnxq"]
 resource_name = "select_2"
 length = 0.7
@@ -117,11 +122,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1.1), Vector2(1.1, 1.05), Vector2(1.1, 1.1)]
 }
-
-[sub_resource type="Animation" id="Animation_jn17p"]
-resource_name = "icon_moving"
-length = 10.0
-loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5noop"]
 _data = {

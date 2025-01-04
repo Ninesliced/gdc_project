@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerStats" load_steps=10 format=3 uid="uid://bv7b42lp1dll5"]
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=9 format=3 uid="uid://bv7b42lp1dll5"]
 
 [ext_resource type="Script" path="res://entities/player/slot.gd" id="1_1l3xw"]
 [ext_resource type="Script" path="res://entities/player/player_stats.gd" id="1_k0gno"]
@@ -9,10 +9,10 @@
 script = ExtResource("1_1l3xw")
 position = Vector2(0, 0)
 item = ExtResource("2_i4mtq")
-slot_types = Array[int]([])
+slot_types = Array[int]([3])
 rotation = 0.0
 floaty = false
-float_distance = 10.0
+float_distance = 2.0
 
 [sub_resource type="Resource" id="Resource_8iphd"]
 script = ExtResource("1_1l3xw")
@@ -26,24 +26,17 @@ float_distance = 10.0
 [sub_resource type="Resource" id="Resource_aav0e"]
 script = ExtResource("1_1l3xw")
 position = Vector2(-32, 0)
+item = ExtResource("2_i4mtq")
 slot_types = Array[int]([1, 0])
 rotation = -3.14
 floaty = true
 float_distance = 10.0
 
-[sub_resource type="Resource" id="Resource_awpdo"]
+[sub_resource type="Resource" id="Resource_tri4i"]
 script = ExtResource("1_1l3xw")
-position = Vector2(0, 32)
-slot_types = Array[int]([1])
-rotation = 1.57
-floaty = false
-float_distance = 10.0
-
-[sub_resource type="Resource" id="Resource_so5m1"]
-script = ExtResource("1_1l3xw")
-position = Vector2(0, -32)
-slot_types = Array[int]([0, 1])
-rotation = -1.57
+position = Vector2(0, -128)
+slot_types = Array[int]([3])
+rotation = 0.0
 floaty = false
 float_distance = 10.0
 
@@ -55,11 +48,11 @@ name = "Default"
 description = "Default ship"
 rarity = 0
 texture = ExtResource("4_20ddj")
-item_slots = Array[ExtResource("1_1l3xw")]([SubResource("Resource_lytji"), SubResource("Resource_8iphd"), SubResource("Resource_aav0e"), SubResource("Resource_awpdo"), SubResource("Resource_so5m1")])
+item_slots = Array[ExtResource("1_1l3xw")]([SubResource("Resource_lytji"), SubResource("Resource_8iphd"), SubResource("Resource_aav0e"), SubResource("Resource_tri4i")])
 reduction_delay_boost = 0.0
 damage_multiplier = 1.0
 speed = 300.0
 health = 100.0
 critical_chance = 0.2
 critical_damage = 1.5
-money = null
+money = 600
