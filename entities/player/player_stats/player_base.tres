@@ -6,14 +6,15 @@
 [ext_resource type="Resource" uid="uid://ccw7k2y8pni61" path="res://entities/items/weapon_items/common/canon_base.tres" id="2_i4mtq"]
 [ext_resource type="Texture2D" uid="uid://jtyv2q83selb" path="res://assets/space_breaker_asset/Ships/Small/body_01.png" id="4_20ddj"]
 
-[sub_resource type="Resource" id="Resource_sxuct"]
+[sub_resource type="Resource" id="Resource_lla5s"]
 script = ExtResource("1_n3n25")
-weapon_coin = 0.0
-booster_coin = 0.0
-accelerator_coin = 0.0
-shield_coin = 0.0
-view_coin = 0.0
-score = 0
+base_coin = 11.0
+weapon_coin = 11.0
+booster_coin = 11.0
+accelerator_coin = 11.0
+shield_coin = 11.0
+view_coin = 11.0
+score = 11
 
 [sub_resource type="Resource" id="Resource_lytji"]
 script = ExtResource("1_1l3xw")
@@ -66,4 +67,4 @@ health = 100.0
 critical_chance = 0.2
 critical_damage = 1.5
 money = 600
-counter_data = SubResource("Resource_sxuct")
+counter_data = SubResource("Resource_lla5s")
