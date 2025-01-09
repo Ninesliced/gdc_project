@@ -1,5 +1,15 @@
 extends Node
 
+
+var in_game_ui_scene = preload("res://ui/InGameUI/GameUI.tscn")
+var in_game_ui_node : GameUI = null
+
+func _ready():
+	var in_game_ui = in_game_ui_scene.instantiate()
+	add_child(in_game_ui)
+	in_game_ui_node = in_game_ui
+
+
 var ui_text_value_scene = preload("res://ui/name_value_ui.tscn")
 
 func get_ui_stats_from_dict(stats : Dictionary, add_color = true) -> Array[NameValueUI]:

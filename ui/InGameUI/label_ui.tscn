@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ch5odomcmnbuf"]
+
+[node name="LabelUI" type="RichTextLabel"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+bbcode_enabled = true
+text = "SCORE : 100.000.000
+
+"
+fit_content = true

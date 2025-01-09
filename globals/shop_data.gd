@@ -10,7 +10,7 @@ var shop_scene : PackedScene = preload("res://ui/Shops/shop.tscn")
 	preload("res://entities/items/weapon_items/epic/canon_epic.tres"),
 	preload("res://entities/items/weapon_items/legendary/star_killer.tres"),
 ]
-var items_weigthed : Array[Dictionary] = [] # REWORK
+var items_weigthed : Array[Dictionary] = []
 var weights_total : int = 0
 
 var items_by_rarity : Dictionary = {

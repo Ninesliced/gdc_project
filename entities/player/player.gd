@@ -7,6 +7,7 @@ class_name Player
 		_player_stats = stats
 		if stats != null and $Icon != null:
 			$Icon.texture = stats.texture
+		_player_counter = stats.counter_data
 
 @export var _player_counter : CounterData
 
@@ -27,6 +28,7 @@ func _ready() -> void:
 			
 		_player_stats = new_data
 	PlayerData.set_player_data(self)
+	UiGlobal.in_game_ui_node.set_player(self)
 	$MovementComponent.speed = _player_stats.speed
 	pass
 
