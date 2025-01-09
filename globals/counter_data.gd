@@ -2,13 +2,15 @@ extends Resource
 
 class_name CounterData
 
+@export var base_coin := 0.0
 @export var weapon_coin := 0.0
 @export var booster_coin := 0.0
 @export var accelerator_coin := 0.0
 @export var shield_coin := 0.0
 @export var view_coin := 0.0
-
 @export var score := 0
+
+signal on_counter_data_changed
 
 func _add(data: CounterData) -> void:
 	weapon_coin += data.weapon_coin
@@ -17,3 +19,4 @@ func _add(data: CounterData) -> void:
 	shield_coin += data.shield_coin
 	view_coin += data.view_coin
 	score += data.score
+	emit_signal("on_counter_data_changed")
