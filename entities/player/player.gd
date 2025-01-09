@@ -35,7 +35,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	move_and_collide(velocity * delta)
-	$HealthComponent.damage(5 * delta)
 
 func _on_health_component_on_death() -> void:
 	UiGlobal.retry_node.show_retry()
