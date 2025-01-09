@@ -13,6 +13,7 @@ class_name CounterData
 signal on_counter_data_changed
 
 func _add(data: CounterData) -> void:
+	base_coin += data.base_coin
 	weapon_coin += data.weapon_coin
 	booster_coin += data.booster_coin
 	accelerator_coin += data.accelerator_coin
@@ -20,3 +21,5 @@ func _add(data: CounterData) -> void:
 	view_coin += data.view_coin
 	score += data.score
 	emit_signal("on_counter_data_changed")
+	print(base_coin)
+	print("Added")

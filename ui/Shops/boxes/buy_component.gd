@@ -20,14 +20,16 @@ func _process(delta: float) -> void:
 
 func _on_shop_box_pressed() -> void:
 	var item: Item = box_parent.item
+	var counter_data = CounterData.new()
+	counter_data.base_coin = -item.price
 
 	if not bought and item:
-		if PlayerData.player_stats.money >= item.price:
-			PlayerData.player_stats.money -= item.price
+		if PlayerData.player_stats.counter_data.base_coin >= item.price:
+			PlayerData.player_stats.counter_data._add(counter_data)
 			PlayerData.inventory.append(item)
 
 			bought = true
-			box_parent.price.text = "bought"
+			# box_parent.price.text = "bought"
 
 			box_parent.animation_player.play("delete")
 			box_parent.play_sound("buy")

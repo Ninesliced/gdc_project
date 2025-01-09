@@ -72,6 +72,7 @@ radius = 5.39941
 height = 25.1596
 
 [node name="CharacterBody2D" instance=ExtResource("1_0dfpd")]
+position = Vector2(20.0703, 0)
 _player_stats = SubResource("Resource_750hy")
 
 [node name="Camera2D" parent="." index="2"]
@@ -90,6 +91,7 @@ script = ExtResource("7_h8khn")
 
 [node name="HealthComponent" parent="." index="5"]
 top_level = true
+position = Vector2(20.0703, 0)
 max_hp = 20
 initial_hp = 20
 show_hp = true
