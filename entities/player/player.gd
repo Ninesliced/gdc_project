@@ -18,10 +18,6 @@ var _player_counter : CounterData
 @onready var health_component : HealthComponent = $HealthComponent
 
 func _ready() -> void:
-	# if _player_counter == null and _player_stats.counter_data != null:
-	# 	print("Counter data is null")
-	# 	print(_player_stats.counter_data.score)
-	# 	_player_counter = _player_stats.counter_data.duplicate()
 	if PlayerData.player_start_stats != null:
 		var new_data = PlayerData.player_start_stats.duplicate()
 		for i in range(PlayerData.player_start_stats.item_slots.size()):
@@ -39,9 +35,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	move_and_collide(velocity * delta)
+	$HealthComponent.damage(5 * delta)
 
 func _on_health_component_on_death() -> void:
-	queue_free()
+	UiGlobal.retry_node.show_retry()
+	get_tree().paused = true
 
 func _on_health_component_on_damage(damage: int) -> void:
 	pass

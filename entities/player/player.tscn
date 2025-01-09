@@ -15,6 +15,8 @@ colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0.970733, 0.970733, 0.970733, 
 size = Vector2(22, 59)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+process_mode = 1
+position = Vector2(-20.0703, 0)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_lh0fv")

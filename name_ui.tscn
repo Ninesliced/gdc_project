@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://mmr6bc4jucsl"]
+[gd_scene load_steps=3 format=3 uid="uid://c8kc1o0sim64d"]
 
-[ext_resource type="PackedScene" uid="uid://wlsjjcw1epik" path="res://ui/name_value_ui.tscn" id="1_7uarp"]
+[ext_resource type="PackedScene" uid="uid://86h3mugaf3sr" path="res://ui/name_value_ui.tscn" id="1_7uarp"]
 [ext_resource type="Texture2D" uid="uid://d3vwx18ss3k5f" path="res://assets/ui/roud_nine_dark.png" id="2_bygdq"]
 
 [node name="NameValueUi" instance=ExtResource("1_7uarp")]

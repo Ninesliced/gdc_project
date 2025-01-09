@@ -16,6 +16,7 @@ class_name PlayerStats
 @export var critical_damage : float = 2
 @export var money : int = 600
 @export var counter_data : CounterData = CounterData.new()
+
 var inventory : Array[Item] = []
 var equipments : Array[Node2D] = []
 var nodes_positioner : Array[Node2D] = []

@@ -23,3 +23,9 @@ func _add(data: CounterData) -> void:
 	emit_signal("on_counter_data_changed")
 	print(base_coin)
 	print("Added")
+
+func get_stats():
+	return {
+		"coin": base_coin,
+		"score": score
+	}

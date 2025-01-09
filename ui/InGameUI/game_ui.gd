@@ -9,6 +9,7 @@ var texts : Dictionary = {}
 
 
 func _ready():
+	UiGlobal.in_game_ui_node = self
 	if player != null:
 		hide()
 

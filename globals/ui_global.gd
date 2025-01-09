@@ -4,13 +4,18 @@ extends Node
 var in_game_ui_scene = preload("res://ui/InGameUI/GameUI.tscn")
 var in_game_ui_node : GameUI = null
 
+var retry_scene = preload("res://ui/Retry/retry.tscn")
+var retry_node : RetryUI = null
+
 func _ready():
-	var in_game_ui = in_game_ui_scene.instantiate()
-	add_child(in_game_ui)
-	in_game_ui_node = in_game_ui
+	pass
 
 
 var ui_text_value_scene = preload("res://ui/name_value_ui.tscn")
+
+func hide_all():
+	in_game_ui_node.hide()
+	retry_node.hide()
 
 func get_ui_stats_from_dict(stats : Dictionary, add_color = true) -> Array[NameValueUI]:
 	
