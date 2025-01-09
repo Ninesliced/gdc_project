@@ -1,12 +1,27 @@
-[gd_scene load_steps=14 format=3 uid="uid://1713ucjydt4a"]
+[gd_scene load_steps=27 format=3 uid="uid://1713ucjydt4a"]
 
 [ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_40l4n"]
+[ext_resource type="Script" path="res://globals/counter_data.gd" id="2_iphvd"]
 [ext_resource type="PackedScene" uid="uid://brfq32hg5bfi2" path="res://entities/enemies/spawner/enemy_spawner.tscn" id="2_o7w43"]
 [ext_resource type="Script" path="res://entities/player/slot.gd" id="2_x3kuv"]
 [ext_resource type="PackedScene" uid="uid://cchsone545eea" path="res://entities/planets/planet.tscn" id="3_lqoco"]
 [ext_resource type="Resource" uid="uid://ccw7k2y8pni61" path="res://entities/items/weapon_items/common/canon_base.tres" id="3_tsqms"]
 [ext_resource type="Script" path="res://entities/player/player_stats.gd" id="4_mndbt"]
 [ext_resource type="Texture2D" uid="uid://jtyv2q83selb" path="res://assets/space_breaker_asset/Ships/Small/body_01.png" id="5_555o4"]
+[ext_resource type="Script" path="res://entities/enemies/spawner/enemy_def.gd" id="7_fy3rf"]
+[ext_resource type="PackedScene" uid="uid://lbaknsn35a0g" path="res://entities/enemies/impl/basic_enemy.tscn" id="8_t1ur1"]
+[ext_resource type="Script" path="res://entities/enemies/spawner/enemy_chance.gd" id="10_0vw2q"]
+[ext_resource type="PackedScene" uid="uid://br0br7lxdlqwh" path="res://entities/enemies/impl/basic_no_weapon_enemy.tscn" id="10_3hth3"]
+[ext_resource type="Script" path="res://entities/enemies/spawner/cycle.gd" id="11_worq0"]
+
+[sub_resource type="Resource" id="Resource_hgqgj"]
+script = ExtResource("2_iphvd")
+weapon_coin = 0.0
+booster_coin = 0.0
+accelerator_coin = 0.0
+shield_coin = 0.0
+view_coin = 0.0
+score = 0
 
 [sub_resource type="Resource" id="Resource_lytji"]
 script = ExtResource("2_x3kuv")
@@ -66,23 +81,69 @@ health = 100.0
 critical_chance = 0.2
 critical_damage = 1.5
 money = 600
+counter_data = SubResource("Resource_hgqgj")
+
+[sub_resource type="Resource" id="Resource_jgm10"]
+script = ExtResource("7_fy3rf")
+id = "basic"
+scene = ExtResource("8_t1ur1")
+
+[sub_resource type="Resource" id="Resource_5oyqj"]
+script = ExtResource("7_fy3rf")
+id = "disarmed"
+scene = ExtResource("10_3hth3")
+
+[sub_resource type="Resource" id="Resource_nautw"]
+script = ExtResource("10_0vw2q")
+enemyId = "disarmed"
+chance = 1
+
+[sub_resource type="Resource" id="Resource_it8nf"]
+script = ExtResource("11_worq0")
+enemies = Array[ExtResource("10_0vw2q")]([SubResource("Resource_nautw")])
+spawn_interval = 2.0
+spawn_count = 5
+spawn_distance_min = 500
+spawn_distance_max = 2000
+is_boss = false
+
+[sub_resource type="Resource" id="Resource_x18iu"]
+script = ExtResource("10_0vw2q")
+enemyId = "basic"
+chance = 1
+
+[sub_resource type="Resource" id="Resource_lqo55"]
+script = ExtResource("11_worq0")
+enemies = Array[ExtResource("10_0vw2q")]([SubResource("Resource_x18iu")])
+spawn_interval = 1.5
+spawn_count = 5
+spawn_distance_min = 500
+spawn_distance_max = 2000
+is_boss = false
 
 [node name="world" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_40l4n")]
 position = Vector2(44, 224)
 _player_stats = SubResource("Resource_afu5w")
+_player_counter = SubResource("Resource_hgqgj")
 
 [node name="EnemySpawner" parent="CharacterBody2D" instance=ExtResource("2_o7w43")]
-spawn_interval = 2.0
-spawn_count = 1
-spawn_distance_max = 900
+cycle_interval = 20.0
+enemies = Array[ExtResource("7_fy3rf")]([SubResource("Resource_jgm10"), SubResource("Resource_5oyqj")])
+cycles = Array[Object]([SubResource("Resource_it8nf"), SubResource("Resource_lqo55")])
 
 [node name="Planet" parent="." instance=ExtResource("3_lqoco")]
-position = Vector2(-200, 384)
+position = Vector2(-963, 580)
 
 [node name="Planet2" parent="." instance=ExtResource("3_lqoco")]
-position = Vector2(0, 56)
+position = Vector2(-128, 75)
 
 [node name="Planet3" parent="." instance=ExtResource("3_lqoco")]
-position = Vector2(312, 472)
+position = Vector2(659, 812)
+
+[node name="Planet4" parent="." instance=ExtResource("3_lqoco")]
+position = Vector2(-620, -503)
+
+[node name="Planet5" parent="." instance=ExtResource("3_lqoco")]
+position = Vector2(1313, -390)

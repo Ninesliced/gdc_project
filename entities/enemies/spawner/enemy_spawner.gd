@@ -1,28 +1,56 @@
 extends Node
 
-@export var spawn_interval := 1.0:
-	set(value):
-		$SpawnDelay.wait_time = value
-@export var spawn_count := 3
-@export var spawn_distance_min := 500
-@export var spawn_distance_max := 2000
-
 @export var cycle := 0
 @export var cycle_interval := 120.0
-@export var cycle_multiplier := 1.75
 
-@export var enemies : Array[PackedScene]= [load("res://entities/enemies/impl/basic_enemy.tscn")]
+@export var enemies: Array[EnemyDef] = []
 
-func calculate_cycle_value(val: float) -> float:
-	return val + (val * cycle * cycle_multiplier)
+@export var cycles : Array[Cycle] = [
+	Cycle.new(),
+]
+
+func _ready() -> void:
+	var first_cycle: Cycle = cycles[0]
+	$SpawnDelay.wait_time = first_cycle.spawn_interval
+	$CycleDelay.wait_time = cycle_interval
+	$SpawnDelay.start()
+	$CycleDelay.start()
+	
+func get_enemy_by_id(id: String) -> EnemyDef:
+	for enemy in enemies:
+		if enemy.id == id:
+			return enemy
+	return null
+
+func get_random_enemy() -> EnemyDef:
+	var cycle := cycles[cycle]
+	var enemyChances := cycle.enemies
+	var totalChance := 0
+	
+	for enemy in enemyChances:
+		totalChance += enemy.chance
+	
+	var random := randf() * totalChance
+	var current := 0
+	
+	for enemy in enemyChances:
+		current += enemy.chance
+		if random < current:
+			return get_enemy_by_id(enemy.enemyId)
+	return null
 
 func spawn_around_player(player: Player) -> void:
-	for i in range(int(calculate_cycle_value(spawn_count))):
+	if cycles.size() <= cycle:
+		return
+		
+	var cycle: Cycle = cycles[cycle]
+	
+	for i in range(int(cycle.spawn_count)):
 		var angle: float = rad_to_deg(randf() * 360)
-		var distance: float = randf() * (spawn_distance_max - spawn_distance_min) + spawn_distance_min
+		var distance: float = randf() * (cycle.spawn_distance_max - cycle.spawn_distance_min) + cycle.spawn_distance_min
 		var position: Vector2 = player.global_position + Vector2(cos(angle), sin(angle)) * distance
 		
-		var enemy: Enemy = enemies[randi() % enemies.size()].instantiate()
+		var enemy: Enemy = get_random_enemy().scene.instantiate() as Enemy
 		enemy.global_position = position
 		get_tree().current_scene.add_child(enemy)
 
@@ -36,3 +64,11 @@ func _on_spawn_delay_timeout() -> void:
 
 func _on_cycle_delay_timeout() -> void:
 	cycle += 1
+	
+	if cycles.size() <= cycle:
+		# TODO: End game
+		cycle = 0
+	
+	var cycle: Cycle = cycles[cycle]
+	$SpawnDelay.wait_time = cycle.spawn_interval
+	$SpawnDelay.start()

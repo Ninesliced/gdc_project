@@ -97,4 +97,3 @@ func _on_mouse_exited() -> void:
 	super._on_mouse_exited()
 	stats_ui.hide()
 	pass
-
