@@ -18,8 +18,22 @@ func load_resource(resource : Resource) -> void:
 	if resource is WeaponProperty:
 		weapon_property = resource
 		$Sprite.texture = weapon_property.texture
+		$Timer.wait_time = weapon_property.fire_rate
 	else:
 		assert(false, "Invalid resource type")
+
+func set_delay(percents: float) -> void:
+	$Timer.stop()
+	var delayTimer : Timer = Timer.new()
+	delayTimer.wait_time = weapon_property.fire_rate * percents
+	delayTimer.one_shot = true
+	delayTimer.timeout.connect(start_shooting)
+	add_child(delayTimer)
+	delayTimer.start()
+
+func start_shooting() -> void:
+	print($Timer.wait_time)
+	$Timer.start()
 
 func select_target() -> Node2D:
 	var enemies: Array[Node] = get_tree().get_nodes_in_group("Enemy" if weapon_property.target_enemy else "Player")

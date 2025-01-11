@@ -76,7 +76,6 @@ func check_type(item: Item, slot: Slot) -> bool:
 	return false
 
 func load_equipment() -> void:
-	print("loading equipment")
 	for node in nodes_positioner:
 		if is_instance_valid(node):
 			node.queue_free()
@@ -107,21 +106,23 @@ func load_equipment() -> void:
 		instance.position = slots[i].position
 
 		
+		# FOR floaty item
 		var nodes = instance.get_children()
 
 		var node2D = Node2D.new()
 		node2D.position = slots[i].position
 		player.add_child(node2D)
-		# var sprite = load("res://assets/bullets/bullet_1.png")
-		# var sprite2D = Sprite2D.new()
-		# sprite2D.texture = sprite
-		# node2D.add_child(sprite2D)
 		nodes_positioner.append(node2D)
 
 		for node in nodes:
 			if node is FloatComponent:
 				node.set_floaty(slots[i].floaty, slots[i].position, slots[i].float_distance, node2D)
-
+		# END FOR
+		
 		if instance.has_method("load_resource"):
 			instance.load_resource(item.resource)
+
+		if instance is Weapon:
+			var weapon = instance as Weapon
+			weapon.set_delay(float(i) / slots.size())
 	pass
