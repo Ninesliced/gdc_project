@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://db6xo6xvupfk8"]
 
 [ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_2og11"]
-[ext_resource type="PackedScene" path="res://entities/weapons/bullets/bullet_long.tscn" id="3_7et0a"]
+[ext_resource type="PackedScene" uid="uid://vg43s1sdvoud" path="res://entities/weapons/bullets/bullet_long.tscn" id="3_7et0a"]
 [ext_resource type="Script" path="res://entities/weapons/data/weapon_property.gd" id="4_hm41q"]
 [ext_resource type="Script" path="res://entities/items/item.gd" id="4_joajl"]
 [ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="5_jq1at"]

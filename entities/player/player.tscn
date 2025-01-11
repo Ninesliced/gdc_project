@@ -47,7 +47,7 @@ shape = SubResource("RectangleShape2D_qml0v")
 [node name="MovementComponent" parent="." instance=ExtResource("6_5fax1")]
 script = ExtResource("7_l5tyt")
 acceleration = 1200
-decceleration = 400
+decceleration = 800
 rotation_speed = 8.0
 
 [connection signal="on_damage" from="HealthComponent" to="." method="_on_health_component_on_damage"]

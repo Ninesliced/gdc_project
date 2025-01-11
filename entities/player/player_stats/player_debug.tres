@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_s23qe"]
 script = ExtResource("1_dcuip")
-base_coin = 0.0
+base_coin = 600.0
 weapon_coin = 0.0
 booster_coin = 0.0
 accelerator_coin = 0.0

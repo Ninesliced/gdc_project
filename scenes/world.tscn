@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://1713ucjydt4a"]
+[gd_scene load_steps=42 format=3 uid="uid://1713ucjydt4a"]
 
 [ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_40l4n"]
 [ext_resource type="Script" path="res://globals/counter_data.gd" id="2_iphvd"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://entities/enemies/spawner/enemy_chance.gd" id="10_0vw2q"]
 [ext_resource type="PackedScene" uid="uid://br0br7lxdlqwh" path="res://entities/enemies/impl/basic_no_weapon_enemy.tscn" id="10_3hth3"]
 [ext_resource type="Script" path="res://entities/enemies/spawner/cycle.gd" id="11_worq0"]
-[ext_resource type="PackedScene" uid="uid://ci3qqov6hrpuy" path="res://entities/enemies/impl/protected_enemy.tscn" id="12_2eaty"]
+[ext_resource type="PackedScene" path="res://entities/enemies/impl/protected_enemy.tscn" id="12_2eaty"]
 [ext_resource type="PackedScene" uid="uid://bp21ej6on1jng" path="res://ui/InGameUI/GameUI.tscn" id="14_4dh58"]
 
 [sub_resource type="Resource" id="Resource_hgqgj"]
@@ -207,6 +207,7 @@ is_boss = false
 [node name="Retry" parent="." instance=ExtResource("2_t5q0u")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_40l4n")]
+process_mode = 0
 position = Vector2(44, 224)
 _player_stats = SubResource("Resource_afu5w")
 
