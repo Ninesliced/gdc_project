@@ -13,6 +13,7 @@ var stats_ui_list : Array = []
 @onready var grid_container: GridContainer = $CanvasLayer/Control/VBoxContainer/Panel/VScrollBar/ClassContainer
 @onready var stats_container: VBoxContainer = $CanvasLayer/Control/VBoxContainer/Panel/NinePatchRect/StatsContainer
 func _ready() -> void:
+	get_tree().paused = false
 	for character in GameData.list_available_characters:
 		var class_box_instance = class_box_scene.instantiate()
 		list_class_boxes.append(class_box_instance)

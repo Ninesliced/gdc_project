@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://hp4nwqwtvp17"]
+
+[ext_resource type="Texture2D" uid="uid://bds8nncilm33r" path="res://assets/space_breaker_asset/Bonus/turret_01c_mk3.png" id="1_h3jh4"]
+[ext_resource type="Script" path="res://entities/items/item.gd" id="1_k6jib"]
+[ext_resource type="PackedScene" uid="uid://duvhv66jp4fll" path="res://entities/shields/shield.tscn" id="2_mu70q"]
+[ext_resource type="Resource" uid="uid://pn8mirl6took" path="res://entities/shields/data/shield.tres" id="3_vvjmp"]
+
+[resource]
+script = ExtResource("1_k6jib")
+name = "Basic Shield"
+rarity = 0
+type = 1
+description = "This is a shitty skin"
+icon_form_resource = false
+icon = ExtResource("1_h3jh4")
+price = 0
+resource = ExtResource("3_vvjmp")
+item_scene = ExtResource("2_mu70q")

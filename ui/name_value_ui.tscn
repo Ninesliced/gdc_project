@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://wlsjjcw1epik"]
+[gd_scene load_steps=6 format=3 uid="uid://86h3mugaf3sr"]
 
 [ext_resource type="Texture2D" uid="uid://c20d1f3ovy4an" path="res://assets/ui/round_nine_patch.png" id="1_lkmow"]
 [ext_resource type="Script" path="res://ui/name_value_ui.gd" id="2_ilcol"]

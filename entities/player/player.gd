@@ -8,7 +8,7 @@ class_name Player
 		if stats != null and $Icon != null:
 			$Icon.texture = stats.texture
 
-@export var _player_counter : CounterData
+var _player_counter : CounterData
 
 @export var test : int = 0 :
 	set(value):
@@ -23,10 +23,12 @@ func _ready() -> void:
 		for i in range(PlayerData.player_start_stats.item_slots.size()):
 			var slot = PlayerData.player_start_stats.item_slots[i].duplicate()
 			new_data.item_slots[i] = slot
-			
-			
+		new_data.counter_data = PlayerData.player_start_stats.counter_data.duplicate()			
 		_player_stats = new_data
+		_player_counter = _player_stats.counter_data
+
 	PlayerData.set_player_data(self)
+	UiGlobal.in_game_ui_node.set_player(self)
 	$MovementComponent.speed = _player_stats.speed
 	pass
 
@@ -35,7 +37,8 @@ func _physics_process(delta: float) -> void:
 	move_and_collide(velocity * delta)
 
 func _on_health_component_on_death() -> void:
-	queue_free()
+	UiGlobal.retry_node.show_retry()
+	get_tree().paused = true
 
 func _on_health_component_on_damage(damage: int) -> void:
 	pass

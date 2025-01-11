@@ -115,26 +115,23 @@ _data = {
 
 [node name="Shop" type="CanvasLayer"]
 process_mode = 3
+layer = 50
 script = ExtResource("1_rgx1f")
 
 [node name="Shop" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(480, 270)
+anchors_preset = 0
+offset_right = 800.0
+offset_bottom = 450.0
+pivot_offset = Vector2(400, 225)
+size_flags_horizontal = 3
+size_flags_vertical = 6
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Shop"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 16.0
-offset_right = -32.0
-offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

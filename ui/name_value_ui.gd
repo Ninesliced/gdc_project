@@ -17,12 +17,22 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func set_name_value(name : String, value : String):
-	name = "[center][tornado radius=1 freq=1]" + name + "[/tornado][/center]"
+	set_name_string(name)
+	set_value(value)
+	pass
+
+func set_value(value : String):
 	value = "[center][tornado radius=1 freq=1]" + value + "[/tornado][/center]"
 	if (!is_node_ready()):
 		await ready
-	text.text = name
 	value_label.text = value
+	pass
+
+func set_name_string(name : String):
+	name = "[center][tornado radius=1 freq=1]" + name + "[/tornado][/center]"
+	if (!is_node_ready()):
+		await ready
+	text.text = name
 	pass
 
 func set_value_color(color : Color):

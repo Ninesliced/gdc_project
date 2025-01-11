@@ -1,15 +1,26 @@
-[gd_resource type="Resource" script_class="PlayerStats" load_steps=9 format=3 uid="uid://bv7b42lp1dll5"]
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=12 format=3 uid="uid://bv7b42lp1dll5"]
 
 [ext_resource type="Script" path="res://entities/player/slot.gd" id="1_1l3xw"]
 [ext_resource type="Script" path="res://entities/player/player_stats.gd" id="1_k0gno"]
+[ext_resource type="Script" path="res://globals/counter_data.gd" id="1_n3n25"]
 [ext_resource type="Resource" uid="uid://ccw7k2y8pni61" path="res://entities/items/weapon_items/common/canon_base.tres" id="2_i4mtq"]
 [ext_resource type="Texture2D" uid="uid://jtyv2q83selb" path="res://assets/space_breaker_asset/Ships/Small/body_01.png" id="4_20ddj"]
+
+[sub_resource type="Resource" id="Resource_lla5s"]
+script = ExtResource("1_n3n25")
+base_coin = 0.0
+weapon_coin = 0.0
+booster_coin = 0.0
+accelerator_coin = 0.0
+shield_coin = 0.0
+view_coin = 0.0
+score = 0
 
 [sub_resource type="Resource" id="Resource_lytji"]
 script = ExtResource("1_1l3xw")
 position = Vector2(0, 0)
 item = ExtResource("2_i4mtq")
-slot_types = Array[int]([3])
+slot_types = Array[int]([1])
 rotation = 0.0
 floaty = false
 float_distance = 2.0
@@ -17,8 +28,7 @@ float_distance = 2.0
 [sub_resource type="Resource" id="Resource_8iphd"]
 script = ExtResource("1_1l3xw")
 position = Vector2(32, 0)
-item = ExtResource("2_i4mtq")
-slot_types = Array[int]([0, 1])
+slot_types = Array[int]([0])
 rotation = 0.0
 floaty = true
 float_distance = 10.0
@@ -26,7 +36,6 @@ float_distance = 10.0
 [sub_resource type="Resource" id="Resource_aav0e"]
 script = ExtResource("1_1l3xw")
 position = Vector2(-32, 0)
-item = ExtResource("2_i4mtq")
 slot_types = Array[int]([1, 0])
 rotation = -3.14
 floaty = true
@@ -34,10 +43,18 @@ float_distance = 10.0
 
 [sub_resource type="Resource" id="Resource_tri4i"]
 script = ExtResource("1_1l3xw")
-position = Vector2(0, -128)
+position = Vector2(0, -32)
 slot_types = Array[int]([3])
-rotation = 0.0
-floaty = false
+rotation = -1.57
+floaty = true
+float_distance = 10.0
+
+[sub_resource type="Resource" id="Resource_jvi7p"]
+script = ExtResource("1_1l3xw")
+position = Vector2(0, 32)
+slot_types = Array[int]([0])
+rotation = 1.57
+floaty = true
 float_distance = 10.0
 
 [resource]
@@ -48,7 +65,7 @@ name = "Default"
 description = "Default ship"
 rarity = 0
 texture = ExtResource("4_20ddj")
-item_slots = Array[ExtResource("1_1l3xw")]([SubResource("Resource_lytji"), SubResource("Resource_8iphd"), SubResource("Resource_aav0e"), SubResource("Resource_tri4i")])
+item_slots = Array[ExtResource("1_1l3xw")]([SubResource("Resource_lytji"), SubResource("Resource_8iphd"), SubResource("Resource_aav0e"), SubResource("Resource_tri4i"), SubResource("Resource_jvi7p")])
 reduction_delay_boost = 0.0
 damage_multiplier = 1.0
 speed = 300.0
@@ -56,3 +73,4 @@ health = 100.0
 critical_chance = 0.2
 critical_damage = 1.5
 money = 600
+counter_data = SubResource("Resource_lla5s")

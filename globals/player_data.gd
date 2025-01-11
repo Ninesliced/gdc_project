@@ -1,7 +1,7 @@
 extends Node
 var player = null
 var player_start_stats = null
-var player_stats = null
+var player_stats : PlayerStats = null
 var player_rotation = 0
 var inventory : Array[Item] = []
 var equipments : Array[Node2D] = []
