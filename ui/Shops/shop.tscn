@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/Shops/shop.gd" id="1_rgx1f"]
 [ext_resource type="Texture2D" uid="uid://2p5xlj0knnee" path="res://assets/ui/button.png" id="2_1qmga"]
 [ext_resource type="Script" path="res://ui/Shops/sell.gd" id="3_5d0dw"]
-[ext_resource type="PackedScene" uid="uid://c2eemep8skl7h" path="res://ui/ui_button.tscn" id="3_mej8u"]
+[ext_resource type="PackedScene" path="res://ui/ui_button.tscn" id="3_mej8u"]
 [ext_resource type="Theme" uid="uid://b7h2gckjyn61m" path="res://ui/theme/theme.tres" id="4_7xw6o"]
 [ext_resource type="Script" path="res://ui/Shops/upgrade.gd" id="4_57mfb"]
 [ext_resource type="Texture2D" uid="uid://xw68rrdxl2ih" path="res://assets/ui/shops/blueprint.png" id="4_f3fbu"]
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, 466)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -123,6 +123,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 466.0
+offset_bottom = 466.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(400, 225)

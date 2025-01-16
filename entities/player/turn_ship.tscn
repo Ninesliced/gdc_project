@@ -1,12 +1,23 @@
-[gd_scene load_steps=15 format=3 uid="uid://dy30yy5axn8vr"]
+[gd_scene load_steps=17 format=3 uid="uid://dy30yy5axn8vr"]
 
 [ext_resource type="PackedScene" uid="uid://b0cu8ml0ttn5j" path="res://entities/player/player.tscn" id="1_0dfpd"]
+[ext_resource type="Script" path="res://globals/counter_data.gd" id="2_c3t8g"]
 [ext_resource type="Script" path="res://entities/player/slot.gd" id="2_jmejf"]
 [ext_resource type="Resource" uid="uid://ccw7k2y8pni61" path="res://entities/items/weapon_items/common/canon_base.tres" id="3_dxmm6"]
 [ext_resource type="Script" path="res://entities/player/player_stats.gd" id="4_nh7jl"]
 [ext_resource type="Texture2D" uid="uid://jtyv2q83selb" path="res://assets/space_breaker_asset/Ships/Small/body_01.png" id="5_gsa2g"]
 [ext_resource type="PackedScene" uid="uid://bxvp8fluu1lsf" path="res://entities/player/components/slot_manager.tscn" id="6_jbqv1"]
 [ext_resource type="Script" path="res://entities/player/components/slot_manager.gd" id="7_h8khn"]
+
+[sub_resource type="Resource" id="Resource_3xbdw"]
+script = ExtResource("2_c3t8g")
+base_coin = 0.0
+weapon_coin = 0.0
+booster_coin = 0.0
+accelerator_coin = 0.0
+shield_coin = 0.0
+view_coin = 0.0
+score = 0
 
 [sub_resource type="Resource" id="Resource_lytji"]
 script = ExtResource("2_jmejf")
@@ -66,6 +77,7 @@ health = 100.0
 critical_chance = 0.2
 critical_damage = 1.5
 money = 600
+counter_data = SubResource("Resource_3xbdw")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bg8xi"]
 radius = 5.39941

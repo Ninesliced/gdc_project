@@ -24,4 +24,4 @@ var nodes_positioner : Array[Node2D] = []
 signal on_player_stats_changed(stats: PlayerStats)
 
 func is_critical_hit() -> bool:
-    return randf() < critical_chance
+	return randf() < critical_chance
