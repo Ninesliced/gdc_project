@@ -31,7 +31,7 @@ func set_ui() -> void:
 
 func add_text_to_parent(key, string : String, parent : Node) -> void:
 	if texts.has(key):
-		texts[key].set_text(string)
+		texts[key].set_text(string)	
 		return
 	var text_scene_instance = text_scene.instantiate()
 	texts[key] = text_scene_instance

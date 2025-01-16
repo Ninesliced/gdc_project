@@ -10,9 +10,9 @@ class_name Player
 
 var _player_counter : CounterData
 
-@export var test : int = 0 :
-	set(value):
-		test = value
+@export var chunk_manager : ChunkManager = null
+var chunk_check_frame_rate = 0.2
+var chunk_frame = 0
 
 @onready var camera = $Camera2D
 @onready var health_component : HealthComponent = $HealthComponent
@@ -32,6 +32,13 @@ func _ready() -> void:
 	$MovementComponent.speed = _player_stats.speed
 	pass
 
+func _process(delta: float) -> void:
+	if chunk_manager == null:
+		return
+	if chunk_frame > chunk_check_frame_rate:
+		chunk_manager.load_chunk_around(global_position)
+		chunk_frame = 0
+	chunk_frame += delta
 
 func _physics_process(delta: float) -> void:
 	move_and_collide(velocity * delta)

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://brfq32hg5bfi2" path="res://entities/enemies/spawner/enemy_spawner.tscn" id="2_o7w43"]
 [ext_resource type="PackedScene" uid="uid://c1v6osn3ffxb1" path="res://ui/Retry/retry.tscn" id="2_t5q0u"]
 [ext_resource type="Script" path="res://entities/player/slot.gd" id="2_x3kuv"]
+[ext_resource type="PackedScene" uid="uid://cchsone545eea" path="res://entities/planets/planet.tscn" id="3_lqoco"]
 [ext_resource type="Resource" uid="uid://ccw7k2y8pni61" path="res://entities/items/weapon_items/common/canon_base.tres" id="3_tsqms"]
 [ext_resource type="Script" path="res://entities/player/player_stats.gd" id="4_mndbt"]
 [ext_resource type="Resource" uid="uid://hp4nwqwtvp17" path="res://entities/items/shield_items/basic_shield_item.tres" id="5_3ql26"]
@@ -16,7 +17,6 @@
 [ext_resource type="Script" path="res://entities/enemies/spawner/cycle.gd" id="11_worq0"]
 [ext_resource type="PackedScene" uid="uid://ci3qqov6hrpuy" path="res://entities/enemies/impl/protected_enemy.tscn" id="12_2eaty"]
 [ext_resource type="PackedScene" uid="uid://bp21ej6on1jng" path="res://ui/InGameUI/GameUI.tscn" id="14_4dh58"]
-[ext_resource type="Script" path="res://utils/structure_spawner/structure_spawner.gd" id="18_ci1ff"]
 [ext_resource type="Script" path="res://utils/chunk_manager/chunk_manager.gd" id="18_h2a57"]
 
 [sub_resource type="Resource" id="Resource_hgqgj"]
@@ -207,21 +207,21 @@ is_boss = false
 
 [node name="Retry" parent="." instance=ExtResource("2_t5q0u")]
 
-[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("chunk_manager") instance=ExtResource("1_40l4n")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_40l4n")]
 process_mode = 0
 position = Vector2(44, 224)
 _player_stats = SubResource("Resource_afu5w")
-chunk_manager = NodePath("../ChunkManager")
 
 [node name="EnemySpawner" parent="CharacterBody2D" instance=ExtResource("2_o7w43")]
 cycle_interval = 40.0
 enemies = Array[ExtResource("7_fy3rf")]([SubResource("Resource_jgm10"), SubResource("Resource_5oyqj"), SubResource("Resource_46dbe")])
 cycles = Array[Object]([SubResource("Resource_it8nf"), SubResource("Resource_qhxea"), SubResource("Resource_xtjyg"), SubResource("Resource_ttriy"), SubResource("Resource_lqo55"), SubResource("Resource_c0f8e")])
 
+[node name="Planet" parent="." instance=ExtResource("3_lqoco")]
+position = Vector2(-45, 380)
+
+[node name="Planet2" parent="." instance=ExtResource("3_lqoco")]
+position = Vector2(-128, 75)
+
 [node name="ChunkManager" type="Node" parent="."]
 script = ExtResource("18_h2a57")
-
-[node name="StructureSpawner" type="Node" parent="."]
-script = ExtResource("18_ci1ff")
-
-[connection signal="chunk_loaded" from="ChunkManager" to="StructureSpawner" method="_on_chunk_manager_chunk_loaded"]
