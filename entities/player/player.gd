@@ -28,6 +28,7 @@ func _ready() -> void:
 	else:
 		print("WARNING: Player stats not set")
 		_player_counter = _player_stats.counter_data
+
 	PlayerData.set_player_data(self)
 	UiGlobal.in_game_ui_node.set_player(self)
 	$MovementComponent.speed = _player_stats.speed
