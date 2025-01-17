@@ -32,7 +32,7 @@ float_distance = 10.0
 script = ExtResource("2_jmejf")
 position = Vector2(32, 0)
 item = ExtResource("3_dxmm6")
-slot_types = Array[int]([0, 1])
+slot_types = [0, 1]
 rotation = 0.0
 floaty = true
 float_distance = 10.0
@@ -40,7 +40,7 @@ float_distance = 10.0
 [sub_resource type="Resource" id="Resource_aav0e"]
 script = ExtResource("2_jmejf")
 position = Vector2(-32, 0)
-slot_types = Array[int]([1, 0])
+slot_types = [1, 0]
 rotation = -3.14
 floaty = true
 float_distance = 10.0
@@ -48,7 +48,7 @@ float_distance = 10.0
 [sub_resource type="Resource" id="Resource_awpdo"]
 script = ExtResource("2_jmejf")
 position = Vector2(0, 32)
-slot_types = Array[int]([1])
+slot_types = [1]
 rotation = 1.57
 floaty = false
 float_distance = 10.0
@@ -56,7 +56,7 @@ float_distance = 10.0
 [sub_resource type="Resource" id="Resource_so5m1"]
 script = ExtResource("2_jmejf")
 position = Vector2(0, -32)
-slot_types = Array[int]([0, 1])
+slot_types = [0, 1]
 rotation = -1.57
 floaty = false
 float_distance = 10.0

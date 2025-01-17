@@ -12,6 +12,7 @@ shader = ExtResource("1_5xpgo")
 layer = 100
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 z_index = 100
 z_as_relative = false
 material = SubResource("ShaderMaterial_cv0k1")

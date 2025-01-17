@@ -5,8 +5,8 @@ class_name ShopBox
 @onready var title: NameValueUI = $HBox/BoxContainer3/MarginContainer/Title
 @onready var price: Label = $HBox/BoxContainer2/Price
 @onready var item_icon: Sprite2D = $HBox/BoxContainer/MarginContainer/Panel/Panel/Icon
-
-@onready var stats_ui : StatsUI = $Stats
+#TODO ISSUE NE LOAD PLUS LES ITEMS SI JE type stats_ui : StatsUI = $Stats... POURQUOI ???
+@onready var stats_ui := $Stats
 @onready var stats_container: VBoxContainer = $Stats/MarginContainer/StatsContainer
 var stats_list : Array[NameValueUI] = []
 var ressource = ""
