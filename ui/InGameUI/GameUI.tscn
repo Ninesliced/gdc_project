@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/InGameUI/game_ui.gd" id="1_7q1vg"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer2" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_7q1vg")
 

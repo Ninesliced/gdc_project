@@ -1,4 +1,3 @@
-@tool
 extends CharacterBody2D
 class_name Player
 
@@ -25,6 +24,9 @@ func _ready() -> void:
 			new_data.item_slots[i] = slot
 		new_data.counter_data = PlayerData.player_start_stats.counter_data.duplicate()			
 		_player_stats = new_data
+		_player_counter = _player_stats.counter_data
+	else:
+		print("WARNING: Player stats not set")
 		_player_counter = _player_stats.counter_data
 
 	PlayerData.set_player_data(self)
