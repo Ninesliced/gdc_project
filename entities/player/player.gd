@@ -26,7 +26,9 @@ func _ready() -> void:
 		new_data.counter_data = PlayerData.player_start_stats.counter_data.duplicate()			
 		_player_stats = new_data
 		_player_counter = _player_stats.counter_data
-
+	else:
+		print("WARNING: Player stats not set")
+		_player_counter = _player_stats.counter_data
 	PlayerData.set_player_data(self)
 	UiGlobal.in_game_ui_node.set_player(self)
 	$MovementComponent.speed = _player_stats.speed

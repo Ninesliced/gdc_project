@@ -6,8 +6,6 @@ extends Node2D
 
 func _on_collectible_collected(player: Player) -> void:
 	player._player_counter._add(data)
-	print("Collected")
-	print(data.score)
 	audio_pick.play()
 	sprite.queue_free()
 	await audio_pick.finished

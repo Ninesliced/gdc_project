@@ -1,10 +1,12 @@
 extends Panel
 class_name SlotUI
 @onready var sprite: Sprite2D = $Sprite
+
 var upgrade_parent : Upgrade = null
 
 var index = 0
 var mouse_over = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	sprite.position = Vector2(abs(sprite.position.x), abs(sprite.position.y))

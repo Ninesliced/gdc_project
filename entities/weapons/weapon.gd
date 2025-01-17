@@ -32,7 +32,6 @@ func set_delay(percents: float) -> void:
 	delayTimer.start()
 
 func start_shooting() -> void:
-	print($Timer.wait_time)
 	$Timer.start()
 
 func select_target() -> Node2D:

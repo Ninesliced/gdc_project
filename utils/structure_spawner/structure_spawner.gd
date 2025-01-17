@@ -12,12 +12,17 @@ func _process(delta: float) -> void:
 	pass
 
 func generate_planet(position : Vector2, chunk_size = 1):
+	var x_delta_random = randi_range(0, chunk_size)
+	var y_delta_random = randi_range(0, chunk_size)
 	var planet_instance = planet_scene.instantiate()
-	planet_instance.global_position = position * chunk_size
+	planet_instance.global_position = position * chunk_size + Vector2(x_delta_random, y_delta_random)
 	add_child(planet_instance)
 	pass
 
 
 func _on_chunk_manager_chunk_loaded(position: Vector2, chunk_size: int) -> void:
-	generate_planet(position, chunk_size)
+	var chance = randf()
+	print("chance: " ,chance)
+	if chance < 0.1:
+		generate_planet(position, chunk_size)
 	pass # Replace with function body.

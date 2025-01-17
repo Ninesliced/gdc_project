@@ -13,6 +13,8 @@ var name_colors : Dictionary = {
 	"critical_damage" : Color.html("#d61a88"),
 	"fire_rate" : Color.html("#488bd4"),
 	"speed" : Color.html("#488bd4"),
+	"coin" : Color.html("#ffb84a"),
+	"score" : Color.html("#d61a88"),
 }
 
 

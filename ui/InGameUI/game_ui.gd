@@ -6,7 +6,7 @@ var player : Player = null
 var text_scene = preload("res://ui/InGameUI/label_ui.tscn")
 var texts : Dictionary = {}
 @onready var counter_data_container : VBoxContainer = $MarginContainer/HBoxContainer/CounterDataContainer
-
+@onready var cycle_text : CycleUI = $MarginContainer/Cycle
 
 func _ready():
 	UiGlobal.in_game_ui_node = self
@@ -25,6 +25,8 @@ func update_ui() -> void:
 
 func set_ui() -> void:
 	var counter_data : CounterData = player._player_counter
+	if counter_data == null:
+		return
 	add_text_to_parent("Score", "Score: " + str(counter_data.score), counter_data_container)
 	add_text_to_parent("Base coin", "Base coin: " + str(counter_data.base_coin), counter_data_container)
 	pass
@@ -37,3 +39,8 @@ func add_text_to_parent(key, string : String, parent : Node) -> void:
 	texts[key] = text_scene_instance
 	text_scene_instance.set_text(string)
 	parent.add_child(text_scene_instance)
+
+
+func _on_enemy_spawner_cycle_changed(cycle:int) -> void:
+	cycle_text.update_cycle_number(cycle)
+	pass # Replace with function body.

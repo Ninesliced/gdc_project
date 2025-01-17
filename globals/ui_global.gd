@@ -17,6 +17,7 @@ func hide_all():
 	in_game_ui_node.hide()
 	retry_node.hide()
 
+# This function is used to get instance of NameValueUI from a dictionary
 func get_ui_stats_from_dict(stats : Dictionary, add_color = true) -> Array[NameValueUI]:
 	
 	var stats_list : Array[NameValueUI] = []

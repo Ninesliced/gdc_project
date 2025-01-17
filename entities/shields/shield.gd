@@ -34,7 +34,6 @@ func _ready() -> void:
 func _on_health_component_on_damage(damage: int) -> void:
 	reloadDelayTimer.start()
 	regenTimer.stop()
-	print(health_component.hp)
 
 
 func _on_health_component_on_death() -> void:

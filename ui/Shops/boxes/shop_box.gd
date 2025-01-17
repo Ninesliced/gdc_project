@@ -6,7 +6,7 @@ class_name ShopBox
 @onready var price: Label = $HBox/BoxContainer2/Price
 @onready var item_icon: Sprite2D = $HBox/BoxContainer/MarginContainer/Panel/Panel/Icon
 
-@onready var stats_ui = $Stats
+@onready var stats_ui : StatsUI = $Stats
 @onready var stats_container: VBoxContainer = $Stats/MarginContainer/StatsContainer
 var stats_list : Array[NameValueUI] = []
 var ressource = ""
@@ -50,31 +50,10 @@ func set_item(new_item: Item) -> void: # SCOTCH UTILISER LES RESSOURCES
 
 func set_stats() -> void:
 	var stats = {}
-	for stat_ui in stats_list:
-		if is_instance_valid(stat_ui):
-			stat_ui.queue_free()
-	stats_list.clear()
-
 	if item.resource is WeaponProperty:
 		var weapon_property = item.resource as WeaponProperty
-		var dps = 0
-		if weapon_property.fire_rate > 0:
-			dps = weapon_property.damage / weapon_property.fire_rate
-
-		stats = {
-			"dps" : dps,
-			"damage" : weapon_property.get_damage(),
-			"fire_rate" : weapon_property.fire_rate,
-			"critical_chance" : str(weapon_property.get_critical_chance() * 100) + "%",
-			"critical_damage" : str(weapon_property.get_critical_damage() * 100) + "%",
-		}
+		stats_ui.set_stats_by_resource(weapon_property)
 	
-	var new_stats : Array[NameValueUI] = UiGlobal.get_ui_stats_from_dict(stats)
-
-	for stat in new_stats:
-		stats_container.add_child(stat)
-		stats_list.append(stat)
-
 	
 
 func get_save_data() -> Dictionary:

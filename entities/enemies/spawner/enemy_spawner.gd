@@ -1,5 +1,5 @@
 extends Node
-
+class_name EnemySpawner
 @export var cycle := 0
 @export var cycle_interval := 120.0
 
@@ -9,7 +9,10 @@ extends Node
 	Cycle.new(),
 ]
 
+signal cycle_changed(cycle: int)
+
 func _ready() -> void:
+	set_cycle(cycle)
 	var first_cycle: Cycle = cycles[0]
 	$SpawnDelay.wait_time = first_cycle.spawn_interval
 	$CycleDelay.wait_time = cycle_interval
@@ -63,12 +66,19 @@ func _on_spawn_delay_timeout() -> void:
 
 
 func _on_cycle_delay_timeout() -> void:
-	cycle += 1
+	set_cycle(cycle + 1)
 	
 	if cycles.size() <= cycle:
 		# TODO: End game
-		cycle = 0
+		set_cycle(0)
 	
 	var cycle: Cycle = cycles[cycle]
 	$SpawnDelay.wait_time = cycle.spawn_interval
 	$SpawnDelay.start()
+
+
+func set_cycle(new_cycle: int) -> void:
+	cycle = new_cycle
+	emit_signal("cycle_changed", cycle)
+	
+	
