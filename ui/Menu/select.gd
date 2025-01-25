@@ -46,6 +46,7 @@ func change_stat_display() -> void:
 
 	var new_stats = {
 		"health": selected_class.health,
+		"delay_reduction": str(selected_class.reduction_delay_boost * 100) + "%",
 		"damage_multiplier": str(selected_class.damage_multiplier) + "X",
 		"critical_chance": str(selected_class.critical_chance * 100) + "%",
 		"critical_damage": str(selected_class.critical_damage * 100) + "%",
@@ -56,7 +57,8 @@ func change_stat_display() -> void:
 		var name_value_ui_instance :NameValueUI = name_value_ui_scene.instantiate()
 		var formated_name = stat.replace("_", " ")
 		name_value_ui_instance.set_name_value(formated_name, str(new_stats[stat]))
-		name_value_ui_instance.set_value_color(GameData.name_colors[stat])
+		if GameData.name_colors.has(stat):
+			name_value_ui_instance.set_value_color(GameData.name_colors[stat])
 		stats_ui_list.append(name_value_ui_instance)
 		stats_container.add_child(name_value_ui_instance)
 

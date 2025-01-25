@@ -18,7 +18,11 @@ func load_resource(resource : Resource) -> void:
 	if resource is WeaponProperty:
 		weapon_property = resource
 		$Sprite.texture = weapon_property.texture
-		$Timer.wait_time = weapon_property.fire_rate
+		if _player_stats != null:
+			$Timer.wait_time = weapon_property.fire_rate * (1 - _player_stats.reduction_delay_boost)
+		else:
+			$Timer.wait_time = weapon_property.fire_rate
+			
 	else:
 		assert(false, "Invalid resource type")
 
@@ -98,6 +102,9 @@ func init_bullet(bullet: PackedScene) -> Bullet:
 		(weapon_property.critical_damage + additional_cd)
 	else:
 		instance.damage = weapon_property.get_damage()
+
+	if _player_stats != null:
+		instance.damage *= _player_stats.damage_multiplier
 
 	return instance
 
