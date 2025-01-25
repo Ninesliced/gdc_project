@@ -12,6 +12,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func is_empty() -> bool:
+	return stats_list.size() == 0
+
 func set_stats(stats: Dictionary) -> void:
 	var new_stats : Array[NameValueUI] = UiGlobal.get_ui_stats_from_dict(stats)
 	for stat_ui in stats_list:
@@ -26,6 +29,12 @@ func set_stats(stats: Dictionary) -> void:
 func set_stats_by_resource(resource : Resource) -> void:
 	if resource is WeaponProperty:
 		set_stats_weapon(resource as WeaponProperty)
+
+func clear_stats() -> void:
+	for stat_ui in stats_list:
+		if is_instance_valid(stat_ui):
+			stat_ui.queue_free()
+	stats_list.clear()
 
 func set_stats_weapon(weapon_property : WeaponProperty) -> void:
 	var dps = 0

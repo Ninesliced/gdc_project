@@ -53,20 +53,25 @@ func handle_ship():
 
 
 func handle_slots():
-	for slot in slots:
-		slot.queue_free()
-	slots = []
+	var add_slots = false
+	if len(slots) == 0:
+		add_slots = true
 
 	for i in range(player_stats.item_slots.size()):
 		var slot_data : Slot = player_stats.item_slots[i]
-		var slot : SlotUI = slot_scene.instantiate()
+		var slot : SlotUI = null
 	
-		ship_sprite.add_child(slot)
-		slots.append(slot)
-		slot.index = i
-		slot.set_slot(slot_data)
-		slot.upgrade_parent = self
-		slot.position = slot.position + slot_data.position
+		if add_slots:
+			slot = slot_scene.instantiate()
+			ship_sprite.add_child(slot)
+			slots.append(slot)
+			slot.index = i
+			slot.set_slot(slot_data)
+			slot.upgrade_parent = self
+			slot.position = slot.position + slot_data.position
+
+		else: 
+			slots[i].set_slot(slot_data)
 		pass
 
 
