@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwssuisx5wf6b"
-path="res://.godot/imported/turret.png-a1e0cf7fe2e83bade2c70e0b706407c3.ctex"
+uid="uid://bpglpeugcf4ag"
+path="res://.godot/imported/moon_ship.png-74471849de9dc7867aad8c6fca347749.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/weapons/turret.png"
-dest_files=["res://.godot/imported/turret.png-a1e0cf7fe2e83bade2c70e0b706407c3.ctex"]
+source_file="res://assets/ships/moon_ship.png"
+dest_files=["res://.godot/imported/moon_ship.png-74471849de9dc7867aad8c6fca347749.ctex"]
 
 [params]
 

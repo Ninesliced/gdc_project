@@ -117,6 +117,8 @@ func load_equipment() -> void:
 		for node in nodes:
 			if node is FloatComponent:
 				node.set_floaty(slots[i].floaty, slots[i].position, slots[i].float_distance, node2D)
+				if instance is Weapon:
+					instance.floaty_weapon = slots[i].floaty
 		# END FOR
 		
 		if instance.has_method("load_resource"):

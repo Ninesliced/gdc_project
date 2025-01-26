@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://chtd564nsf7kl"]
+
+[ext_resource type="Texture2D" uid="uid://bso0nnp8org12" path="res://assets/items/weapons/moon_turret.png" id="1_0w5j7"]
+[ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_44bi2"]
+[ext_resource type="PackedScene" uid="uid://c35e244d34fuk" path="res://entities/weapons/bullets/moon_canon_bullet.tscn" id="3_ie8ox"]
+[ext_resource type="Script" path="res://entities/weapons/data/weapon_property.gd" id="4_kvc1q"]
+[ext_resource type="Script" path="res://entities/items/item.gd" id="5_osiry"]
+
+[sub_resource type="Resource" id="Resource_h548j"]
+script = ExtResource("4_kvc1q")
+level = 1
+rotation_speed = 0.1
+bullet = ExtResource("3_ie8ox")
+texture = ExtResource("1_0w5j7")
+damage = 1.0
+attack_range = 500
+fire_rate = 0.8
+bullet_speed = 600
+critical_chance = 0.0
+critical_damage = 0.0
+target_enemy = true
+aimbot = false
+enable_audio = false
+
+[resource]
+script = ExtResource("5_osiry")
+name = "Turret-A"
+rarity = 0
+type = 0
+description = "a simple cannon"
+icon_form_resource = true
+icon = ExtResource("1_0w5j7")
+price = 1
+resource = SubResource("Resource_h548j")
+item_scene = ExtResource("2_44bi2")

@@ -24,7 +24,7 @@ enable_audio = false
 
 [resource]
 script = ExtResource("5_ek0pk")
-name = "simple cannon v2"
+name = "placeholder"
 rarity = 0
 type = 0
 description = "a better cannon"

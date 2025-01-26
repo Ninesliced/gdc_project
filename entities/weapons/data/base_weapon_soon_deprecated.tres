@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WeaponProperty" load_steps=4 format=3 uid="uid://bl3fxnpfp0xd5"]
+
+[ext_resource type="PackedScene" uid="uid://vg43s1sdvoud" path="res://entities/weapons/bullets/bullet_long.tscn" id="1_p7imp"]
+[ext_resource type="Script" path="res://entities/weapons/data/weapon_property.gd" id="2_dxgdg"]
+[ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="3_cul6p"]
+
+[resource]
+script = ExtResource("2_dxgdg")
+level = 1
+rotation_speed = 0.1
+bullet = ExtResource("1_p7imp")
+texture = ExtResource("3_cul6p")
+damage = 2.0
+attack_range = 500
+fire_rate = 0.5
+bullet_speed = 600
+critical_chance = 0.0
+critical_damage = 0.0
+target_enemy = true
+aimbot = false
+enable_audio = false

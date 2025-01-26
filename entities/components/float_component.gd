@@ -29,6 +29,8 @@ func handle_floaty_weapon(delta: float) -> void:
             var vector = direction.normalized() * distance_correction
             object_parent.global_position += vector
 
+
+
 func set_floaty(floaty: bool, new_relative_position, new_float_distance, new_target : Node2D) -> void:
     target = new_target
     float_distance = new_float_distance

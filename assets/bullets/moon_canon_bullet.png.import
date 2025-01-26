@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq0hmcycqhvaw"
-path="res://.godot/imported/shield.png-41360f94b463f5e38bfe1eaa4561dd7b.ctex"
+uid="uid://bnosiw5rw3777"
+path="res://.godot/imported/moon_canon_bullet.png-8928716a387a2785d3702cc1e4ba777f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/shield/shield.png"
-dest_files=["res://.godot/imported/shield.png-41360f94b463f5e38bfe1eaa4561dd7b.ctex"]
+source_file="res://assets/bullets/moon_canon_bullet.png"
+dest_files=["res://.godot/imported/moon_canon_bullet.png-8928716a387a2785d3702cc1e4ba777f.ctex"]
 
 [params]
 

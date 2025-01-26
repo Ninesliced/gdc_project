@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cl1jpd7mraxvm"]
+[gd_scene load_steps=45 format=3 uid="uid://cl1jpd7mraxvm"]
 
 [ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_40l4n"]
 [ext_resource type="Script" path="res://globals/counter_data.gd" id="2_iphvd"]
@@ -201,6 +201,31 @@ spawn_distance_min = 500
 spawn_distance_max = 1500
 is_boss = false
 
+[sub_resource type="Shader" id="Shader_i7b3d"]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color : source_color = vec4(1.0);
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = mix(COLOR, flash_color, COLOR.a * flash_color.a);
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i11j1"]
+resource_local_to_scene = true
+shader = SubResource("Shader_i7b3d")
+shader_parameter/flash_color = Color(1, 1, 1, 0)
+
 [node name="world" type="Node2D"]
 
 [node name="GameUI" parent="." instance=ExtResource("14_4dh58")]
@@ -224,5 +249,9 @@ script = ExtResource("18_h2a57")
 
 [node name="StructureSpawner" type="Node" parent="."]
 script = ExtResource("18_ci1ff")
+
+[node name="Enemies" parent="." instance=ExtResource("8_t1ur1")]
+material = SubResource("ShaderMaterial_i11j1")
+position = Vector2(152, 304)
 
 [connection signal="chunk_loaded" from="ChunkManager" to="StructureSpawner" method="_on_chunk_manager_chunk_loaded"]

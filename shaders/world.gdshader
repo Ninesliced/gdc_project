@@ -1,7 +1,7 @@
 shader_type canvas_item;
 render_mode unshaded, skip_vertex_transform;
 
-const float curvature = 8.0;
+const float curvature = 7.0;
 const float vignette_multiplier = 0.12;
 const float lines_intensity = 0.032;
 const float lines_sharp = 4.0;

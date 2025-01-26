@@ -82,13 +82,17 @@ func _on_timer_timeout() -> void:
 
 	get_tree().current_scene.add_child(bullet_instance)
 	emit_signal("shoot")
+	if floaty_weapon and target != null:
+		handle_recoil(target.global_position - global_position)
+
+
 	target = select_target()
 
 
 func init_bullet(bullet: PackedScene) -> Bullet:
 	var instance : Bullet = bullet.instantiate() as Bullet
 	var additional_cc = 0 if _player_stats == null else _player_stats.critical_chance
-	var additional_cd = 0 if _player_stats == null else _player_stats.critical_damage
+	var additional_cd = 0 if _player_stats == null else _player_stats.critical_damage # SKOTCH
 
 	instance.global_position = global_position
 	instance.global_rotation = direction.angle()
@@ -113,3 +117,7 @@ func _on_shoot() -> void:
 	if weapon_property.enable_audio:
 		$ShootAudio.play()
 	pass # Replace with function body.
+
+
+func handle_recoil(direction: Vector2) -> void:
+	global_position = global_position - direction.normalized() * 10

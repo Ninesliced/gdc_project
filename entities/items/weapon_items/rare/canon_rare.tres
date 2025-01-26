@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://tbofhu1ajdps"]
 
-[ext_resource type="Texture2D" uid="uid://dwssuisx5wf6b" path="res://assets/weapons/turret.png" id="1_jcnys"]
+[ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="1_srugw"]
 [ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_1860v"]
-[ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/base_weapon.tres" id="3_4ji5s"]
+[ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/base_weapon_soon_deprecated.tres" id="3_fuacn"]
 [ext_resource type="Script" path="res://entities/items/item.gd" id="4_4o30s"]
 
 [resource]
 script = ExtResource("4_4o30s")
-name = "Turret-R"
+name = "Turret-R placeholder"
 rarity = 2
 type = 0
 description = "a simple cannon"
 icon_form_resource = true
-icon = ExtResource("1_jcnys")
+icon = ExtResource("1_srugw")
 price = 10
-resource = ExtResource("3_4ji5s")
+resource = ExtResource("3_fuacn")
 item_scene = ExtResource("2_1860v")
