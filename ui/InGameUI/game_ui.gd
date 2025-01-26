@@ -6,7 +6,7 @@ var player : Player = null
 var text_scene = preload("res://ui/InGameUI/label_ui.tscn")
 var texts : Dictionary = {}
 @onready var counter_data_container : VBoxContainer = $MarginContainer/HBoxContainer/CounterDataContainer
-@onready var cycle_text : CycleUI = $MarginContainer/Cycle
+@onready var cycle_text : CycleUI = %Cycle
 
 func _ready():
 	UiGlobal.in_game_ui_node = self

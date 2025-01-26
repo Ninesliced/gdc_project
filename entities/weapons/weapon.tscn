@@ -1,10 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgo7t0jmq53j0"]
+[gd_scene load_steps=9 format=3 uid="uid://dgo7t0jmq53j0"]
 
 [ext_resource type="Script" path="res://entities/weapons/weapon.gd" id="1_lgbee"]
 [ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="1_tsxf7"]
 [ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/base_weapon_soon_deprecated.tres" id="2_2rmih"]
 [ext_resource type="AudioStream" uid="uid://doevu1wj3n1e4" path="res://assets/sounds/weapons/SHOOT011.mp3" id="4_s3fxy"]
 [ext_resource type="Script" path="res://entities/components/float_component.gd" id="5_fxyl6"]
+
+[sub_resource type="Animation" id="Animation_24i7j"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.329877, 1),
+"update": 0,
+"values": [Vector2(1.1, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hw5u4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6vmeo"]
+_data = {
+"RESET": SubResource("Animation_hw5u4"),
+"shoot": SubResource("Animation_24i7j")
+}
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_lgbee")
@@ -27,6 +63,12 @@ max_polyphony = 2
 
 [node name="FloatComponent" type="Node" parent="."]
 script = ExtResource("5_fxyl6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6vmeo")
+}
+speed_scale = 5.0
 
 [connection signal="shoot" from="." to="." method="_on_shoot"]
 [connection signal="shoot" from="." to="FloatComponent" method="_on_weapon_shoot"]

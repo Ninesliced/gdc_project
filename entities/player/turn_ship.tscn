@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dy30yy5axn8vr"]
+[gd_scene load_steps=21 format=3 uid="uid://dy30yy5axn8vr"]
 
 [ext_resource type="PackedScene" uid="uid://b0cu8ml0ttn5j" path="res://entities/player/player.tscn" id="1_0dfpd"]
 [ext_resource type="Script" path="res://globals/counter_data.gd" id="2_c3t8g"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://entities/player/player_stats.gd" id="4_nh7jl"]
 [ext_resource type="Texture2D" uid="uid://jtyv2q83selb" path="res://assets/space_breaker_asset/Ships/Small/body_01.png" id="5_gsa2g"]
 [ext_resource type="PackedScene" uid="uid://bxvp8fluu1lsf" path="res://entities/player/components/slot_manager.tscn" id="6_jbqv1"]
+[ext_resource type="Shader" path="res://entities/shaders/hit_white.gdshader" id="7_ekw80"]
 [ext_resource type="Script" path="res://entities/player/components/slot_manager.gd" id="7_h8khn"]
+[ext_resource type="Script" path="res://entities/player/trail.gd" id="8_0myqs"]
 
 [sub_resource type="Resource" id="Resource_3xbdw"]
 script = ExtResource("2_c3t8g")
@@ -70,14 +72,23 @@ description = "Default ship"
 rarity = 0
 texture = ExtResource("5_gsa2g")
 item_slots = Array[ExtResource("2_jmejf")]([SubResource("Resource_lytji"), SubResource("Resource_8iphd"), SubResource("Resource_aav0e"), SubResource("Resource_awpdo"), SubResource("Resource_so5m1")])
+has_trail = null
+trail_color = null
 reduction_delay_boost = 0.0
 damage_multiplier = 1.0
 speed = 300.0
 health = 100.0
 critical_chance = 0.2
 critical_damage = 1.5
-money = 600
 counter_data = SubResource("Resource_3xbdw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4onj7"]
+shader = ExtResource("7_ekw80")
+shader_parameter/flash_color = Color(0.3384, 0.72, 0.61188, 1)
+
+[sub_resource type="Gradient" id="Gradient_av6pv"]
+offsets = PackedFloat32Array(0.218837, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bg8xi"]
 radius = 5.39941
@@ -86,6 +97,20 @@ height = 25.1596
 [node name="CharacterBody2D" instance=ExtResource("1_0dfpd")]
 position = Vector2(20.0703, 0)
 _player_stats = SubResource("Resource_750hy")
+
+[node name="Trail" type="CPUParticles2D" parent="Icon" index="0" node_paths=PackedStringArray("parent")]
+unique_name_in_owner = true
+z_index = -1
+material = SubResource("ShaderMaterial_4onj7")
+position = Vector2(0, 16)
+amount = 5
+lifetime = 0.2
+gravity = Vector2(0, 0)
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_av6pv")
+script = ExtResource("8_0myqs")
+parent = NodePath("../..")
 
 [node name="Camera2D" parent="." index="2"]
 ignore_rotation = false

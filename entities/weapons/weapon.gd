@@ -82,6 +82,7 @@ func _on_timer_timeout() -> void:
 
 	get_tree().current_scene.add_child(bullet_instance)
 	emit_signal("shoot")
+	#_on_shoot()
 	if floaty_weapon and target != null:
 		handle_recoil(target.global_position - global_position)
 
@@ -116,6 +117,8 @@ func init_bullet(bullet: PackedScene) -> Bullet:
 func _on_shoot() -> void:
 	if weapon_property.enable_audio:
 		$ShootAudio.play()
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("shoot")
 	pass # Replace with function body.
 
 
