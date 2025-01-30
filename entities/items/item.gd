@@ -21,7 +21,7 @@ class_name Item
 
 @export var resource : Resource = null
 @export var item_scene : PackedScene = null
-var resell_percentage : float = 0.7
+var resell_percentage : float = 0.2
 
 func get_resell_price() -> int:
     return int(price * resell_percentage)

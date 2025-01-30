@@ -1,9 +1,11 @@
 extends Node2D
+class_name Planet
 
 @onready var ui = $ui
 var can_interact = false
 @export var buy_cards : Array[Item] = []
 var random_items_set = false
+var planet_level = 1
 func _ready() -> void:	
 	pass # Replace with function body.
 
@@ -28,5 +30,5 @@ func _process(delta: float) -> void:
 
 func handle_items():
 	if not random_items_set:
-		buy_cards = ShopData.get_random_items(3)
+		buy_cards = ShopData.get_random_items(3, planet_level)
 		random_items_set = true

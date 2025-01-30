@@ -66,7 +66,7 @@ func get_rarity(number : int) -> GameData.Rarity:
 			return i
 	return GameData.Rarity.COMMON
 
-func get_random_items(amount : int) -> Array:
+func get_random_items(amount : int, level = 1) -> Array:
 	var new_items : Array[Item] = []
 
 	for i in range(amount):
@@ -76,5 +76,9 @@ func get_random_items(amount : int) -> Array:
 
 		if size_items > 0:
 			var random_item = randi() % size_items
-			new_items.append(items_by_rarity[rarity][random_item].duplicate())
+			var item = items_by_rarity[rarity][random_item].duplicate()
+			item.resource = item.resource.duplicate()
+			if item.resource and item.resource.has_method("set_level"):
+				item.resource.set_level(level)
+			new_items.append(item)
 	return new_items

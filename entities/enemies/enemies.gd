@@ -33,6 +33,15 @@ func _on_health_component_on_death() -> void:
 	
 	queue_free()
 
+func set_hp(hp: int) -> void:
+	if !health_component:
+		await ready
+	health_component.hp = hp
+
+func add_hp(hp: int) -> void:
+	if !health_component:
+		await ready
+	health_component.hp += hp
 
 func _on_health_component_on_damage(damage:int) -> void:
 	$HitPlayer.stop()

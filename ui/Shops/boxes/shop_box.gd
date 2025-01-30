@@ -41,7 +41,10 @@ func set_item(new_item: Item) -> void: # SCOTCH UTILISER LES RESSOURCES
 	# if new_item.resource is WeaponProperty:
 	# 	var weapon = new_item.resource as WeaponProperty
 		# title.text += " v" + str(weapon.level)
-	price.text = str(new_item.price) + "$"
+	if has_node("SellComponent"):
+		price.text = str(new_item.get_resell_price()) + "$"
+	else:
+		price.text = str(new_item.price) + "$"
 	item_icon.texture = new_item.icon
 	ressource = new_item.resource
 	item = new_item

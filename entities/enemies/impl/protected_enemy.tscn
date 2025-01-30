@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci3qqov6hrpuy"]
+[gd_scene load_steps=12 format=3 uid="uid://ci3qqov6hrpuy"]
 
 [ext_resource type="PackedScene" uid="uid://g2o8ee42dabs" path="res://entities/enemies/enemies.tscn" id="1_hhp3o"]
 [ext_resource type="PackedScene" uid="uid://pptr5lrjp0jp" path="res://entities/enemies/drops/basic_drop.tscn" id="2_diki0"]
 [ext_resource type="PackedScene" uid="uid://duvhv66jp4fll" path="res://entities/shields/shield.tscn" id="2_x8o85"]
 [ext_resource type="Script" path="res://entities/enemies/enemy_data.gd" id="3_laxnd"]
 [ext_resource type="Script" path="res://entities/shields/shield_property.gd" id="5_dt7nl"]
+[ext_resource type="Texture2D" uid="uid://bds8nncilm33r" path="res://assets/space_breaker_asset/Bonus/turret_01c_mk3.png" id="5_mnksx"]
 
 [sub_resource type="Shader" id="Shader_2f0cd"]
 code = "shader_type canvas_item;
@@ -36,8 +37,13 @@ script = ExtResource("3_laxnd")
 damage = 5
 drop = ExtResource("2_diki0")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u876u"]
+load_path = "res://.godot/imported/shield.png-98748e7da0bbbd5feb9b2262757b338f.ctex"
+
 [sub_resource type="Resource" id="Resource_6ycbp"]
 script = ExtResource("5_dt7nl")
+generatorTexture = ExtResource("5_mnksx")
+shieldTexture = SubResource("CompressedTexture2D_u876u")
 max_health = 25.0
 regeneration_rate_s = 1.0
 regeneration = 2.0
@@ -46,6 +52,7 @@ shield_scale = 1.0
 
 [node name="Enemies" instance=ExtResource("1_hhp3o")]
 material = SubResource("ShaderMaterial_ndf1b")
+position = Vector2(136, 80)
 enemy_data = SubResource("Resource_hsrp0")
 
 [node name="Shield" parent="." index="7" instance=ExtResource("2_x8o85")]

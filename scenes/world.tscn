@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cl1jpd7mraxvm"]
+[gd_scene load_steps=44 format=3 uid="uid://cl1jpd7mraxvm"]
 
 [ext_resource type="PackedScene" uid="uid://dy30yy5axn8vr" path="res://entities/player/turn_ship.tscn" id="1_40l4n"]
 [ext_resource type="Script" path="res://globals/counter_data.gd" id="2_iphvd"]
@@ -18,10 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://bp21ej6on1jng" path="res://ui/InGameUI/GameUI.tscn" id="14_4dh58"]
 [ext_resource type="Script" path="res://utils/structure_spawner/structure_spawner.gd" id="18_ci1ff"]
 [ext_resource type="Script" path="res://utils/chunk_manager/chunk_manager.gd" id="18_h2a57"]
+[ext_resource type="PackedScene" uid="uid://cchsone545eea" path="res://entities/planets/planet.tscn" id="19_u6o3q"]
 
 [sub_resource type="Resource" id="Resource_hgqgj"]
 script = ExtResource("2_iphvd")
-base_coin = 0.0
+base_coin = 10000.0
 weapon_coin = 0.0
 booster_coin = 0.0
 accelerator_coin = 0.0
@@ -86,9 +87,9 @@ item_slots = Array[ExtResource("2_x3kuv")]([SubResource("Resource_lytji"), SubRe
 has_trail = false
 trail_color = Color(1, 1, 1, 1)
 reduction_delay_boost = 0.0
-damage_multiplier = 1.0
+damage_multiplier = 100.0
 speed = 300.0
-health = 100.0
+health = 100000.0
 critical_chance = 0.2
 critical_damage = 1.5
 counter_data = SubResource("Resource_hgqgj")
@@ -217,15 +218,19 @@ _player_stats = SubResource("Resource_afu5w")
 chunk_manager = NodePath("../ChunkManager")
 
 [node name="EnemySpawner" parent="CharacterBody2D" instance=ExtResource("2_o7w43")]
-cycle_interval = 2.0
+cycle_interval = 1.0
 enemies = Array[ExtResource("7_fy3rf")]([SubResource("Resource_jgm10"), SubResource("Resource_5oyqj"), SubResource("Resource_46dbe")])
 cycles = Array[Object]([SubResource("Resource_it8nf"), SubResource("Resource_qhxea"), SubResource("Resource_xtjyg"), SubResource("Resource_ttriy"), SubResource("Resource_lqo55"), SubResource("Resource_c0f8e")])
 
 [node name="ChunkManager" type="Node" parent="."]
 script = ExtResource("18_h2a57")
 
-[node name="StructureSpawner" type="Node" parent="."]
+[node name="StructureSpawner" type="Node" parent="." node_paths=PackedStringArray("enemy_spawner")]
 script = ExtResource("18_ci1ff")
+enemy_spawner = NodePath("../CharacterBody2D/EnemySpawner")
+
+[node name="Planet" parent="." instance=ExtResource("19_u6o3q")]
+position = Vector2(200, 104)
 
 [connection signal="cycle_changed" from="CharacterBody2D/EnemySpawner" to="GameUI" method="_on_enemy_spawner_cycle_changed"]
 [connection signal="chunk_loaded" from="ChunkManager" to="StructureSpawner" method="_on_chunk_manager_chunk_loaded"]

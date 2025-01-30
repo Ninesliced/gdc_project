@@ -80,3 +80,4 @@ texture = ExtResource("2_f0r44")
 use_parent_material = true
 scale = Vector2(0.7, 0.7)
 weapon_property = SubResource("Resource_jgmhj")
+floaty_weapon = false

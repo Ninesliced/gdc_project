@@ -23,7 +23,7 @@ func _on_box_pressed() -> void:
 	if item:
 		PlayerData.inventory.erase(item)
 		PlayerData.player_stats.counter_data._add(counter_data)
-		# PlayerData.player_stats.counter_data.base_coin += item.price
+		PlayerData.player_stats.counter_data.base_coin += item.get_resell_price()
 		box_parent.play_sound("buy")
 		box_parent.animation_player.play("delete")
 		box_parent.stats_ui.hide()

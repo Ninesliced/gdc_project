@@ -2,7 +2,7 @@ extends Node
 class_name EnemySpawner
 @export var cycle := 0
 @export var cycle_interval := 120.0
-
+var total_cycle = 1
 @export var enemies: Array[EnemyDef] = []
 
 @export var cycles : Array[Cycle] = [
@@ -55,6 +55,7 @@ func spawn_around_player(player: Player) -> void:
 		
 		var enemy: Enemy = get_random_enemy().scene.instantiate() as Enemy
 		enemy.global_position = position
+		enemy.add_hp(total_cycle * 10) #skotch
 		get_tree().current_scene.add_child(enemy)
 
 
@@ -67,6 +68,7 @@ func _on_spawn_delay_timeout() -> void:
 
 func _on_cycle_delay_timeout() -> void:
 	set_cycle(cycle + 1)
+	total_cycle += 1
 	
 	if cycles.size() <= cycle:
 		# TODO: End game

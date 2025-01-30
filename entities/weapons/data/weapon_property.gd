@@ -24,7 +24,7 @@ var level_cc_multiplier := 0.05
 var level_cd_multiplier := 0.05
 
 func get_damage(multiplier = 1) -> int:
-	return floor(damage * (level ** level_damage_multiplier) * multiplier)
+	return floor(damage + (level * level_damage_multiplier) * multiplier)
 
 func get_critical_chance(add = 0) -> float:
 	return critical_chance + level * level_cc_multiplier + add
@@ -34,3 +34,10 @@ func get_critical_damage(add = 0) -> float:
 func level_up() -> void:
 	level += 1
 	
+func set_level(new_level: int) -> void:
+	if new_level < 1:
+		new_level = 1
+	level = new_level
+
+func get_dps():
+	return get_damage() / fire_rate
