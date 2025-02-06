@@ -46,10 +46,10 @@ func change_stat_display() -> void:
 
 	var new_stats = {
 		"health": selected_class.health,
-		"delay_reduction": str(selected_class.reduction_delay_boost * 100) + "%",
-		"damage_multiplier": str(selected_class.damage_multiplier) + "X",
-		"critical_chance": str(selected_class.critical_chance * 100) + "%",
-		"critical_damage": str(selected_class.critical_damage * 100) + "%",
+		"delay_reduction": str(snapped(selected_class.reduction_delay_boost * 100,1)) + "%",
+		"damage_multiplier": str(snapped(selected_class.damage_multiplier, 0.1)) + "X",
+		"critical_chance": str(snapped(selected_class.critical_chance * 100,0.1)) + "%",
+		"critical_damage": str(snapped(selected_class.critical_damage * 100,0.1)) + "%",
 		"speed": selected_class.speed,
 	}
 
