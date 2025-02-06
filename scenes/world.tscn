@@ -218,7 +218,7 @@ _player_stats = SubResource("Resource_afu5w")
 chunk_manager = NodePath("../ChunkManager")
 
 [node name="EnemySpawner" parent="CharacterBody2D" instance=ExtResource("2_o7w43")]
-cycle_interval = 1.0
+cycle_interval = 30.0
 enemies = Array[ExtResource("7_fy3rf")]([SubResource("Resource_jgm10"), SubResource("Resource_5oyqj"), SubResource("Resource_46dbe")])
 cycles = Array[Object]([SubResource("Resource_it8nf"), SubResource("Resource_qhxea"), SubResource("Resource_xtjyg"), SubResource("Resource_ttriy"), SubResource("Resource_lqo55"), SubResource("Resource_c0f8e")])
 

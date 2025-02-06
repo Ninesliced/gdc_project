@@ -1,9 +1,9 @@
 extends Node
 
 var list_available_characters : Array[PlayerStats] = [
-	preload("res://entities/player/player_stats/player_base.tres"),
+	load("res://entities/player/player_stats/player_base.tres"),
 	# preload("res://entities/player/player_stats/player_debug.tres"),
-	preload("res://entities/player/player_stats/the_moon.tres")
+	load("res://entities/player/player_stats/the_moon.tres")
 ]
 
 var name_colors : Dictionary = {
