@@ -20,6 +20,11 @@ class_name PlayerStats
 @export var critical_chance : float = 0.2
 @export var critical_damage : float = 2
 @export var counter_data : CounterData = CounterData.new()
+@export var view_distance : float = 0.8
+
+var bonus_speed : float = 0.0
+var bonus_damage : float = 0.0
+var bonus_view_distance : float = 0.0
 
 var inventory : Array[Item] = []
 var equipments : Array[Node2D] = []

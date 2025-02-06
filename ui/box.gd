@@ -40,4 +40,3 @@ func play_animation_selected(revert = false) -> void:
 		$AnimationPlayer.play_backwards("select_2")
 	else:
 		$AnimationPlayer.play("select_2")
-
