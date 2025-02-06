@@ -43,10 +43,11 @@ func filter_items() -> void:
 		items_by_rarity[item.rarity].append(item)
 	pass
 
-func get_rarity(number : int) -> GameData.Rarity:
+func get_rarity(number : int, planet_level = 0) -> GameData.Rarity:
 	var sum_rarity = 0
 	for i in range(GameData.Rarity.size()):
-		sum_rarity += GameData.weight_rarity[i] * 100
+		sum_rarity += GameData.get_weight_rarity(planet_level - 1)[i] * 100
+		print(GameData.get_weight_rarity(planet_level))
 		if number < sum_rarity:
 			return i
 	return GameData.Rarity.COMMON
@@ -56,7 +57,7 @@ func get_random_items(amount : int, level = 1) -> Array:
 
 	for i in range(amount):
 		var random_rarity = randi() % 100
-		var rarity = get_rarity(random_rarity)
+		var rarity = get_rarity(random_rarity, level)
 		var size_items = items_by_rarity[rarity].size()
 
 		if size_items > 0:
