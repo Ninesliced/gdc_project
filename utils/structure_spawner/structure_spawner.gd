@@ -23,6 +23,6 @@ func generate_planet(position : Vector2, chunk_size = 1):
 
 func _on_chunk_manager_chunk_loaded(position: Vector2, chunk_size: int) -> void:
 	var chance = randf()
-	if chance < 0.3:
+	if chance < 0.8:
 		generate_planet(position, chunk_size)
 	pass # Replace with function body.
