@@ -9,7 +9,6 @@ var list_chunk_loaded = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	load_chunk_around(Vector2(0,0))
 	pass # Replace with function body.
 

@@ -14,7 +14,7 @@ var _player_counter : CounterData
 
 @export var chunk_manager : ChunkManager = null
 var chunk_check_frame_rate: float        = 0.2
-var chunk_frame: int                     = 0
+var chunk_frame: float                     = 0
 
 @onready var camera : Camera2D = $Camera2D
 @onready var health_component : HealthComponent = $HealthComponent
@@ -40,7 +40,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if chunk_manager == null:
 		return
-	if chunk_frame > chunk_check_frame_rate:
+	if chunk_frame >= chunk_check_frame_rate:
 		chunk_manager.load_chunk_around(global_position)
 		chunk_frame = 0
 	chunk_frame += delta

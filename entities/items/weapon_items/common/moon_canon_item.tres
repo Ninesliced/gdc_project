@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bso0nnp8org12" path="res://assets/items/weapons/moon_turret.png" id="1_0w5j7"]
 [ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_44bi2"]
-[ext_resource type="PackedScene" path="res://entities/weapons/bullets/moon_canon_bullet.tscn" id="3_ie8ox"]
+[ext_resource type="PackedScene" uid="uid://c35e244d34fuk" path="res://entities/weapons/bullets/moon_canon_bullet.tscn" id="3_ie8ox"]
 [ext_resource type="Script" path="res://entities/weapons/data/weapon_property.gd" id="4_kvc1q"]
 [ext_resource type="Script" path="res://entities/items/item.gd" id="5_osiry"]
 
