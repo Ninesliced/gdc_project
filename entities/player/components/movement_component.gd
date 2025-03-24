@@ -1,9 +1,11 @@
 extends Node2D
 
-var speed = 300.0
-@export var acceleration = 300
-@export var decceleration = 200
-@export var rotation_speed = 2.5
+class_name MovementComponent
+
+var speed: float = 300.0
+@export var acceleration: int = 300
+@export var decceleration: int = 200
+@export var rotation_speed: float = 2.5
 @export var movement_mode : MovementMode = MovementMode.FourKeysDriven
 @export var camera : Camera2D = null
 
@@ -27,8 +29,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var direction = Vector2.ZERO
-	var velocity = parent.velocity
+	var direction: Vector2 = Vector2.ZERO
+	var velocity           = parent.velocity
 
 	if Input.is_action_pressed("down"):
 		direction.y = 1
@@ -60,7 +62,6 @@ func _process(delta: float) -> void:
 	velocity = handle_acceleration(direction,velocity, delta)
 	velocity = handle_decceleration(direction, velocity, delta)
 	parent.velocity = velocity
-	pass
 
 func handle_acceleration(direction,velocity, delta):
 	if direction.x > 0:

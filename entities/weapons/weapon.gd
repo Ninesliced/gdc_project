@@ -60,7 +60,7 @@ func _ready() -> void:
 
 	if parent is Player:
 		var player: Player = parent as Player
-		_player_stats = player._player_stats
+		_player_stats = player.player_stats
 
 func _process(delta: float) -> void:
 

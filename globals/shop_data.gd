@@ -43,25 +43,11 @@ func filter_items() -> void:
 		items_by_rarity[item.rarity].append(item)
 	pass
 
-# func set_weigthed_items(items : Array) -> void: # DEPRECATED
-# 	weights_total = 0
-# 	for item in items:
-# 		weights_total += item.get_weight() * 100
-# 		items_weigthed.append({ "weight" : weights_total, "item" : item })
-# 	pass
-
-# func get_weigthed_item(weight : int) -> Item: # DEPRECATED
-# 	if weight >= weights_total:
-# 		return null
-# 	for item in items_weigthed:
-# 		if weight < item["weight"]:
-# 			return item["item"].duplicate()
-# 	return null
-
-func get_rarity(number : int) -> GameData.Rarity:
+func get_rarity(number : int, planet_level = 0) -> GameData.Rarity:
 	var sum_rarity = 0
 	for i in range(GameData.Rarity.size()):
-		sum_rarity += GameData.weight_rarity[i] * 100
+		sum_rarity += GameData.get_weight_rarity(planet_level - 1)[i] * 100
+		print(GameData.get_weight_rarity(planet_level))
 		if number < sum_rarity:
 			return i
 	return GameData.Rarity.COMMON
@@ -71,14 +57,15 @@ func get_random_items(amount : int, level = 1) -> Array:
 
 	for i in range(amount):
 		var random_rarity = randi() % 100
-		var rarity = get_rarity(random_rarity)
+		var rarity = get_rarity(random_rarity, level)
 		var size_items = items_by_rarity[rarity].size()
 
 		if size_items > 0:
 			var random_item = randi() % size_items
 			var item = items_by_rarity[rarity][random_item].duplicate()
 			item.resource = item.resource.duplicate()
-			if item.resource and item.resource.has_method("set_level"):
-				item.resource.set_level(level)
+			if item.resource and item.resource.has_method("randomize_properties"):
+				item.resource.randomize_properties(0.1)
+			# 	item.resource.set_level(level)
 			new_items.append(item)
 	return new_items
