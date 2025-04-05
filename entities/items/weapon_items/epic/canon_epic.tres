@@ -1,18 +1,35 @@
-[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://dj6icdmocxsu5"]
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://dj6icdmocxsu5"]
 
 [ext_resource type="Texture2D" uid="uid://djmvkln3iwmri" path="res://assets/space_breaker_asset/Weapons/Small/Cannon/turret_01_mk1.png" id="1_qm73w"]
 [ext_resource type="PackedScene" uid="uid://dgo7t0jmq53j0" path="res://entities/weapons/weapon.tscn" id="2_jyq71"]
-[ext_resource type="Resource" uid="uid://bl3fxnpfp0xd5" path="res://entities/weapons/data/base_weapon_soon_deprecated.tres" id="3_80yb4"]
+[ext_resource type="PackedScene" uid="uid://vg43s1sdvoud" path="res://entities/weapons/bullets/bullet_long.tscn" id="3_xkj1o"]
+[ext_resource type="Script" path="res://entities/weapons/data/weapon_property.gd" id="4_bu6rr"]
 [ext_resource type="Script" path="res://entities/items/item.gd" id="4_ff3jv"]
+
+[sub_resource type="Resource" id="Resource_hoxu1"]
+script = ExtResource("4_bu6rr")
+level = 1
+rotation_speed = 0.1
+bullet = ExtResource("3_xkj1o")
+texture = ExtResource("1_qm73w")
+damage = 1.0
+attack_range = 500
+fire_rate = 0.05
+bullet_speed = 1200
+critical_chance = 0.0
+critical_damage = 0.0
+target_enemy = true
+aimbot = false
+enable_audio = false
 
 [resource]
 script = ExtResource("4_ff3jv")
-name = "Turret-E"
+name = "RF turret"
 rarity = 3
 type = 0
-description = "a simple cannon"
+description = "Rapid fire turret"
 icon_form_resource = true
 icon = ExtResource("1_qm73w")
 price = 10
-resource = ExtResource("3_80yb4")
+resource = SubResource("Resource_hoxu1")
 item_scene = ExtResource("2_jyq71")

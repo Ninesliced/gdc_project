@@ -39,13 +39,13 @@ func clear_stats() -> void:
 func set_stats_weapon(weapon_property : WeaponProperty) -> void:
 	var dps = 0
 	if weapon_property.fire_rate > 0:
-		dps = weapon_property.get_dps()
+		dps = snapped(weapon_property.get_dps(), 0.1)
 
 	var stats = {
 		"dps" : dps,
-		"damage" : weapon_property.get_damage(),
-		"fire_rate" : weapon_property.fire_rate,
-		"critical_chance" : str(weapon_property.get_critical_chance() * 100) + "%",
-		"critical_damage" : str(weapon_property.get_critical_damage() * 100) + "%",
+		"damage" : snapped(weapon_property.get_damage(),0.1),
+		"fire_rate" : snapped(weapon_property.fire_rate,0.1),
+		"critical_chance" : str(snapped(weapon_property.get_critical_chance() * 100,0.1)) + "%",
+		"critical_damage" : str(snapped(weapon_property.get_critical_damage() * 100,0.1)) + "%",
 	}
 	set_stats(stats)

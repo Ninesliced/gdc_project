@@ -41,3 +41,16 @@ func set_level(new_level: int) -> void:
 
 func get_dps():
 	return get_damage() / fire_rate
+
+func randomize_properties(delta_percentage_range : float):
+	var dpr = delta_percentage_range
+	var damage_delta = randf_range(-dpr, dpr)
+	damage += damage * damage_delta
+	var speed_delta = randf_range(-dpr, dpr)
+	fire_rate += fire_rate * speed_delta
+	var crit_chance_delta = randf_range(-dpr, dpr)
+	critical_chance += critical_chance * crit_chance_delta
+	
+	var crit_damage_delta = randf_range(-dpr, dpr)
+	critical_damage += critical_damage * crit_damage_delta
+	

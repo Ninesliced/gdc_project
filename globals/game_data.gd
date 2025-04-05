@@ -1,9 +1,9 @@
 extends Node
 
 var list_available_characters : Array[PlayerStats] = [
-	preload("res://entities/player/player_stats/player_base.tres"),
+	load("res://entities/player/player_stats/player_base.tres"),
 	# preload("res://entities/player/player_stats/player_debug.tres"),
-	preload("res://entities/player/player_stats/the_moon.tres")
+	load("res://entities/player/player_stats/the_moon.tres")
 ]
 
 var name_colors : Dictionary = {
@@ -35,6 +35,47 @@ var weight_rarity : Dictionary = {
     Rarity.EPIC : 0.05,
     Rarity.LEGENDARY : 0.01,
 }
+
+func get_weight_rarity(number : int):
+	return weight_rarity_list[number % weight_rarity_list.size()]
+
+var weight_rarity_list : Array[Dictionary] = [
+	{
+		Rarity.COMMON : 0.58,
+		Rarity.UNCOMMON : 0.25,
+		Rarity.RARE : 0.12,
+		Rarity.EPIC : 0.05,
+		Rarity.LEGENDARY : 0.00,	
+	},
+	{
+		Rarity.COMMON : 0.58,
+		Rarity.UNCOMMON : 0.25,
+		Rarity.RARE : 0.12,
+		Rarity.EPIC : 0.05,
+		Rarity.LEGENDARY : 0.00,	
+	},
+	{
+		Rarity.COMMON : 0.58,
+		Rarity.UNCOMMON : 0.25,
+		Rarity.RARE : 0.12,
+		Rarity.EPIC : 0.05,
+		Rarity.LEGENDARY : 0.00,	
+	},
+	{
+		Rarity.COMMON : 0.58,
+		Rarity.UNCOMMON : 0.25,
+		Rarity.RARE : 0.12,
+		Rarity.EPIC : 0.05,
+		Rarity.LEGENDARY : 0.00,	
+	},
+	{
+		Rarity.COMMON : 0.38,
+		Rarity.UNCOMMON : 0.25,
+		Rarity.RARE : 0.12,
+		Rarity.EPIC : 0.05,
+		Rarity.LEGENDARY : 0.20,	
+	},
+]
 
 @export var crt_shader_scene : PackedScene = preload("res://shaders/crt.tscn")
 var instance_crt : CanvasLayer = null

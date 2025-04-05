@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmgvjlh2o0nh3"]
+
+[ext_resource type="Script" path="res://entities/telescope/telescope.gd" id="1_f2caa"]
+[ext_resource type="Texture2D" uid="uid://dub1bt7m4kbdn" path="res://assets/space_breaker_asset/Others/practice_target.png" id="1_oc2py"]
+
+[node name="Telescope" type="Node2D"]
+script = ExtResource("1_f2caa")
+
+[node name="PracticeTarget" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_oc2py")

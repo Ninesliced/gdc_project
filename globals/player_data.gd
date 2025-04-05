@@ -1,18 +1,20 @@
 extends Node
-var player = null
+
+var player : Player = null
 var player_start_stats = null
 var player_stats : PlayerStats = null
-var player_rotation = 0
+var player_rotation := 0
 var inventory : Array[Item] = []
 var equipments : Array[Node2D] = []
 var nodes_positioner : Array[Node2D] = []
+
 enum ItemType {
 	ALL = 0,
-	WEAPON = 1,
-	SHIELD = 2,
-	BOOSTER = 3,
-	ITEM = 4,
-	
+	ITEM = 1,
+	WEAPON = 2,
+	SHIELD = 3,
+	BOOSTER = 4,
+	TELESCOPE = 5,
 }
 
 func _ready():
@@ -20,14 +22,14 @@ func _ready():
 
 func set_player_data(player_data: Player):
 	player = player_data
-	player_stats = player._player_stats
+	player_stats = player.player_stats
 	inventory = player_stats.inventory
 	equipments = player_stats.equipments
 	nodes_positioner = player_stats.nodes_positioner
 	load_equipment()
  
 func get_player() -> Player:
-	var players = get_tree().get_nodes_in_group("Player")
+	var players := get_tree().get_nodes_in_group("Player")
 	if players.size() == 0:
 		return null
 	return players[0]
@@ -36,7 +38,7 @@ func get_player_stats() -> PlayerStats:
 	if player == null:
 		push_warning("player not found")
 		return null
-	return player._player_stats
+	return player.player_stats
 
 
 
@@ -46,18 +48,18 @@ func replace_item(item: Item, index: int) -> bool:
 	if player == null:
 		assert(false, "warning: player not found")
 		return false
-	if player._player_stats == null:
+	if player.player_stats == null:
 		assert(false, "player stats not found")
 		return false
-	if player._player_stats.item_slots.size() <= index:
+	if player.player_stats.item_slots.size() <= index:
 		assert(false, "index out of range")
 		return false
 
-	if item and !check_type(item, player._player_stats.item_slots[index]):
+	if item and !check_type(item, player.player_stats.item_slots[index]):
 		return false
 
-	var temp_item = player._player_stats.item_slots[index].item
-	player._player_stats.item_slots[index].item = item
+	var temp_item: Item = player.player_stats.item_slots[index].item
+	player.player_stats.item_slots[index].item = item
 
 	if temp_item:
 		inventory.append(temp_item)
@@ -86,20 +88,25 @@ func load_equipment() -> void:
 			equipment.queue_free()
 
 	equipments.clear()
+	
+	player_stats.bonus_view_distance = 0
+	player_stats.bonus_damage = 0
+	player_stats.bonus_speed = 0
+	
 	if player == null:
 		push_warning("warning: player not found")
 		return
-	if player._player_stats == null:
+	if player.player_stats == null:
 		assert(false,"player stats not found")
 		return
 
-	var slots : Array[Slot] = player._player_stats.item_slots
+	var slots : Array[Slot] = player.player_stats.item_slots
 	for i in range(slots.size()):
-		var item = slots[i].item
+		var item: Item = slots[i].item
 		if item == null:
 			continue
 
-		var instance = item.item_scene.instantiate()
+		var instance: Node = item.item_scene.instantiate()
 		instance.rotation = slots[i].rotation
 		equipments.append(instance)
 		player.add_child(instance)
@@ -107,7 +114,7 @@ func load_equipment() -> void:
 
 		
 		# FOR floaty item
-		var nodes = instance.get_children()
+		var nodes: Array[Node] = instance.get_children()
 
 		var node2D = Node2D.new()
 		node2D.position = slots[i].position
@@ -125,6 +132,30 @@ func load_equipment() -> void:
 			instance.load_resource(item.resource)
 
 		if instance is Weapon:
-			var weapon = instance as Weapon
+			var weapon: Weapon = instance as Weapon
 			weapon.set_delay(float(i) / slots.size())
-	pass
+	update_zoom()
+	update_speed()
+
+
+func update_zoom() -> void:
+	if player == null:
+		push_warning("warning: player not found")
+		return
+	if player.player_stats == null:
+		push_warning("warning: player stats not found")
+		return
+		
+	var zoom := player_stats.view_distance * (1 + player_stats.bonus_view_distance)
+	player.camera.zoom = Vector2(zoom, zoom)
+
+
+func update_speed() -> void:
+	if player == null:
+		push_warning("warning: player not found")
+		return
+	if player.player_stats == null:
+		push_warning("warning: player stats not found")
+		return
+		
+	player.movement_component.speed = player.player_stats.speed * (1 + player.player_stats.bonus_speed)

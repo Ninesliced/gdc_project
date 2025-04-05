@@ -1,7 +1,7 @@
 extends Node
 class_name ChunkManager
 
-@export var chunk_size = 1000
+@export var chunk_size = 3000
 signal chunk_loaded(position : Vector2, chunk_size: int)
 var list_chunk_loaded = {
 		Vector2(0,0) : true
@@ -9,7 +9,6 @@ var list_chunk_loaded = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	load_chunk_around(Vector2(0,0))
 	pass # Replace with function body.
 
